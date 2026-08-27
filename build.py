@@ -3,17 +3,15 @@ import json
 import re
 import os
 import time
-import glob
 import datetime
 import urllib.parse
 import urllib.request
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+import requests
 
-CSV_URL = "http://bookwalker.jp/csv/download.php"
+CSV_URL = "https://bookwalker.jp/csv/download.php"
+FAQ_URL = "https://help.bookwalker.jp/faq/301"
 HISTORY_FILE = "series_history.json"
 CACHE_FILE = "cover_cache.json"
-DOWNLOAD_DIR = os.path.join(os.getcwd(), "tmp_download")
 
 def load_json_file(filepath):
     if os.path.exists(filepath):
@@ -85,66 +83,37 @@ def is_title_v1(title):
     return False
 
 def fetch_csv_dataframe():
-    print("Headless Chromeを使ってCSVをダウンロード中...")
-    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
-
-    options = Options()
-    options.add_argument('--headless=new')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-    options.page_load_strategy = 'eager'  # リソース全読み込みを待たずに制御を戻す
-
-    prefs = {
-        "download.default_directory": DOWNLOAD_DIR,
-        "download.prompt_for_download": False,
-        "download.directory_upgrade": True,
-        "safebrowsing.enabled": True
+    print("requests を使って直接 CSV をダウンロード中...")
+    
+    session = requests.Session()
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "ja,en-US;q=0.7,en;q=0.3",
     }
-    options.add_experimental_option("prefs", prefs)
+    session.headers.update(headers)
 
-    driver = webdriver.Chrome(options=options)
-    driver.set_page_load_timeout(30)  # ページ読み込みタイムアウトを30秒に設定
-
+    # クッキーやリファラを模倣するため、まずFAQページにアクセス
     try:
-        try:
-            driver.get('https://help.bookwalker.jp/faq/301')
-            time.sleep(2)
-        except Exception as e:
-            print(f"FAQページ読み込み警告 (スキップして続行): {e}")
+        session.get(FAQ_URL, timeout=10)
+    except Exception as e:
+        print(f"FAQページアクセス警告 (無視して続行): {e}")
 
-        try:
-            driver.get(CSV_URL)
-        except Exception as e:
-            print(f"CSV取得リクエスト完了 (またはタイムアウト): {e}")
+    # CSVダウンロードURLへアクセス
+    headers["Referer"] = FAQ_URL
+    response = session.get(CSV_URL, headers=headers, timeout=60)
+    response.raise_for_status()
 
-        # ダウンロード完了を最大30秒待機
-        timeout = 30
-        start_time = time.time()
-        while time.time() - start_time < timeout:
-            csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
-            # 一時ファイル(.crdownload)がないかもチェック
-            crdownload_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.crdownload"))
-            if csv_files and not crdownload_files:
-                print("CSVファイルのダウンロードが完了しました。")
-                break
-            time.sleep(1)
-
-    finally:
-        driver.quit()
-
-    csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
-    if not csv_files:
-        raise FileNotFoundError("CSVファイルのダウンロードに失敗しました（タイムアウト）。")
-
-    downloaded_file = csv_files[0]
-
+    # エンコーディングの自動判別とPandas読み込み
+    content = response.content
+    
     for enc in ['cp932', 'shift_jis', 'utf-8']:
         try:
-            return pd.read_csv(downloaded_file, encoding=enc, low_memory=False)
+            from io import BytesIO
+            return pd.read_csv(BytesIO(content), encoding=enc, low_memory=False)
         except Exception:
             continue
-            
+
     raise ValueError("CSVのエンコーディング読み込みに失敗しました。")
 
 def main():
@@ -170,7 +139,7 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # 3. ノイズ除去
+    # 3. 単話・分冊・無料・お試しなどをPandasで一括除外（ノイズ除去）
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
         r'単話|分冊|話売り|【話】|（話）|\(話\)|話：|話\s*-|話\)|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
@@ -206,6 +175,7 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
+        # 1巻または新シリーズのみを対象にしてAPI検索に回す
         if has_v1_title or is_new_series:
             month = rel_date[:7]
             if month not in result:
