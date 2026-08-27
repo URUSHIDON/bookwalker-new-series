@@ -141,7 +141,6 @@
     function cleanUrl(rawUrl) {
       if (!rawUrl) return "#";
       let url = rawUrl.trim();
-      // http:// を https:// に強制変換
       if (url.startsWith("http://")) {
         url = url.replace("http://", "https://");
       }
@@ -200,16 +199,7 @@
         card.className = 'card';
 
         const targetUrl = cleanUrl(item.url);
-
-        // 画像サーバー(c.bookwalker.jp)の403回避用プロキシ
-        let imgUrl = "";
-        if (item.image) {
-          const cleanImg = item.image.replace(/^https?:\/\//, '');
-          imgUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanImg)}&w=300&output=jpg`;
-        } else {
-          imgUrl = 'https://via.placeholder.com/150x210?text=No+Image';
-        }
-
+        const imgUrl = item.image ? item.image : 'https://via.placeholder.com/150x210?text=No+Image';
         const isNew = item.is_new_series ? '<span class="badge">新シリーズ</span>' : '';
 
         card.innerHTML = `
