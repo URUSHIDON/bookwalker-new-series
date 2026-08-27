@@ -28,8 +28,6 @@ def save_json_file(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def fetch_google_books_cover(title, publisher="", cache={}):
-    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得"""
-    # 検索クエリの整理（巻数や余計な記号を簡易除去）
     clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', title).strip()
     query_str = f"{clean_title} {publisher}".strip()
     
@@ -48,7 +46,6 @@ def fetch_google_books_cover(title, publisher="", cache={}):
                 volume_info = data["items"][0].get("volumeInfo", {})
                 image_links = volume_info.get("imageLinks", {})
                 
-                # サムネイル画像URLを取得（httpをhttpsに変換）
                 cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
                 if cover_url:
                     cover_url = cover_url.replace("http://", "https://")
@@ -174,8 +171,7 @@ def main():
                 result[month] = []
 
             publisher = str(row.get('発行元', ''))
-            
-            # Google Books API から画像取得
+            category = str(row.get(cat_name, '')).strip()
             image_url = fetch_google_books_cover(title, publisher, cover_cache)
 
             result[month].append({
@@ -184,6 +180,7 @@ def main():
                 "image": image_url,
                 "publisher": publisher,
                 "label": str(row.get('レーベル', '')),
+                "category": category,
                 "series": series,
                 "price": str(row.get('価格', '')),
                 "release_date": rel_date,
@@ -203,7 +200,7 @@ def main():
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
     
-    print("Google Booksからの表紙画像取得およびデータ更新が完了しました！")
+    print("データ更新完了（カテゴリ属性追加済み）")
 
 if __name__ == '__main__':
     main()
