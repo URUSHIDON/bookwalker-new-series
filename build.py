@@ -2,11 +2,14 @@ import pandas as pd
 import json
 import re
 import os
-import requests
-import io
+import time
+import glob
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 CSV_URL = "http://bookwalker.jp/csv/download.php"
 HISTORY_FILE = "series_history.json"
+DOWNLOAD_DIR = os.path.join(os.getcwd(), "tmp_download")
 
 def get_cover_image_url(book_url):
     if pd.isna(book_url):
@@ -40,31 +43,50 @@ def save_series_history(history_set):
         json.dump(list(history_set), f, ensure_ascii=False, indent=2)
 
 def fetch_csv_dataframe():
-    print(f"CSVを取得中: {CSV_URL}")
+    print("Headless Chromeを使ってCSVをダウンロード中...")
+    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+
+    options = Options()
+    options.add_argument('--headless=new')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36')
     
-    # 一般的なChromeブラウザからのアクセスに見せるための詳細なヘッダー
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
-        'Referer': 'https://help.bookwalker.jp/faq/301',
-        'Cache-Control': 'max-age=0'
+    # 自動ダウンロード先ディレクトリの指定
+    prefs = {
+        "download.default_directory": DOWNLOAD_DIR,
+        "download.prompt_for_download": False,
+        "download.directory_upgrade": True,
+        "safebrowsing.enabled": True
     }
+    options.add_experimental_option("prefs", prefs)
+
+    driver = webdriver.Chrome(options=options)
     
-    # セッションを使ってリクエスト（HTTP 403 回避策）
-    session = requests.Session()
-    session.headers.update(headers)
-    
-    # 一度FAQページを経由してクッキー等を保持してからCSVを取得
-    session.get('https://help.bookwalker.jp/faq/301', timeout=15)
-    
-    res = session.get(CSV_URL, timeout=30)
-    res.raise_for_status()
-    
-    # 文字コードの判定と読み込み
+    try:
+        # 1. FAQページにアクセスしてクッキー取得
+        driver.get('https://help.bookwalker.jp/faq/301')
+        time.sleep(3)
+        
+        # 2. CSVの直リンクへアクセスして自動ダウンロード発動
+        driver.get(CSV_URL)
+        time.sleep(10) # ダウンロード完了まで待機
+    finally:
+        driver.quit()
+
+    # ダウンロードされたCSVファイルを検索
+    csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
+    if not csv_files:
+        raise FileNotFoundError("CSVファイルのダウンロードに失敗しました。")
+
+    downloaded_file = csv_files[0]
+    print(f"ダウンロード完了: {downloaded_file}")
+
+    # 文字コード判定と読み込み
     for enc in ['cp932', 'shift_jis', 'utf-8']:
         try:
-            return pd.read_csv(io.BytesIO(res.content), encoding=enc)
+            df = pd.read_csv(downloaded_file, encoding=enc)
+            return df
         except Exception:
             continue
             
@@ -74,7 +96,6 @@ def main():
     df = fetch_csv_dataframe()
     df.columns = df.columns.str.strip()
 
-    # カラム名判定
     category_col = [c for c in df.columns if 'カテゴリ' in c]
     cat_name = category_col[0] if category_col else df.columns[0]
 
