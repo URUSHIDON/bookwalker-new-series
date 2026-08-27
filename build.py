@@ -4,12 +4,13 @@ import re
 import os
 import time
 import datetime
+import subprocess
 import urllib.parse
 import urllib.request
-import requests
 
 CSV_URL = "https://bookwalker.jp/csv/download.php"
 FAQ_URL = "https://help.bookwalker.jp/faq/301"
+LOCAL_CSV_PATH = "downloaded_data.csv"
 HISTORY_FILE = "series_history.json"
 CACHE_FILE = "cover_cache.json"
 
@@ -82,35 +83,26 @@ def is_title_v1(title):
             return True
     return False
 
+def download_csv_with_curl():
+    print("curl コマンドで CSV ファイルをダウンロード中...")
+    cmd = [
+        "curl", "-sL",
+        "-A", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "-e", FAQ_URL,
+        "--max-time", "60",
+        "-o", LOCAL_CSV_PATH,
+        CSV_URL
+    ]
+    result = subprocess.run(cmd)
+    if result.returncode != 0 or not os.path.exists(LOCAL_CSV_PATH):
+        raise RuntimeError("curl での CSV ダウンロードに失敗しました。")
+
 def fetch_csv_dataframe():
-    print("requests を使って直接 CSV をダウンロード中...")
-    
-    session = requests.Session()
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-        "Accept-Language": "ja,en-US;q=0.7,en;q=0.3",
-    }
-    session.headers.update(headers)
+    download_csv_with_curl()
 
-    # クッキーやリファラを模倣するため、まずFAQページにアクセス
-    try:
-        session.get(FAQ_URL, timeout=10)
-    except Exception as e:
-        print(f"FAQページアクセス警告 (無視して続行): {e}")
-
-    # CSVダウンロードURLへアクセス
-    headers["Referer"] = FAQ_URL
-    response = session.get(CSV_URL, headers=headers, timeout=60)
-    response.raise_for_status()
-
-    # エンコーディングの自動判別とPandas読み込み
-    content = response.content
-    
     for enc in ['cp932', 'shift_jis', 'utf-8']:
         try:
-            from io import BytesIO
-            return pd.read_csv(BytesIO(content), encoding=enc, low_memory=False)
+            return pd.read_csv(LOCAL_CSV_PATH, encoding=enc, low_memory=False)
         except Exception:
             continue
 
@@ -139,7 +131,7 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # 3. 単話・分冊・無料・お試しなどをPandasで一括除外（ノイズ除去）
+    # 3. ノイズ除去
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
         r'単話|分冊|話売り|【話】|（話）|\(話\)|話：|話\s*-|話\)|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
@@ -175,7 +167,6 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
-        # 1巻または新シリーズのみを対象にしてAPI検索に回す
         if has_v1_title or is_new_series:
             month = rel_date[:7]
             if month not in result:
@@ -214,6 +205,10 @@ def main():
 
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
+
+    # 一時ファイルの削除
+    if os.path.exists(LOCAL_CSV_PATH):
+        os.remove(LOCAL_CSV_PATH)
     
     print("データ更新完了！")
 
