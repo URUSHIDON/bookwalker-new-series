@@ -29,6 +29,19 @@ def is_title_v1(title):
             return True
     return False
 
+def is_trial_version(title):
+    """試し読み・期間限定無料版などの判定"""
+    if pd.isna(title):
+        return False
+    
+    # 除外対象のキーワード
+    ignore_keywords = [
+        '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル',
+        '増量', '立読み', '立ち読み', 'マイクロ'
+    ]
+    title_str = str(title)
+    return any(kw in title_str for kw in ignore_keywords)
+
 def load_series_history():
     if os.path.exists(HISTORY_FILE):
         try:
@@ -106,6 +119,11 @@ def main():
 
     for _, row in manga_df.iterrows():
         title = str(row.get(title_col, ''))
+
+        # 試し読み・無料お試し版を除外
+        if is_trial_version(title):
+            continue
+
         series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip().replace('/', '-')
 
@@ -142,11 +160,9 @@ def main():
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
 
-    # 全データを保存
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
-    # 存在する年月のリストを降順（新しい順）で保存
     months_list = sorted(list(result.keys()), reverse=True)
     with open('months.json', 'w', encoding='utf-8') as f:
         json.dump(months_list, f, ensure_ascii=False, indent=2)
