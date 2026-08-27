@@ -4,6 +4,7 @@ import re
 import os
 import time
 import glob
+import datetime
 import urllib.parse
 import urllib.request
 from selenium import webdriver
@@ -28,32 +29,50 @@ def save_json_file(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def fetch_google_books_cover(title, publisher="", cache={}):
-    clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', title).strip()
+    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得"""
+    clean_title = re.sub(r'第?\d+[話巻].*', '', title)
+    clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', clean_title).strip()
+    if not clean_title:
+        clean_title = title.strip()
+
     query_str = f"{clean_title} {publisher}".strip()
     
     if query_str in cache:
         return cache[query_str]
 
-    try:
-        encoded_query = urllib.parse.quote(query_str)
-        url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
-        
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=5) as res:
-            data = json.loads(res.read().decode('utf-8'))
-            
-            if "items" in data and len(data["items"]) > 0:
-                volume_info = data["items"][0].get("volumeInfo", {})
-                image_links = volume_info.get("imageLinks", {})
+    encoded_query = urllib.parse.quote(query_str)
+    url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
+    
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=5) as res:
+                data = json.loads(res.read().decode('utf-8'))
                 
-                cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
-                if cover_url:
-                    cover_url = cover_url.replace("http://", "https://")
-                    cache[query_str] = cover_url
-                    return cover_url
+                if "items" in data and len(data["items"]) > 0:
+                    volume_info = data["items"][0].get("volumeInfo", {})
+                    image_links = volume_info.get("imageLinks", {})
+                    
+                    cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
+                    if cover_url:
+                        cover_url = cover_url.replace("http://", "https://")
+                        cache[query_str] = cover_url
+                        time.sleep(0.3)
+                        return cover_url
+                
+                cache[query_str] = ""
+                time.sleep(0.3)
+                return ""
 
-    except Exception as e:
-        print(f"Cover search error for '{clean_title}': {e}")
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                wait_time = (attempt + 1) * 3
+                print(f"429 Limit. Waiting {wait_time}s for '{clean_title}'...")
+                time.sleep(wait_time)
+            else:
+                break
+        except Exception:
+            break
 
     cache[query_str] = ""
     return ""
@@ -73,7 +92,7 @@ def is_trial_version(title):
     ignore_keywords = [
         '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル', 
         '増量', '立読み', '立ち読み', '閲覧用', 'プロモーション',
-        '単話', '分冊', '話売り', '【話】', '（話）', '(話)',
+        '単話', '分冊', '話売り', '【話】', '（話）', '(話)', '話：', '話 -',
         '小冊子', '特典', 'ペーパー', 'SS付き', 'イラスト付き',
         'マイクロ', '先行', '予告'
     ]
@@ -116,7 +135,7 @@ def fetch_csv_dataframe():
 
     for enc in ['cp932', 'shift_jis', 'utf-8']:
         try:
-            return pd.read_csv(downloaded_file, encoding=enc)
+            return pd.read_csv(downloaded_file, encoding=enc, low_memory=False)
         except Exception:
             continue
             
@@ -126,10 +145,28 @@ def main():
     df = fetch_csv_dataframe()
     df.columns = df.columns.str.strip()
 
-    category_col = [c for c in df.columns if 'カテゴリ' in c]
-    cat_name = category_col[0] if category_col else df.columns[0]
+    title_col = [c for c in df.columns if 'タイトル' in c][0]
+    series_col = [c for c in df.columns if 'シリーズ' in c][0]
+    date_col = [c for c in df.columns if '配信日' in c][0]
+    url_col = [c for c in df.columns if 'URL' in c][0]
+    category_col = [c for c in df.columns if 'カテゴリ' in c][0]
 
-    manga_df = df[df[cat_name].astype(str).str.contains('マンガ|コミック', na=False)].copy()
+    # --- 高速化のための段階的フィルタリング ---
+
+    # 1. カテゴリで絞り込み（マンガ・コミックのみ）
+    df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
+
+    # 2. 日付で絞り込み（先月〜来月までの3ヶ月分だけに限定）
+    today = datetime.date.today()
+    # 先月の1日
+    start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
+    # 2ヶ月後の末日付近まで
+    end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
+
+    df[date_col] = df[date_col].astype(str).str.replace('/', '-')
+    df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
+
+    print(f"対象期間（{start_date} 〜 {end_date}）のマンガ件数: {len(df)} 件")
 
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
     cover_cache = load_json_file(CACHE_FILE)
@@ -140,19 +177,15 @@ def main():
     new_series_set = set(known_series)
     result = {}
 
-    title_col = [c for c in df.columns if 'タイトル' in c][0] if any('タイトル' in c for c in df.columns) else 'タイトル'
-    series_col = [c for c in df.columns if 'シリーズ' in c][0] if any('シリーズ' in c for c in df.columns) else 'シリーズ'
-    date_col = [c for c in df.columns if '配信日' in c][0] if any('配信日' in c for c in df.columns) else '配信日'
-    url_col = [c for c in df.columns if 'URL' in c][0] if any('URL' in c for c in df.columns) else 'URL'
-
-    for _, row in manga_df.iterrows():
+    for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
 
+        # 3. 試し読み・単話・分冊・特典付きなどを除外
         if is_trial_version(title):
             continue
 
         series = str(row.get(series_col, '')).strip()
-        rel_date = str(row.get(date_col, '')).strip().replace('/', '-')
+        rel_date = str(row.get(date_col, '')).strip()
 
         if not rel_date or len(rel_date) < 7:
             continue
@@ -171,7 +204,9 @@ def main():
                 result[month] = []
 
             publisher = str(row.get('発行元', ''))
-            category = str(row.get(cat_name, '')).strip()
+            category = str(row.get(category_col, '')).strip()
+            
+            # 必要な作品のみGoogle Books APIを叩く
             image_url = fetch_google_books_cover(title, publisher, cover_cache)
 
             result[month].append({
@@ -200,7 +235,7 @@ def main():
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
     
-    print("データ更新完了（カテゴリ属性追加済み）")
+    print("データ更新完了！")
 
 if __name__ == '__main__':
     main()
