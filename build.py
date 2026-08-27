@@ -43,10 +43,10 @@ def fetch_google_books_cover(title, publisher="", cache={}):
     encoded_query = urllib.parse.quote(query_str)
     url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
     
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=5) as res:
+            with urllib.request.urlopen(req, timeout=4) as res:
                 data = json.loads(res.read().decode('utf-8'))
                 
                 if "items" in data and len(data["items"]) > 0:
@@ -57,18 +57,16 @@ def fetch_google_books_cover(title, publisher="", cache={}):
                     if cover_url:
                         cover_url = cover_url.replace("http://", "https://")
                         cache[query_str] = cover_url
-                        time.sleep(0.3)
+                        time.sleep(0.2)
                         return cover_url
                 
                 cache[query_str] = ""
-                time.sleep(0.3)
+                time.sleep(0.2)
                 return ""
 
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait_time = (attempt + 1) * 3
-                print(f"429 Limit. Waiting {wait_time}s for '{clean_title}'...")
-                time.sleep(wait_time)
+                time.sleep(2)
             else:
                 break
         except Exception:
@@ -85,19 +83,6 @@ def is_title_v1(title):
         if re.search(pat, str(title)):
             return True
     return False
-
-def is_trial_version(title):
-    if pd.isna(title):
-        return False
-    ignore_keywords = [
-        '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル', 
-        '増量', '立読み', '立ち読み', '閲覧用', 'プロモーション',
-        '単話', '分冊', '話売り', '【話】', '（話）', '(話)', '話：', '話 -',
-        '小冊子', '特典', 'ペーパー', 'SS付き', 'イラスト付き',
-        'マイクロ', '先行', '予告'
-    ]
-    title_str = str(title)
-    return any(kw in title_str for kw in ignore_keywords)
 
 def fetch_csv_dataframe():
     print("Headless Chromeを使ってCSVをダウンロード中...")
@@ -151,22 +136,27 @@ def main():
     url_col = [c for c in df.columns if 'URL' in c][0]
     category_col = [c for c in df.columns if 'カテゴリ' in c][0]
 
-    # --- 高速化のための段階的フィルタリング ---
+    print(f"元データ全件数: {len(df)} 件")
 
-    # 1. カテゴリで絞り込み（マンガ・コミックのみ）
+    # --- 1. カテゴリ絞り込み ---
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付で絞り込み（先月〜来月までの3ヶ月分だけに限定）
+    # --- 2. 日付絞り込み（先月〜来月） ---
     today = datetime.date.today()
-    # 先月の1日
     start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
-    # 2ヶ月後の末日付近まで
     end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
 
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    print(f"対象期間（{start_date} 〜 {end_date}）のマンガ件数: {len(df)} 件")
+    # --- 3. 単話・分冊・無料・お試しなどをPandasで一括除外（爆速化） ---
+    ignore_pattern = (
+        r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
+        r'単話|分冊|話売り|【話】|（話）|\(話\)|話：|話\s*-|話\)|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
+    )
+    df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
+
+    print(f"ノイズ除去後の処理対象件数: {len(df)} 件")
 
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
     cover_cache = load_json_file(CACHE_FILE)
@@ -177,13 +167,10 @@ def main():
     new_series_set = set(known_series)
     result = {}
 
+    processed_count = 0
+
     for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
-
-        # 3. 試し読み・単話・分冊・特典付きなどを除外
-        if is_trial_version(title):
-            continue
-
         series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip()
 
@@ -198,6 +185,7 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
+        # 1巻または新シリーズのみを対象にしてAPI検索に回す
         if has_v1_title or is_new_series:
             month = rel_date[:7]
             if month not in result:
@@ -206,7 +194,7 @@ def main():
             publisher = str(row.get('発行元', ''))
             category = str(row.get(category_col, '')).strip()
             
-            # 必要な作品のみGoogle Books APIを叩く
+            # 対象となったものだけGoogle APIを叩く
             image_url = fetch_google_books_cover(title, publisher, cover_cache)
 
             result[month].append({
@@ -221,6 +209,9 @@ def main():
                 "release_date": rel_date,
                 "is_new_series": is_new_series
             })
+            processed_count += 1
+
+    print(f"最終抽出結果: {processed_count} 件のデータを登録しました。")
 
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
