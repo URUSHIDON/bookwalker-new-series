@@ -15,15 +15,17 @@
     header {
       max-width: 1200px;
       margin: 0 auto 20px auto;
+      background: #fff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .top-bar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      background: #fff;
-      padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     h1 {
       font-size: 1.4rem;
@@ -41,6 +43,27 @@
       border: 1px solid #ccc;
       background-color: #fff;
       cursor: pointer;
+    }
+    .filter-container {
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      font-size: 0.85rem;
+    }
+    .filter-title {
+      font-weight: bold;
+      color: #555;
+    }
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
     }
     #container {
       max-width: 1200px;
@@ -75,15 +98,26 @@
       flex-direction: column;
       flex-grow: 1;
     }
+    .badge-container {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
     .badge {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: bold;
       color: #fff;
       background-color: #ff4757;
       padding: 2px 6px;
       border-radius: 4px;
-      align-self: flex-start;
-      margin-bottom: 5px;
+    }
+    .cat-badge {
+      font-size: 0.65rem;
+      color: #555;
+      background-color: #eccc68;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
     .date {
       font-size: 0.75rem;
@@ -122,12 +156,18 @@
 <body>
 
   <header>
-    <h1>BOOK☆WALKER 1巻・新着カレンダー</h1>
-    <div class="selector-container">
-      <label for="month-select">表示月:</label>
-      <select id="month-select">
-        <option value="">読み込み中...</option>
-      </select>
+    <div class="top-bar">
+      <h1>BOOK☆WALKER 1巻・新着カレンダー</h1>
+      <div class="selector-container">
+        <label for="month-select">表示月:</label>
+        <select id="month-select">
+          <option value="">読み込み中...</option>
+        </select>
+      </div>
+    </div>
+    <div class="filter-container">
+      <span class="filter-title">カテゴリ絞り込み:</span>
+      <div id="category-filters" style="display: flex; gap: 12px; flex-wrap: wrap;"></div>
     </div>
   </header>
 
@@ -137,6 +177,7 @@
 
   <script>
     let allData = {};
+    let activeCategories = new Set();
 
     function cleanUrl(rawUrl) {
       if (!rawUrl) return "#";
@@ -172,6 +213,7 @@
         const defaultMonth = months.includes(currentMonth) ? currentMonth : months[0];
         selectEl.value = defaultMonth;
 
+        setupCategoryFilters();
         renderMonth(defaultMonth);
 
         selectEl.addEventListener('change', (e) => {
@@ -184,30 +226,73 @@
       }
     }
 
+    function setupCategoryFilters() {
+      const categories = new Set();
+      Object.values(allData).forEach(monthItems => {
+        monthItems.forEach(item => {
+          if (item.category) categories.add(item.category);
+        });
+      });
+
+      activeCategories = new Set(categories);
+      const container = document.getElementById('category-filters');
+      container.innerHTML = '';
+
+      categories.forEach(cat => {
+        const label = document.createElement('label');
+        label.className = 'filter-item';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = cat;
+        checkbox.checked = true;
+
+        checkbox.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            activeCategories.add(cat);
+          } else {
+            activeCategories.delete(cat);
+          }
+          const currentMonth = document.getElementById('month-select').value;
+          renderMonth(currentMonth);
+        });
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(cat));
+        container.appendChild(label);
+      });
+    }
+
     function renderMonth(month) {
       const grid = document.getElementById('book-grid');
       grid.innerHTML = '';
 
       const items = allData[month] || [];
-      if (items.length === 0) {
-        grid.innerHTML = '<div class="empty-msg">この月のデータはありません。</div>';
+      const filteredItems = items.filter(item => activeCategories.has(item.category));
+
+      if (filteredItems.length === 0) {
+        grid.innerHTML = '<div class="empty-msg">該当する作品がありません。</div>';
         return;
       }
 
-      items.forEach(item => {
+      filteredItems.forEach(item => {
         const card = document.createElement('div');
         card.className = 'card';
 
         const targetUrl = cleanUrl(item.url);
         const imgUrl = item.image ? item.image : 'https://via.placeholder.com/150x210?text=No+Image';
         const isNew = item.is_new_series ? '<span class="badge">新シリーズ</span>' : '';
+        const catBadge = item.category ? `<span class="cat-badge">${item.category}</span>` : '';
 
         card.innerHTML = `
           <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">
             <img src="${imgUrl}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/150x210?text=No+Image'">
           </a>
           <div class="card-body">
-            ${isNew}
+            <div class="badge-container">
+              ${isNew}
+              ${catBadge}
+            </div>
             <div class="date">${item.release_date}</div>
             <div class="title">
               <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${item.title}</a>
