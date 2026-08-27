@@ -52,7 +52,6 @@ def fetch_csv_dataframe():
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36')
     
-    # 自動ダウンロード先ディレクトリの指定
     prefs = {
         "download.default_directory": DOWNLOAD_DIR,
         "download.prompt_for_download": False,
@@ -64,29 +63,22 @@ def fetch_csv_dataframe():
     driver = webdriver.Chrome(options=options)
     
     try:
-        # 1. FAQページにアクセスしてクッキー取得
         driver.get('https://help.bookwalker.jp/faq/301')
         time.sleep(3)
-        
-        # 2. CSVの直リンクへアクセスして自動ダウンロード発動
         driver.get(CSV_URL)
-        time.sleep(10) # ダウンロード完了まで待機
+        time.sleep(10)
     finally:
         driver.quit()
 
-    # ダウンロードされたCSVファイルを検索
     csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
     if not csv_files:
         raise FileNotFoundError("CSVファイルのダウンロードに失敗しました。")
 
     downloaded_file = csv_files[0]
-    print(f"ダウンロード完了: {downloaded_file}")
 
-    # 文字コード判定と読み込み
     for enc in ['cp932', 'shift_jis', 'utf-8']:
         try:
-            df = pd.read_csv(downloaded_file, encoding=enc)
-            return df
+            return pd.read_csv(downloaded_file, encoding=enc)
         except Exception:
             continue
             
@@ -150,11 +142,17 @@ def main():
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
 
+    # 全データを保存
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
+    # 存在する年月のリストを降順（新しい順）で保存
+    months_list = sorted(list(result.keys()), reverse=True)
+    with open('months.json', 'w', encoding='utf-8') as f:
+        json.dump(months_list, f, ensure_ascii=False, indent=2)
+
     save_series_history(new_series_set)
-    print("data.json および series_history.json の更新が正常に完了しました！")
+    print("data.json, months.json および series_history.json の更新が正常に完了しました！")
 
 if __name__ == '__main__':
     main()
