@@ -32,6 +32,7 @@ jobs:
         run: pip install pandas requests
         
       - name: Run script
+        timeout-minutes: 3
         run: python build.py
 
       # 新しいシリーズ履歴(series_history.json)を自動コミットしてGitHubに保存
