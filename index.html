@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOOK☆WALKER 新作1巻カレンダー</title>
+  <style>
+    :root {
+      --primary-color: #0076db;
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --sub-text: #666666;
+      --badge-bg: #e6f2ff;
+      --badge-text: #0056b3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.5;
+      padding-bottom: 50px;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid #e0e0e0;
+      padding: 20px 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+
+    header p {
+      font-size: 0.85rem;
+      color: var(--sub-text);
+      margin-top: 4px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+
+    /* 月選択タブナビゲーション */
+    .month-nav {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .month-tab {
+      background: var(--card-bg);
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--sub-text);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .month-tab.active {
+      background-color: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
+    }
+
+    /* セクションタイトル */
+    .month-section {
+      margin-bottom: 40px;
+    }
+
+    .month-title {
+      font-size: 1.3rem;
+      border-left: 5px solid var(--primary-color);
+      padding-left: 10px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .month-count {
+      font-size: 0.85rem;
+      color: var(--sub-text);
+      font-weight: normal;
+    }
+
+    /* カードグリッド構造 (コミリス風レスポンシブ) */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+      }
+    }
+
+    /* 書籍カード */
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* 表紙画像エリア */
+    .img-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 141.4%; /* 縦横比 1:1.414 (コミックサイズ) */
+      background-color: #eee;
+      overflow: hidden;
+    }
+
+    .img-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 新シリーズバッジ */
+    .badge-new {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: #ff3b30;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 3px 7px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* カードコンテンツ */
+    .card-content {
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .date-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: var(--badge-text);
+      background-color: var(--badge-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      align-self: flex-start;
+    }
+
+    .book-title {
+      font-size: 0.85rem;
+      font-weight: bold;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+
+    .book-info {
+      font-size: 0.75rem;
+      color: var(--sub-text);
+      margin-top: auto;
+      border-top: 1px dashed #eee;
+      padding-top: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .price {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #e44d26;
+      margin-top: 2px;
+    }
+
+    #loading {
+      text-align: center;
+      padding: 50px;
+      font-size: 1.1rem;
+      color: var(--sub-text);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>BOOK☆WALKER 新作1巻カレンダー</h1>
+    <p>毎月新しく発売・配信されるコミックの第1巻一覧</p>
+  </header>
+
+  <div class="container">
+    <!-- 月切り替え用タブ -->
+    <div class="month-nav" id="monthNav"></div>
+
+    <!-- メインコンテンツ表示領域 -->
+    <div id="content">
+      <div id="loading">データを読み込み中...</div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('data.json')
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('content');
+          const monthNav = document.getElementById('monthNav');
+          container.innerHTML = '';
+
+          const months = Object.keys(data).sort().reverse();
+
+          if (months.length === 0) {
+            container.innerHTML = '<div id="loading">該当するデータが見つかりませんでした。</div>';
+            return;
+          }
+
+          // 月ナビゲーション（タブ）の生成
+          months.forEach((month, index) => {
+            const btn = document.createElement('button');
+            btn.className = `month-tab ${index === 0 ? 'active' : ''}`;
+            btn.textContent = formatMonth(month);
+            btn.onclick = () => {
+              document.querySelectorAll('.month-tab').forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              document.getElementById(`m-${month}`).scrollIntoView({ behavior: 'smooth' });
+            };
+            monthNav.appendChild(btn);
+          });
+
+          // 各月セクションの生成
+          months.forEach(month => {
+            const items = data[month];
+            const section = document.createElement('section');
+            section.className = 'month-section';
+            section.id = `m-${month}`;
+
+            section.innerHTML = `
+              <div class="month-title">
+                <span>${formatMonth(month)} 発売</span>
+                <span class="month-count">全 ${items.length} 冊</span>
+              </div>
+              <div class="grid" id="grid-${month}"></div>
+            `;
+            container.appendChild(section);
+
+            const grid = document.getElementById(`grid-${month}`);
+            items.forEach(item => {
+              // 配信日の「日」を取得
+              const day = item.release_date ? item.release_date.split('-')[2] : '';
+              const dateLabel = day ? `${parseInt(day, 10)}日` : '発売';
+
+              // 画像なし時のダミー
+              const imgSrc = item.image || 'https://via.placeholder.com/300x424?text=No+Image';
+
+              const card = document.createElement('div');
+              card.className = 'card';
+              card.innerHTML = `
+                <a href="${item.url}" target="_blank" rel="noopener">
+                  <div class="img-wrapper">
+                    <img src="${imgSrc}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x424?text=No+Cover'">
+                    ${item.is_new_series ? '<span class="badge-new">NEW</span>' : ''}
+                  </div>
+                  <div class="card-content">
+                    <span class="date-badge">${dateLabel}</span>
+                    <div class="book-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+                    <div class="book-info">
+                      ${item.label ? escapeHtml(item.label) : escapeHtml(item.publisher)}
+                    </div>
+                    ${item.price ? `<div class="price">￥${item.price}</div>` : ''}
+                  </div>
+                </a>
+              `;
+              grid.appendChild(card);
+            });
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById('content').innerHTML = '<div id="loading">データの読み込みに失敗しました。<br>更新処理が実行されるまでお待ちください。</div>';
+        });
+    });
+
+    // 「2026-08」を「2026年8月」に整形
+    function formatMonth(monthStr) {
+      const parts = monthStr.split('-');
+      if (parts.length === 2) {
+        return `${parts[0]}年${parseInt(parts[1], 10)}月`;
+      }
+      return monthStr;
+    }
+
+    // HTMLエスケープ処理
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
