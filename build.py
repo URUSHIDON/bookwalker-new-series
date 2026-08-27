@@ -30,15 +30,22 @@ def is_title_v1(title):
     return False
 
 def is_trial_version(title):
-    """試し読み・期間限定無料版などの判定"""
+    """試し読み・単話・分冊・特典などの除外判定"""
     if pd.isna(title):
         return False
     
-    # 除外対象のキーワード
+    # 完全に弾きたいキーワードリスト
     ignore_keywords = [
-        '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル',
-        '増量', '立読み', '立ち読み', 'マイクロ'
+        # 無料・お試し系
+        '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル', 
+        '増量', '立読み', '立ち読み', '閲覧用', 'プロモーション',
+        # 単話・分冊・小冊子系
+        '単話', '分冊', '話売り', '【話】', '（話）', '(話)',
+        '小冊子', '特典', 'ペーパー', 'SS付き', 'イラスト付き',
+        # マイクロ・先行系
+        'マイクロ', '先行', '予告'
     ]
+    
     title_str = str(title)
     return any(kw in title_str for kw in ignore_keywords)
 
@@ -120,7 +127,7 @@ def main():
     for _, row in manga_df.iterrows():
         title = str(row.get(title_col, ''))
 
-        # 試し読み・無料お試し版を除外
+        # 試し読み・単話・分冊・特典付きなどを除外
         if is_trial_version(title):
             continue
 
