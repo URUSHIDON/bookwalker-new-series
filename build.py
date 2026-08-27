@@ -5,12 +5,10 @@ import os
 import requests
 import io
 
-# BOOK☆WALKER全商品CSVの直接ダウンロードURL
 CSV_URL = "http://bookwalker.jp/csv/download.php"
 HISTORY_FILE = "series_history.json"
 
 def get_cover_image_url(book_url):
-    """作品URLから表紙画像サムネイルURLを生成"""
     if pd.isna(book_url):
         return ""
     match = re.search(r'bookwalker\.jp/([a-zA-Z0-9\-]+)', str(book_url))
@@ -20,7 +18,6 @@ def get_cover_image_url(book_url):
     return ""
 
 def is_title_v1(title):
-    """タイトルから「1巻」表記を判定"""
     if pd.isna(title):
         return False
     patterns = [r'[（(【\s]1[）)\s】]', r'1巻', r'第1巻', r'[\s]1$']
@@ -30,7 +27,6 @@ def is_title_v1(title):
     return False
 
 def load_series_history():
-    """過去のシリーズ一覧履歴を読み込む"""
     if os.path.exists(HISTORY_FILE):
         try:
             with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
@@ -40,67 +36,87 @@ def load_series_history():
     return set()
 
 def save_series_history(history_set):
-    """更新されたシリーズ一覧履歴を保存する"""
     with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
         json.dump(list(history_set), f, ensure_ascii=False, indent=2)
 
 def fetch_csv_dataframe():
-    """URLからCSVを取得してPandas DataFrameにする"""
     print(f"CSVを取得中: {CSV_URL}")
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    res = requests.get(CSV_URL, headers=headers)
+    
+    # 一般的なChromeブラウザからのアクセスに見せるための詳細なヘッダー
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+        'Referer': 'https://help.bookwalker.jp/faq/301',
+        'Cache-Control': 'max-age=0'
+    }
+    
+    # セッションを使ってリクエスト（HTTP 403 回避策）
+    session = requests.Session()
+    session.headers.update(headers)
+    
+    # 一度FAQページを経由してクッキー等を保持してからCSVを取得
+    session.get('https://help.bookwalker.jp/faq/301', timeout=15)
+    
+    res = session.get(CSV_URL, timeout=30)
     res.raise_for_status()
     
-    # CP932 / Shift_JIS または UTF-8 で読み込み
-    try:
-        return pd.read_csv(io.BytesIO(res.content), encoding='cp932')
-    except Exception:
-        return pd.read_csv(io.BytesIO(res.content), encoding='utf-8')
+    # 文字コードの判定と読み込み
+    for enc in ['cp932', 'shift_jis', 'utf-8']:
+        try:
+            return pd.read_csv(io.BytesIO(res.content), encoding=enc)
+        except Exception:
+            continue
+            
+    raise ValueError("CSVのエンコーディング読み込みに失敗しました。")
 
 def main():
-    # 1. CSVデータの取得
     df = fetch_csv_dataframe()
     df.columns = df.columns.str.strip()
 
-    # 2. カテゴリでマンガのみ抽出
-    manga_df = df[df['カテゴリ'].astype(str).str.contains('マンガ|コミック', na=False)].copy()
+    # カラム名判定
+    category_col = [c for c in df.columns if 'カテゴリ' in c]
+    cat_name = category_col[0] if category_col else df.columns[0]
 
-    # 3. 過去のシリーズ履歴をロード
+    manga_df = df[df[cat_name].astype(str).str.contains('マンガ|コミック', na=False)].copy()
+
     known_series = load_series_history()
-    is_initial_run = len(known_series) == 0  # 初回実行フラグ
+    is_initial_run = len(known_series) == 0
 
     new_series_set = set(known_series)
     result = {}
 
+    title_col = [c for c in df.columns if 'タイトル' in c][0] if any('タイトル' in c for c in df.columns) else 'タイトル'
+    series_col = [c for c in df.columns if 'シリーズ' in c][0] if any('シリーズ' in c for c in df.columns) else 'シリーズ'
+    date_col = [c for c in df.columns if '配信日' in c][0] if any('配信日' in c for c in df.columns) else '配信日'
+    url_col = [c for c in df.columns if 'URL' in c][0] if any('URL' in c for c in df.columns) else 'URL'
+
     for _, row in manga_df.iterrows():
-        title = str(row.get('タイトル', ''))
-        series = str(row.get('シリーズ', '')).strip()
-        rel_date = str(row.get('配信日', '')).strip().replace('/', '-')
+        title = str(row.get(title_col, ''))
+        series = str(row.get(series_col, '')).strip()
+        rel_date = str(row.get(date_col, '')).strip().replace('/', '-')
 
         if not rel_date or len(rel_date) < 7:
             continue
 
-        # 判定1: タイトルに「1巻」表記があるか
         has_v1_title = is_title_v1(title)
 
-        # 判定2: 過去に存在しない「新シリーズ」かどうか
         is_new_series = False
         if series and series != 'nan':
             if series not in known_series and not is_initial_run:
                 is_new_series = True
             new_series_set.add(series)
 
-        # 1巻または新シリーズの場合のみ抽出
         if has_v1_title or is_new_series:
-            month = rel_date[:7] # YYYY-MM
+            month = rel_date[:7]
             if month not in result:
                 result[month] = []
 
-            image_url = get_cover_image_url(row.get('URL'))
+            image_url = get_cover_image_url(row.get(url_col))
 
             result[month].append({
                 "title": title,
-                "url": str(row.get('URL', '')),
+                "url": str(row.get(url_col, '')),
                 "image": image_url,
                 "publisher": str(row.get('発行元', '')),
                 "label": str(row.get('レーベル', '')),
@@ -110,17 +126,13 @@ def main():
                 "is_new_series": is_new_series
             })
 
-    # 日付順にソート
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
 
-    # Web表示用の JSON 出力
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
 
-    # 累積シリーズ履歴の保存
     save_series_history(new_series_set)
-
     print("data.json および series_history.json の更新が正常に完了しました！")
 
 if __name__ == '__main__':
