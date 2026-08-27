@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- BOOK☆WALKERからの画像取得ブロック(403)を回避するための設定 -->
+  <meta name="referrer" content="no-referrer">
   <title>BOOK☆WALKER 1巻・新シリーズ新刊カレンダー</title>
   <style>
     body {
@@ -159,7 +161,6 @@
           selectEl.appendChild(opt);
         });
 
-        // 今月（または最新月）を初期選択
         const currentMonth = new Date().toISOString().slice(0, 7);
         const defaultMonth = months.includes(currentMonth) ? currentMonth : months[0];
         selectEl.value = defaultMonth;
