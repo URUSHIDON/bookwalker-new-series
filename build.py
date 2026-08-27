@@ -28,7 +28,6 @@ def save_json_file(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def fetch_google_books_cover(title, publisher="", cache={}):
-    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得"""
     clean_title = re.sub(r'第?\d+[話巻].*', '', title)
     clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', clean_title).strip()
     if not clean_title:
@@ -45,7 +44,7 @@ def fetch_google_books_cover(title, publisher="", cache={}):
     for attempt in range(2):
         try:
             req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=4) as res:
+            with urllib.request.urlopen(req, timeout=3) as res:
                 data = json.loads(res.read().decode('utf-8'))
                 
                 if "items" in data and len(data["items"]) > 0:
@@ -56,18 +55,13 @@ def fetch_google_books_cover(title, publisher="", cache={}):
                     if cover_url:
                         cover_url = cover_url.replace("http://", "https://")
                         cache[query_str] = cover_url
-                        time.sleep(0.2)
+                        time.sleep(0.1)
                         return cover_url
                 
                 cache[query_str] = ""
-                time.sleep(0.2)
+                time.sleep(0.1)
                 return ""
 
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                time.sleep(2)
-            else:
-                break
         except Exception:
             break
 
@@ -84,18 +78,20 @@ def is_title_v1(title):
     return False
 
 def download_csv_with_curl():
-    print("curl コマンドで CSV ファイルをダウンロード中...")
+    print(">>> [1/4] curl コマンドで CSV ファイルをダウンロード中...", flush=True)
     cmd = [
         "curl", "-sL",
         "-A", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "-e", FAQ_URL,
-        "--max-time", "60",
+        "--connect-timeout", "10",
+        "--max-time", "30",
         "-o", LOCAL_CSV_PATH,
         CSV_URL
     ]
     result = subprocess.run(cmd)
-    if result.returncode != 0 or not os.path.exists(LOCAL_CSV_PATH):
-        raise RuntimeError("curl での CSV ダウンロードに失敗しました。")
+    if result.returncode != 0 or not os.path.exists(LOCAL_CSV_PATH) or os.path.getsize(LOCAL_CSV_PATH) == 0:
+        raise RuntimeError(f"curl での CSV ダウンロードに失敗しました (Exit status: {result.returncode})")
+    print(">>> CSVのダウンロード完了！", flush=True)
 
 def fetch_csv_dataframe():
     download_csv_with_curl()
@@ -109,6 +105,7 @@ def fetch_csv_dataframe():
     raise ValueError("CSVのエンコーディング読み込みに失敗しました。")
 
 def main():
+    print(">>> スクリプト開始", flush=True)
     df = fetch_csv_dataframe()
     df.columns = df.columns.str.strip()
 
@@ -118,7 +115,7 @@ def main():
     url_col = [c for c in df.columns if 'URL' in c][0]
     category_col = [c for c in df.columns if 'カテゴリ' in c][0]
 
-    print(f"元データ全件数: {len(df)} 件")
+    print(f">>> 元データ全件数: {len(df)} 件", flush=True)
 
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
@@ -138,7 +135,7 @@ def main():
     )
     df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
 
-    print(f"ノイズ除去後の処理対象件数: {len(df)} 件")
+    print(f">>> [2/4] 絞り込み後の処理対象件数: {len(df)} 件", flush=True)
 
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
     cover_cache = load_json_file(CACHE_FILE)
@@ -151,7 +148,8 @@ def main():
 
     processed_count = 0
 
-    for _, row in df.iterrows():
+    print(">>> [3/4] Google Books APIで画像を取得中...", flush=True)
+    for idx, (_, row) in enumerate(df.iterrows()):
         title = str(row.get(title_col, ''))
         series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip()
@@ -190,8 +188,10 @@ def main():
                 "is_new_series": is_new_series
             })
             processed_count += 1
+            if processed_count % 20 == 0:
+                print(f"    - {processed_count} 件処理完了...", flush=True)
 
-    print(f"最終抽出結果: {processed_count} 件のデータを登録しました。")
+    print(f">>> [4/4] 最終抽出結果: {processed_count} 件のデータを登録しました。", flush=True)
 
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
@@ -206,11 +206,10 @@ def main():
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
 
-    # 一時ファイルの削除
     if os.path.exists(LOCAL_CSV_PATH):
         os.remove(LOCAL_CSV_PATH)
     
-    print("データ更新完了！")
+    print(">>> すべての処理が正常完了しました！", flush=True)
 
 if __name__ == '__main__':
     main()
