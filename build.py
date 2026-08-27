@@ -4,20 +4,61 @@ import re
 import os
 import time
 import glob
+import urllib.parse
+import urllib.request
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 CSV_URL = "http://bookwalker.jp/csv/download.php"
 HISTORY_FILE = "series_history.json"
+CACHE_FILE = "cover_cache.json"
 DOWNLOAD_DIR = os.path.join(os.getcwd(), "tmp_download")
 
-def get_cover_image_url(book_url):
-    if pd.isna(book_url):
-        return ""
-    match = re.search(r'bookwalker\.jp/([a-zA-Z0-9\-]+)', str(book_url))
-    if match:
-        uuid = match.group(1).rstrip('/')
-        return f"https://c.bookwalker.jp/{uuid}/s.jpg"
+def load_json_file(filepath):
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {}
+
+def save_json_file(filepath, data):
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+def fetch_google_books_cover(title, publisher="", cache={}):
+    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得"""
+    # 検索クエリの整理（巻数や余計な記号を簡易除去）
+    clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', title).strip()
+    query_str = f"{clean_title} {publisher}".strip()
+    
+    if query_str in cache:
+        return cache[query_str]
+
+    try:
+        encoded_query = urllib.parse.quote(query_str)
+        url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
+        
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=5) as res:
+            data = json.loads(res.read().decode('utf-8'))
+            
+            if "items" in data and len(data["items"]) > 0:
+                volume_info = data["items"][0].get("volumeInfo", {})
+                image_links = volume_info.get("imageLinks", {})
+                
+                # サムネイル画像URLを取得（httpをhttpsに変換）
+                cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
+                if cover_url:
+                    cover_url = cover_url.replace("http://", "https://")
+                    cache[query_str] = cover_url
+                    return cover_url
+
+    except Exception as e:
+        print(f"Cover search error for '{clean_title}': {e}")
+
+    cache[query_str] = ""
     return ""
 
 def is_title_v1(title):
@@ -30,37 +71,17 @@ def is_title_v1(title):
     return False
 
 def is_trial_version(title):
-    """試し読み・単話・分冊・特典などの除外判定"""
     if pd.isna(title):
         return False
-    
-    # 完全に弾きたいキーワードリスト
     ignore_keywords = [
-        # 無料・お試し系
         '無料', '期間限定', 'お試し', '試読', '特別版', 'サンプル', 
         '増量', '立読み', '立ち読み', '閲覧用', 'プロモーション',
-        # 単話・分冊・小冊子系
         '単話', '分冊', '話売り', '【話】', '（話）', '(話)',
         '小冊子', '特典', 'ペーパー', 'SS付き', 'イラスト付き',
-        # マイクロ・先行系
         'マイクロ', '先行', '予告'
     ]
-    
     title_str = str(title)
     return any(kw in title_str for kw in ignore_keywords)
-
-def load_series_history():
-    if os.path.exists(HISTORY_FILE):
-        try:
-            with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
-                return set(json.load(f))
-        except Exception:
-            return set()
-    return set()
-
-def save_series_history(history_set):
-    with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
-        json.dump(list(history_set), f, ensure_ascii=False, indent=2)
 
 def fetch_csv_dataframe():
     print("Headless Chromeを使ってCSVをダウンロード中...")
@@ -70,7 +91,7 @@ def fetch_csv_dataframe():
     options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36')
+    options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
     
     prefs = {
         "download.default_directory": DOWNLOAD_DIR,
@@ -113,9 +134,12 @@ def main():
 
     manga_df = df[df[cat_name].astype(str).str.contains('マンガ|コミック', na=False)].copy()
 
-    known_series = load_series_history()
-    is_initial_run = len(known_series) == 0
+    known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
+    cover_cache = load_json_file(CACHE_FILE)
+    if not isinstance(cover_cache, dict):
+        cover_cache = {}
 
+    is_initial_run = len(known_series) == 0
     new_series_set = set(known_series)
     result = {}
 
@@ -127,7 +151,6 @@ def main():
     for _, row in manga_df.iterrows():
         title = str(row.get(title_col, ''))
 
-        # 試し読み・単話・分冊・特典付きなどを除外
         if is_trial_version(title):
             continue
 
@@ -150,13 +173,16 @@ def main():
             if month not in result:
                 result[month] = []
 
-            image_url = get_cover_image_url(row.get(url_col))
+            publisher = str(row.get('発行元', ''))
+            
+            # Google Books API から画像取得
+            image_url = fetch_google_books_cover(title, publisher, cover_cache)
 
             result[month].append({
                 "title": title,
                 "url": str(row.get(url_col, '')),
                 "image": image_url,
-                "publisher": str(row.get('発行元', '')),
+                "publisher": publisher,
                 "label": str(row.get('レーベル', '')),
                 "series": series,
                 "price": str(row.get('価格', '')),
@@ -174,8 +200,10 @@ def main():
     with open('months.json', 'w', encoding='utf-8') as f:
         json.dump(months_list, f, ensure_ascii=False, indent=2)
 
-    save_series_history(new_series_set)
-    print("data.json, months.json および series_history.json の更新が正常に完了しました！")
+    save_json_file(HISTORY_FILE, list(new_series_set))
+    save_json_file(CACHE_FILE, cover_cache)
+    
+    print("Google Booksからの表紙画像取得およびデータ更新が完了しました！")
 
 if __name__ == '__main__':
     main()
