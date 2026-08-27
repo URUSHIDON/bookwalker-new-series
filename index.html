@@ -138,6 +138,16 @@
   <script>
     let allData = {};
 
+    function cleanUrl(rawUrl) {
+      if (!rawUrl) return "#";
+      let url = rawUrl.trim();
+      // http:// を https:// に強制変換
+      if (url.startsWith("http://")) {
+        url = url.replace("http://", "https://");
+      }
+      return url;
+    }
+
     async function init() {
       try {
         const response = await fetch('data.json');
@@ -189,23 +199,28 @@
         const card = document.createElement('div');
         card.className = 'card';
 
-        // 画像URLを画像プロキシ（weserv.nl）経由に変更してブロックを完全にバイパス
-        let imgUrl = item.image ? `https://images.weserv.nl/?url=${encodeURIComponent(item.image)}&w=200&h=280&fit=cover` : '';
-        if (!imgUrl) {
+        const targetUrl = cleanUrl(item.url);
+
+        // 画像サーバー(c.bookwalker.jp)の403回避用プロキシ
+        let imgUrl = "";
+        if (item.image) {
+          const cleanImg = item.image.replace(/^https?:\/\//, '');
+          imgUrl = `https://images.weserv.nl/?url=${encodeURIComponent(cleanImg)}&w=300&output=jpg`;
+        } else {
           imgUrl = 'https://via.placeholder.com/150x210?text=No+Image';
         }
 
         const isNew = item.is_new_series ? '<span class="badge">新シリーズ</span>' : '';
 
         card.innerHTML = `
-          <a href="${item.url}" target="_blank" rel="noopener">
-            <img src="${imgUrl}" alt="${item.title}" loading="lazy">
+          <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">
+            <img src="${imgUrl}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/150x210?text=No+Image'">
           </a>
           <div class="card-body">
             ${isNew}
             <div class="date">${item.release_date}</div>
             <div class="title">
-              <a href="${item.url}" target="_blank" rel="noopener">${item.title}</a>
+              <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${item.title}</a>
             </div>
             <div class="publisher">${item.publisher || ''}</div>
           </div>
