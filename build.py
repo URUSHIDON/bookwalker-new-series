@@ -93,7 +93,8 @@ def fetch_csv_dataframe():
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
-    
+    options.page_load_strategy = 'eager'  # リソース全読み込みを待たずに制御を戻す
+
     prefs = {
         "download.default_directory": DOWNLOAD_DIR,
         "download.prompt_for_download": False,
@@ -103,18 +104,38 @@ def fetch_csv_dataframe():
     options.add_experimental_option("prefs", prefs)
 
     driver = webdriver.Chrome(options=options)
-    
+    driver.set_page_load_timeout(30)  # ページ読み込みタイムアウトを30秒に設定
+
     try:
-        driver.get('https://help.bookwalker.jp/faq/301')
-        time.sleep(3)
-        driver.get(CSV_URL)
-        time.sleep(10)
+        try:
+            driver.get('https://help.bookwalker.jp/faq/301')
+            time.sleep(2)
+        except Exception as e:
+            print(f"FAQページ読み込み警告 (スキップして続行): {e}")
+
+        try:
+            driver.get(CSV_URL)
+        except Exception as e:
+            print(f"CSV取得リクエスト完了 (またはタイムアウト): {e}")
+
+        # ダウンロード完了を最大30秒待機
+        timeout = 30
+        start_time = time.time()
+        while time.time() - start_time < timeout:
+            csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
+            # 一時ファイル(.crdownload)がないかもチェック
+            crdownload_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.crdownload"))
+            if csv_files and not crdownload_files:
+                print("CSVファイルのダウンロードが完了しました。")
+                break
+            time.sleep(1)
+
     finally:
         driver.quit()
 
     csv_files = glob.glob(os.path.join(DOWNLOAD_DIR, "*.csv"))
     if not csv_files:
-        raise FileNotFoundError("CSVファイルのダウンロードに失敗しました。")
+        raise FileNotFoundError("CSVファイルのダウンロードに失敗しました（タイムアウト）。")
 
     downloaded_file = csv_files[0]
 
@@ -138,10 +159,10 @@ def main():
 
     print(f"元データ全件数: {len(df)} 件")
 
-    # --- 1. カテゴリ絞り込み ---
+    # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # --- 2. 日付絞り込み（先月〜来月） ---
+    # 2. 日付絞り込み（先月〜来月）
     today = datetime.date.today()
     start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
     end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
@@ -149,7 +170,7 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # --- 3. 単話・分冊・無料・お試しなどをPandasで一括除外（爆速化） ---
+    # 3. ノイズ除去
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
         r'単話|分冊|話売り|【話】|（話）|\(話\)|話：|話\s*-|話\)|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
@@ -185,7 +206,6 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
-        # 1巻または新シリーズのみを対象にしてAPI検索に回す
         if has_v1_title or is_new_series:
             month = rel_date[:7]
             if month not in result:
@@ -194,7 +214,6 @@ def main():
             publisher = str(row.get('発行元', ''))
             category = str(row.get(category_col, '')).strip()
             
-            # 対象となったものだけGoogle APIを叩く
             image_url = fetch_google_books_cover(title, publisher, cover_cache)
 
             result[month].append({
