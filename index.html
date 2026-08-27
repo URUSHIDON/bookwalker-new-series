@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- BOOK☆WALKERからの画像取得ブロック(403)を回避するための設定 -->
-  <meta name="referrer" content="no-referrer">
   <title>BOOK☆WALKER 1巻・新シリーズ新刊カレンダー</title>
   <style>
     body {
@@ -191,7 +189,12 @@
         const card = document.createElement('div');
         card.className = 'card';
 
-        const imgUrl = item.image || 'https://via.placeholder.com/150x210?text=No+Image';
+        // 画像URLを画像プロキシ（weserv.nl）経由に変更してブロックを完全にバイパス
+        let imgUrl = item.image ? `https://images.weserv.nl/?url=${encodeURIComponent(item.image)}&w=200&h=280&fit=cover` : '';
+        if (!imgUrl) {
+          imgUrl = 'https://via.placeholder.com/150x210?text=No+Image';
+        }
+
         const isNew = item.is_new_series ? '<span class="badge">新シリーズ</span>' : '';
 
         card.innerHTML = `
