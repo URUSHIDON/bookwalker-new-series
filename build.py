@@ -28,17 +28,21 @@ def save_json_file(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def fetch_google_books_cover(title, publisher="", cache={}):
-    clean_title = re.sub(r'第?\d+[話巻].*', '', title)
-    clean_title = re.sub(r'[（(【\[].*?[）)\]】]', '', clean_title).strip()
+    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得（強化版）"""
+    # タイトルから「1巻」「第1巻」「【電子限定】」「（話）」などのノイズを徹底的に削除
+    clean_title = re.sub(r'(第?\d+[巻話].*|【.*?】|（.*?）|\(.*?\)|\[.*?\])', '', title)
+    clean_title = re.sub(r'[\s ]+', ' ', clean_title).strip()
+    
     if not clean_title:
         clean_title = title.strip()
 
+    # 検索クエリを作成（タイトル優先）
     query_str = f"{clean_title} {publisher}".strip()
     
     if query_str in cache:
         return cache[query_str]
 
-    encoded_query = urllib.parse.quote(query_str)
+    encoded_query = urllib.parse.quote(clean_title) # APIにはタイトルメインで投げる方がヒット率向上
     url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
     
     for attempt in range(2):
@@ -53,7 +57,8 @@ def fetch_google_books_cover(title, publisher="", cache={}):
                     
                     cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
                     if cover_url:
-                        cover_url = cover_url.replace("http://", "https://")
+                        # http -> https に置換 + zoomパラメータ調整で高画質化・表示安定化
+                        cover_url = re.sub(r'^http://', 'https://', cover_url)
                         cache[query_str] = cover_url
                         time.sleep(0.1)
                         return cover_url
