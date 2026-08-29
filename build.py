@@ -130,10 +130,7 @@ def main():
 
     print(f">>> 元データ全件数: {len(df)} 件", flush=True)
 
-    # 1. カテゴリ絞り込み
-    df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
-
-    # 2. 日付判定（pd.to_datetime で厳密に日付型にして抽出）
+    # 1. 日付判定（pd.to_datetime で厳密に日付型にして抽出）
     df['datetime_dt'] = pd.to_datetime(df[date_col], errors='coerce')
     
     today = datetime.date.today()
@@ -145,7 +142,7 @@ def main():
     # 標準フォーマット (YYYY-MM-DD) に統一して日付列を上書き
     df[date_col] = df['datetime_dt'].dt.strftime('%Y-%m-%d')
 
-    # 3. ノイズ除去
+    # 2. ノイズ除去
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
         r'雑誌|定期購読|小冊子|先行|予告'
@@ -190,6 +187,7 @@ def main():
                 "series": series,
                 "price": str(row.get('価格', '')),
                 "release_date": rel_date,
+                "is_v1": has_v1_title,
                 "is_new_series": is_new_series
             })
 
