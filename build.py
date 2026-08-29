@@ -93,8 +93,8 @@ def is_title_v1(title):
 
     # 4. 【末尾の 1/Ⅰ/① 判定】タイトルの最後に置かれた巻数判定
     # 直前が英数字の一部ではない（例: GATE1 などを除外）独立した 1 を判定
-    if re.search(r'(?:[^\w\a-zA-Z0-9]|[^\d\a-zA-Z])[1Ⅰ①]\s*$', title_str):
-        return True
+    if re.search(r'(?:[^0-9a-zA-Z])[1Ⅰ①]\s*$', title_str):
+    return True
 
     return False
 
