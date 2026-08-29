@@ -34,6 +34,14 @@ jobs:
       - name: Run script
         timeout-minutes: 3
         run: python build.py
+        
+      - name: Commit and Push generated files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json series_history.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto update generated data [skip ci]"
+          git push
 
       # 新しいシリーズ履歴(series_history.json)を自動コミットしてGitHubに保存
       - name: Commit & Push updated history
