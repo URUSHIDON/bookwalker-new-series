@@ -343,6 +343,7 @@
         const res = await fetch('last_updated.json');
         if (!res.ok) throw new Error();
         const data = await res.json();
+        
         if (data.updated_at) {
           document.getElementById('last-updated').textContent = `データ更新日時：${data.updated_at}`;
         } else {
@@ -356,24 +357,34 @@
     function setupMonthSelect(months) {
       const select = document.getElementById('month-select');
       select.innerHTML = '';
+
+      const now = new Date();
+      const currentYearMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+
+      let defaultTargetMonth = months[0];
+
       months.forEach(m => {
         const opt = document.createElement('option');
         opt.value = m;
         opt.textContent = m;
+        if (m === currentYearMonth) {
+          defaultTargetMonth = m;
+        }
         select.appendChild(opt);
       });
+
+      select.value = defaultTargetMonth;
+
       select.addEventListener('change', () => {
-        setupCategoryCheckboxes(); // 月変更時に存在するカテゴリを再生成
+        setupCategoryCheckboxes();
         applyFiltersAndRender();
       });
     }
 
-    // CSVからカテゴリを動的抽出してチェックボックスを作成
     function setupCategoryCheckboxes() {
       const currentMonth = document.getElementById('month-select').value;
       const items = allData[currentMonth] || [];
 
-      // 重複なしでカテゴリリストを作成
       const categories = setUniqueCategories(items);
       const container = document.getElementById('category-checkboxes');
       container.innerHTML = '';
@@ -392,8 +403,7 @@
         checkbox.value = cat;
         checkbox.className = 'category-check';
 
-        // デフォルトで「マンガ」が含まれるものだけにチェックを入れる
-        if (cat.includes('マンガ') || cat.includes('コミック')) {
+        if (cat === 'マンガ') {
           checkbox.checked = true;
         }
 
@@ -422,10 +432,8 @@
       const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
       const sortType = document.getElementById('sort-select').value;
 
-      // チェックされているカテゴリを取得
       const checkedCategories = Array.from(document.querySelectorAll('.category-check:checked')).map(cb => cb.value);
 
-      // 絞り込み
       let filtered = rawItems.filter(item => {
         const matchTitle = item.title.toLowerCase().includes(searchQuery);
         const matchPublisher = (item.publisher || '').toLowerCase().includes(searchQuery);
@@ -436,10 +444,8 @@
         return matchSearch && matchCategory;
       });
 
-      // 件数表示
       document.getElementById('item-count').textContent = `${filtered.length} 件表示`;
 
-      // 日付ごとにグループ化
       const grouped = {};
       filtered.forEach(item => {
         const date = item.release_date || '発売日未定';
@@ -447,7 +453,6 @@
         grouped[date].push(item);
       });
 
-      // 日付のソート
       const sortedDates = Object.keys(grouped).sort((a, b) => {
         return sortType === 'date-asc' ? a.localeCompare(b) : b.localeCompare(a);
       });
