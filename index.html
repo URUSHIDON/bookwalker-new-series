@@ -3,151 +3,358 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新刊マンガ・新シリーズ一覧</title>
+  <title>新刊マンガ 1巻・新シリーズ一覧</title>
   <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --accent-color: #38bdf8;
+      --badge-new: #ef4444;
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      max-width: 1200px;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 24px 16px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 20px;
-      background-color: #f8f9fa;
-      color: #333;
     }
+
+    header {
+      margin-bottom: 24px;
+    }
+
     h1 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+
+    /* 月選択タブ */
     .month-tabs {
       display: flex;
       gap: 8px;
-      margin-bottom: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      color: var(--text-sub);
+      border: 1px solid var(--border-color);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      border-color: var(--accent-color);
+    }
+
+    .tab-btn.active {
+      background: var(--accent-color);
+      color: #0f172a;
+      border-color: var(--accent-color);
+    }
+
+    /* データ更新日時 */
+    .last-updated {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* フィルター・コントロールエリア */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 24px;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: #0f172a;
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .filter-options {
+      display: flex;
+      gap: 12px;
+      align-items: center;
       flex-wrap: wrap;
     }
-    .tab-btn {
-      padding: 8px 16px;
-      border: 1px solid #ccc;
-      background: #fff;
+
+    .filter-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 6px;
       cursor: pointer;
-      border-radius: 4px;
-      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      user-select: none;
     }
-    .tab-btn.active {
-      background: #007bff;
-      color: #fff;
-      border-color: #007bff;
+
+    .filter-select {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: #0f172a;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      cursor: pointer;
     }
-    .update-time {
+
+    .item-count {
       font-size: 0.85rem;
-      color: #666;
-      margin-bottom: 20px;
+      color: var(--text-sub);
+      margin-left: auto;
     }
+
+    /* グリッドレイアウト */
     .item-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
     }
+
+    /* カードデザイン */
     .item-card {
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      border-color: #475569;
+    }
+
+    .img-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1.4;
+      background: #0f172a;
+      position: relative;
+      overflow: hidden;
+    }
+
     .item-img {
       width: 100%;
-      height: 280px;
+      height: 100%;
       object-fit: cover;
-      background-color: #f0f0f0;
     }
+
+    .badge-new {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: var(--badge-new);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
     .item-body {
       padding: 12px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
+
     .item-date {
-      font-size: 0.8rem;
-      color: #888;
+      font-size: 0.75rem;
+      color: var(--accent-color);
+      font-weight: 600;
       margin-bottom: 4px;
     }
+
     .item-title {
-      font-size: 0.95rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-      line-height: 1.3;
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-main);
       text-decoration: none;
-      color: #007bff;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+
     .item-title:hover {
-      text-decoration: underline;
+      color: var(--accent-color);
     }
-    .badge-new {
-      display: inline-block;
-      background-color: #dc3545;
-      color: #fff;
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-bottom: 6px;
-      align-self: flex-start;
-    }
+
     .item-meta {
-      font-size: 0.8rem;
-      color: #666;
       margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .publisher {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 110px;
+    }
+
+    .price {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .no-data {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 48px;
+      color: var(--text-sub);
+    }
+
+    @media (max-width: 640px) {
+      .item-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+      }
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .item-count {
+        margin-left: 0;
+        text-align: right;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>新刊マンガ 1巻・新シリーズ一覧</h1>
+  <header>
+    <h1>📚 新刊マンガ 1巻・新シリーズ</h1>
+    
+    <!-- 月選択タブ -->
+    <div id="month-tabs" class="month-tabs"></div>
 
-  <!-- 月選択タブ -->
-  <div id="month-tabs" class="month-tabs"></div>
+    <!-- データ更新日時を表示する場所 -->
+    <div id="last-updated" class="last-updated">データ更新日時：取得中...</div>
+  </header>
 
-  <!-- データ更新日時の表示領域 -->
-  <div id="update-time" class="update-time">データ更新日時：読み込み中...</div>
+  <!-- コントロールバー（検索・フィルタ・ソート） -->
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
+    </div>
+    
+    <div class="filter-options">
+      <label class="filter-checkbox">
+        <input type="checkbox" id="new-only-check"> 新シリーズのみ
+      </label>
+
+      <select id="sort-select" class="filter-select">
+        <option value="date-asc">発売日順 (古い順)</option>
+        <option value="date-desc">発売日順 (新しい順)</option>
+        <option value="title-asc">タイトル順</option>
+      </select>
+    </div>
+
+    <div id="item-count" class="item-count">0 件表示</div>
+  </div>
 
   <!-- カード一覧表示領域 -->
-  <div id="item-grid" class="item-grid"></div>
+  <main>
+    <div id="item-grid" class="item-grid"></div>
+  </main>
 
   <script>
     let allData = {};
+    let currentMonth = '';
 
     async function init() {
       try {
-        // 更新日時の読み込み
         loadUpdateTime();
 
-        // 表示月リストの取得
         const monthsRes = await fetch('months.json');
         const months = await monthsRes.json();
 
-        // メインデータの取得
         const dataRes = await fetch('data.json');
         allData = await dataRes.json();
 
-        if (months.length > 0) {
+        if (months && months.length > 0) {
           renderTabs(months);
-          renderItems(months[0]); // 最新月を表示
+          currentMonth = months[0];
+          applyFiltersAndRender();
         } else {
-          document.getElementById('item-grid').innerHTML = '<p>表示できるデータがありません。</p>';
+          document.getElementById('item-grid').innerHTML = '<div class="no-data">表示できるデータがありません。</div>';
         }
       } catch (err) {
         console.error('データ読み込みエラー:', err);
-        document.getElementById('item-grid').innerHTML = '<p>データの読み込みに失敗しました。</p>';
+        document.getElementById('item-grid').innerHTML = '<div class="no-data">データの読み込みに失敗しました。</div>';
       }
     }
 
+    // データ更新日時（last_updated.json）の読み込み
     async function loadUpdateTime() {
       try {
         const res = await fetch('last_updated.json');
         if (!res.ok) throw new Error();
         const data = await res.json();
-        document.getElementById('update-time').textContent = `データ更新日時：${data.updated_at}`;
+        if (data.updated_at) {
+          document.getElementById('last-updated').textContent = `データ更新日時：${data.updated_at}`;
+        }
       } catch {
-        document.getElementById('update-time').textContent = '';
+        document.getElementById('last-updated').textContent = '';
       }
     }
 
@@ -162,19 +369,55 @@
         btn.onclick = () => {
           document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          renderItems(m);
+          currentMonth = m;
+          applyFiltersAndRender();
         };
         container.appendChild(btn);
       });
     }
 
-    function renderItems(month) {
+    function applyFiltersAndRender() {
+      const rawItems = allData[currentMonth] || [];
+      const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      const newOnly = document.getElementById('new-only-check').checked;
+      const sortType = document.getElementById('sort-select').value;
+
+      // 1. 絞り込み (検索 & 新シリーズのみ)
+      let filtered = rawItems.filter(item => {
+        const matchTitle = item.title.toLowerCase().includes(searchQuery);
+        const matchPublisher = (item.publisher || '').toLowerCase().includes(searchQuery);
+        const matchSearch = matchTitle || matchPublisher;
+
+        const matchNew = newOnly ? item.is_new_series : true;
+
+        return matchSearch && matchNew;
+      });
+
+      // 2. 並び替え
+      filtered.sort((a, b) => {
+        if (sortType === 'date-asc') {
+          return a.release_date.localeCompare(b.release_date);
+        } else if (sortType === 'date-desc') {
+          return b.release_date.localeCompare(a.release_date);
+        } else if (sortType === 'title-asc') {
+          return a.title.localeCompare(b.title, 'ja');
+        }
+        return 0;
+      });
+
+      // 3. 件数更新
+      document.getElementById('item-count').textContent = `${filtered.length} 件表示`;
+
+      // 4. 描画
+      renderGrid(filtered);
+    }
+
+    function renderGrid(items) {
       const container = document.getElementById('item-grid');
       container.innerHTML = '';
 
-      const items = allData[month] || [];
       if (items.length === 0) {
-        container.innerHTML = '<p>この月の対象アイテムはありません。</p>';
+        container.innerHTML = '<div class="no-data">条件に一致するマンガが見つかりませんでした。</div>';
         return;
       }
 
@@ -182,23 +425,32 @@
         const card = document.createElement('div');
         card.className = 'item-card';
 
-        const imgSrc = item.image || 'https://via.placeholder.com/200x280?text=No+Image';
+        const imgSrc = item.image && item.image.startsWith('http') 
+          ? item.image 
+          : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%231e293b"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%2364748b" font-size="14">No Image</text></svg>';
 
         card.innerHTML = `
-          <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
+          <div class="img-wrapper">
+            <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
+            ${item.is_new_series ? '<span class="badge-new">新シリーズ</span>' : ''}
+          </div>
           <div class="item-body">
             <div class="item-date">${item.release_date} 発売</div>
-            ${item.is_new_series ? '<span class="badge-new">新シリーズ</span>' : ''}
-            <a href="${item.url}" target="_blank" rel="noopener" class="item-title">${item.title}</a>
+            <a href="${item.url}" target="_blank" rel="noopener" class="item-title" title="${item.title}">${item.title}</a>
             <div class="item-meta">
-              <div>${item.publisher}</div>
-              <div>${item.price ? item.price + '円' : ''}</div>
+              <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
+              <span class="price">${item.price ? item.price + '円' : ''}</span>
             </div>
           </div>
         `;
         container.appendChild(card);
       });
     }
+
+    // イベントリスナーの登録
+    document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
+    document.getElementById('new-only-check').addEventListener('change', applyFiltersAndRender);
+    document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
