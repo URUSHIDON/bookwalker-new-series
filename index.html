@@ -24,56 +24,32 @@
       margin-bottom: 20px;
     }
 
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
     h1 {
       font-size: 1.6rem;
       font-weight: 700;
-      margin-bottom: 16px;
       color: #212529;
-    }
-
-    /* 月選択タブ */
-    .month-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-    }
-
-    .tab-btn {
-      background: #ffffff;
-      color: #495057;
-      border: 1px solid #ced4da;
-      padding: 8px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-    }
-
-    .tab-btn:hover {
-      background: #e9ecef;
-      color: #212529;
-    }
-
-    .tab-btn.active {
-      background: #0d6efd;
-      color: #ffffff;
-      border-color: #0d6efd;
     }
 
     /* データ更新日時 */
     .last-updated {
       font-size: 0.85rem;
       color: #6c757d;
-      margin-bottom: 20px;
     }
 
-    /* コントロールエリア (検索・ソート) */
+    /* コントロールエリア */
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
       background: #ffffff;
       padding: 16px;
       border-radius: 8px;
@@ -83,29 +59,42 @@
       align-items: center;
     }
 
-    .search-box {
-      flex: 1;
-      min-width: 200px;
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .search-box input {
-      width: 100%;
+    .control-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #495057;
+      white-space: nowrap;
+    }
+
+    .select-box, .search-box input {
       padding: 8px 12px;
       border-radius: 6px;
       border: 1px solid #ced4da;
+      background: #ffffff;
+      color: #333;
       font-size: 0.9rem;
       outline: none;
     }
 
-    .search-box input:focus {
-      border-color: #0d6efd;
+    .search-box {
+      flex: 1;
+      min-width: 220px;
     }
 
-    .filter-options {
+    .search-box input {
+      width: 100%;
+    }
+
+    .checkbox-group {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .filter-checkbox {
@@ -118,20 +107,24 @@
       user-select: none;
     }
 
-    .filter-select {
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #ced4da;
-      background: #ffffff;
-      color: #333;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-
     .item-count {
       font-size: 0.85rem;
       color: #6c757d;
       margin-left: auto;
+    }
+
+    /* 日付セクション */
+    .date-section {
+      margin-bottom: 32px;
+    }
+
+    .date-header {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0d6efd;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #0d6efd;
+      margin-bottom: 16px;
     }
 
     /* グリッドレイアウト */
@@ -172,31 +165,32 @@
       object-fit: cover;
     }
 
-    .badge-new {
+    .badge-container {
       position: absolute;
       top: 8px;
       left: 8px;
-      background-color: #dc3545;
-      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge {
       font-size: 0.7rem;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 4px;
+      color: #ffffff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
+
+    .badge-v1 { background-color: #198754; }
+    .badge-new { background-color: #dc3545; }
 
     .item-body {
       padding: 12px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-    }
-
-    .item-date {
-      font-size: 0.75rem;
-      color: #0d6efd;
-      font-weight: 600;
-      margin-bottom: 4px;
     }
 
     .item-title {
@@ -240,7 +234,6 @@
     }
 
     .no-data {
-      grid-column: 1 / -1;
       text-align: center;
       padding: 48px;
       color: #6c757d;
@@ -265,30 +258,40 @@
 <body>
 
   <header>
-    <h1>📚 新刊マンガ 1巻・新シリーズ一覧</h1>
-    
-    <!-- 月選択タブ -->
-    <div id="month-tabs" class="month-tabs"></div>
-
-    <!-- データ更新日時 -->
-    <div id="last-updated" class="last-updated">データ更新日時：取得中...</div>
+    <div class="header-top">
+      <h1>📚 新刊マンガ 1巻・新シリーズ一覧</h1>
+      <div id="last-updated" class="last-updated">データ更新日時：取得中...</div>
+    </div>
   </header>
 
   <!-- コントロールバー -->
   <div class="controls">
+    <!-- 月選択 (プルダウン) -->
+    <div class="control-group">
+      <label for="month-select">対象月：</label>
+      <select id="month-select" class="select-box"></select>
+    </div>
+
+    <!-- 検索ボックス -->
     <div class="search-box">
       <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
     </div>
     
-    <div class="filter-options">
+    <!-- 絞り込みチェックボックス -->
+    <div class="checkbox-group">
+      <label class="filter-checkbox">
+        <input type="checkbox" id="v1-only-check"> 1巻のみ
+      </label>
       <label class="filter-checkbox">
         <input type="checkbox" id="new-only-check"> 新シリーズのみ
       </label>
+    </div>
 
-      <select id="sort-select" class="filter-select">
-        <option value="date-asc">発売日順 (古い順)</option>
-        <option value="date-desc">発売日順 (新しい順)</option>
-        <option value="title-asc">タイトル順</option>
+    <!-- ソート -->
+    <div class="control-group">
+      <select id="sort-select" class="select-box">
+        <option value="date-asc">発売日順 (昇順)</option>
+        <option value="date-desc">発売日順 (降順)</option>
       </select>
     </div>
 
@@ -296,13 +299,10 @@
   </div>
 
   <!-- メインコンテンツ -->
-  <main>
-    <div id="item-grid" class="item-grid"></div>
-  </main>
+  <main id="main-content"></main>
 
   <script>
     let allData = {};
-    let currentMonth = '';
 
     async function init() {
       try {
@@ -315,19 +315,18 @@
         allData = await dataRes.json();
 
         if (months && months.length > 0) {
-          renderTabs(months);
-          currentMonth = months[0];
+          setupMonthSelect(months);
           applyFiltersAndRender();
         } else {
-          document.getElementById('item-grid').innerHTML = '<div class="no-data">表示できるデータがありません。</div>';
+          document.getElementById('main-content').innerHTML = '<div class="no-data">表示できるデータがありません。</div>';
         }
       } catch (err) {
         console.error('データ読み込みエラー:', err);
-        document.getElementById('item-grid').innerHTML = '<div class="no-data">データの読み込みに失敗しました。</div>';
+        document.getElementById('main-content').innerHTML = '<div class="no-data">データの読み込みに失敗しました。</div>';
       }
     }
 
-    // データ更新日時の取得
+    // 最終更新日時の取得機能
     async function loadUpdateTime() {
       try {
         const res = await fetch('last_updated.json');
@@ -335,33 +334,32 @@
         const data = await res.json();
         if (data.updated_at) {
           document.getElementById('last-updated').textContent = `データ更新日時：${data.updated_at}`;
+        } else {
+          document.getElementById('last-updated').textContent = '';
         }
       } catch {
         document.getElementById('last-updated').textContent = '';
       }
     }
 
-    function renderTabs(months) {
-      const container = document.getElementById('month-tabs');
-      container.innerHTML = '';
-
-      months.forEach((m, index) => {
-        const btn = document.createElement('button');
-        btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
-        btn.textContent = m;
-        btn.onclick = () => {
-          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentMonth = m;
-          applyFiltersAndRender();
-        };
-        container.appendChild(btn);
+    function setupMonthSelect(months) {
+      const select = document.getElementById('month-select');
+      select.innerHTML = '';
+      months.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
       });
+      select.addEventListener('change', applyFiltersAndRender);
     }
 
     function applyFiltersAndRender() {
+      const currentMonth = document.getElementById('month-select').value;
       const rawItems = allData[currentMonth] || [];
+
       const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      const v1Only = document.getElementById('v1-only-check').checked;
       const newOnly = document.getElementById('new-only-check').checked;
       const sortType = document.getElementById('sort-select').value;
 
@@ -371,66 +369,86 @@
         const matchPublisher = (item.publisher || '').toLowerCase().includes(searchQuery);
         const matchSearch = matchTitle || matchPublisher;
 
+        const matchV1 = v1Only ? item.is_v1 : true;
         const matchNew = newOnly ? item.is_new_series : true;
 
-        return matchSearch && matchNew;
-      });
-
-      // 並び替え
-      filtered.sort((a, b) => {
-        if (sortType === 'date-asc') {
-          return a.release_date.localeCompare(b.release_date);
-        } else if (sortType === 'date-desc') {
-          return b.release_date.localeCompare(a.release_date);
-        } else if (sortType === 'title-asc') {
-          return a.title.localeCompare(b.title, 'ja');
-        }
-        return 0;
+        return matchSearch && matchV1 && matchNew;
       });
 
       // 件数表示
       document.getElementById('item-count').textContent = `${filtered.length} 件表示`;
 
-      // 描画
-      renderGrid(filtered);
+      // 日付ごとにグループ化
+      const grouped = {};
+      filtered.forEach(item => {
+        const date = item.release_date || '発売日未定';
+        if (!grouped[date]) grouped[date] = [];
+        grouped[date].push(item);
+      });
+
+      // 日付のソート
+      const sortedDates = Object.keys(grouped).sort((a, b) => {
+        return sortType === 'date-asc' ? a.localeCompare(b) : b.localeCompare(a);
+      });
+
+      renderGroupedView(grouped, sortedDates);
     }
 
-    function renderGrid(items) {
-      const container = document.getElementById('item-grid');
-      container.innerHTML = '';
+    function renderGroupedView(grouped, dates) {
+      const main = document.getElementById('main-content');
+      main.innerHTML = '';
 
-      if (items.length === 0) {
-        container.innerHTML = '<div class="no-data">条件に一致するマンガが見つかりませんでした。</div>';
+      if (dates.length === 0) {
+        main.innerHTML = '<div class="no-data">条件に一致するマンガが見つかりませんでした。</div>';
         return;
       }
 
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'item-card';
+      dates.forEach(date => {
+        const section = document.createElement('section');
+        section.className = 'date-section';
 
-        const imgSrc = item.image && item.image.startsWith('http') 
-          ? item.image 
-          : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%23f1f3f5"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23adb5bd" font-size="14">No Image</text></svg>';
+        const header = document.createElement('h2');
+        header.className = 'date-header';
+        header.textContent = date;
+        section.appendChild(header);
 
-        card.innerHTML = `
-          <div class="img-wrapper">
-            <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
-            ${item.is_new_series ? '<span class="badge-new">新シリーズ</span>' : ''}
-          </div>
-          <div class="item-body">
-            <div class="item-date">${item.release_date} 発売</div>
-            <a href="${item.url}" target="_blank" rel="noopener" class="item-title" title="${item.title}">${item.title}</a>
-            <div class="item-meta">
-              <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
-              <span class="price">${item.price ? item.price + '円' : ''}</span>
+        const grid = document.createElement('div');
+        grid.className = 'item-grid';
+
+        grouped[date].forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'item-card';
+
+          const imgSrc = item.image && item.image.startsWith('http') 
+            ? item.image 
+            : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%23f1f3f5"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23adb5bd" font-size="14">No Image</text></svg>';
+
+          card.innerHTML = `
+            <div class="img-wrapper">
+              <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
+              <div class="badge-container">
+                ${item.is_v1 ? '<span class="badge badge-v1">1巻</span>' : ''}
+                ${item.is_new_series ? '<span class="badge badge-new">新シリーズ</span>' : ''}
+              </div>
             </div>
-          </div>
-        `;
-        container.appendChild(card);
+            <div class="item-body">
+              <a href="${item.url}" target="_blank" rel="noopener" class="item-title" title="${item.title}">${item.title}</a>
+              <div class="item-meta">
+                <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
+                <span class="price">${item.price ? item.price + '円' : ''}</span>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        main.appendChild(section);
       });
     }
 
     document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
+    document.getElementById('v1-only-check').addEventListener('change', applyFiltersAndRender);
     document.getElementById('new-only-check').addEventListener('change', applyFiltersAndRender);
     document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
 
