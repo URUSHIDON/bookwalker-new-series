@@ -4,7 +4,6 @@ import re
 import os
 import datetime
 import subprocess
-import time
 import urllib.request
 from html.parser import HTMLParser
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -27,7 +26,6 @@ class OGImageParser(HTMLParser):
                 self.image_url = attrs_dict.get("content", "")
 
 def fetch_single_og_image(item_url):
-    """単一ページの og:image を取得"""
     if not isinstance(item_url, str) or not item_url.startswith("http"):
         return item_url, ""
 
@@ -46,7 +44,6 @@ def fetch_single_og_image(item_url):
     return item_url, ""
 
 def fetch_all_og_images_parallel(url_list, cache, max_workers=10):
-    """マルチスレッド（並列通信）で爆速取得"""
     targets = [url for url in set(url_list) if url and url.startswith("http") and url not in cache]
     
     if targets:
@@ -79,7 +76,8 @@ def save_json_file(filepath, data):
 def is_title_v1(title):
     if pd.isna(title):
         return False
-    patterns = [r'[（(【\s]1[）)\s】]', r'1巻', r'第1巻', r'[\s]1$']
+    # タイトルに「1」「1巻」「【合冊版】 1」などが含まれるかチェック
+    patterns = [r'[（(【\s]1[）)\s】]', r'1巻', r'第1巻', r'[\s]1$', r'【合冊版】\s*1']
     for pat in patterns:
         if re.search(pat, str(title)):
             return True
@@ -128,7 +126,7 @@ def main():
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付絞り込み（本番用：先月〜来月）
+    # 2. 日付絞り込み（今月・先月・来月）
     today = datetime.date.today()
     start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
     end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
@@ -136,11 +134,10 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # 3. ノイズ除去
+    # 3. ノイズ除去（「合冊版」などは除外せず「無料試読」「サンプル」などを除外）
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
-        r'単話|分冊|話売り|話版|【話】|（話）|\(話\)|話：|話\s*-|話\)|第\d+話|'
-        r'連載|雑誌|定期購読|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
+        r'雑誌|定期購読|小冊子|特典|ペーパー|SS付き|イラスト付き|先行|予告'
     )
     df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
 
@@ -185,11 +182,11 @@ def main():
                 "is_new_series": is_new_series
             })
 
-    # 対象URLの画像を一括（並列通信）取得
+    # 対象URLの画像を一括取得
     urls_to_fetch = [item["url"] for item in target_items]
     fetch_all_og_images_parallel(urls_to_fetch, cover_cache, max_workers=10)
 
-    # 結果をグループ構築
+    # 月ごとにグループ構築
     result = {}
     for item in target_items:
         month = item["release_date"][:7]
