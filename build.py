@@ -4,11 +4,54 @@ import re
 import os
 import datetime
 import subprocess
+import time
+import urllib.request
+from html.parser import HTMLParser
 
 CSV_URL = "https://bookwalker.jp/csv/download.php"
 FAQ_URL = "https://help.bookwalker.jp/faq/301"
 LOCAL_CSV_PATH = "downloaded_data.csv"
 HISTORY_FILE = "series_history.json"
+
+class OGImageParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.image_url = ""
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "meta":
+            attrs_dict = dict(attrs)
+            if attrs_dict.get("property") == "og:image":
+                self.image_url = attrs_dict.get("content", "")
+
+def fetch_bookwalker_og_image(item_url, cache={}):
+    """作品ページから og:image（公式表紙画像URL）を取得"""
+    if not isinstance(item_url, str) or not item_url.startswith("http"):
+        return ""
+    
+    if item_url in cache:
+        return cache[item_url]
+
+    try:
+        req = urllib.request.Request(item_url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        })
+        with urllib.request.urlopen(req, timeout=5) as res:
+            html = res.read().decode('utf-8', errors='ignore')
+            parser = OGImageParser()
+            parser.feed(html)
+            
+            image_url = parser.image_url
+            if image_url:
+                cache[item_url] = image_url
+                time.sleep(0.2)  # サーバー負荷軽減用ウェイト
+                return image_url
+    except Exception:
+        pass
+
+    cache[item_url] = ""
+    time.sleep(0.1)
+    return ""
 
 def load_json_file(filepath):
     if os.path.exists(filepath):
@@ -22,20 +65,6 @@ def load_json_file(filepath):
 def save_json_file(filepath, data):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-
-def generate_bookwalker_cover_url(item_url):
-    """BOOK☆WALKERの商品URLから直接表紙画像URLを生成"""
-    if not isinstance(item_url, str):
-        return ""
-    
-    # URLから de12345678 などのUUID/商品IDを抽出
-    match = re.search(r'/(de[a-zA-Z0-9\-]+)/?', item_url)
-    if match:
-        item_id = match.group(1)
-        # BOOK☆WALKERの標準画像サーバーURLを生成（200x200〜300x300相当の表紙画像）
-        return f"https://c.bookwalker.jp/{item_id}/base_component.jpg"
-    
-    return ""
 
 def is_title_v1(title):
     if pd.isna(title):
@@ -89,9 +118,8 @@ def main():
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-# 2. 日付絞り込み（テスト用：2026年8月1日のみ）
+    # 2. 日付絞り込み（テスト用：2026年8月1日のみ）
     target_date = "2026-08-01"
-
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[df[date_col] == target_date]
 
@@ -111,7 +139,7 @@ def main():
 
     processed_count = 0
 
-    print(">>> [3/3] 画像URLの生成とデータ構築中...", flush=True)
+    print(">>> [3/3] BOOK☆WALKER ページから表紙画像URLを取得中...", flush=True)
     for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
         series = str(row.get(series_col, '')).strip()
@@ -134,7 +162,7 @@ def main():
                 result[month] = []
 
             item_url = str(row.get(url_col, ''))
-            image_url = generate_bookwalker_cover_url(item_url)
+            image_url = fetch_bookwalker_og_image(item_url)
 
             result[month].append({
                 "title": title,
@@ -149,6 +177,8 @@ def main():
                 "is_new_series": is_new_series
             })
             processed_count += 1
+            if processed_count % 10 == 0:
+                print(f"    - {processed_count} 件処理完了...", flush=True)
 
     print(f">>> 最終抽出結果: {processed_count} 件のデータを登録しました。", flush=True)
 
