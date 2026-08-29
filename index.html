@@ -518,5 +518,54 @@
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
+  <div style="margin-top: 40px; padding: 20px; background: #f4f6f8; border-radius: 8px; border: 1px solid #ddd;">
+    <h3 style="margin-top: 0; font-size: 16px; color: #333;">🔍 タイトル判定デバッグツール</h3>
+    <p style="font-size: 13px; color: #666; margin-bottom: 10px;">
+        テストしたいタイトルを入力して「判定」を押すと、ルールにヒットするか確認できます。
+    </p>
+    <div style="display: flex; gap: 8px;">
+        <input type="text" id="debug-title-input" placeholder="例: ゲート SEASON2 自衛隊 彼の海にて、斯く戦えり１" style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+        <button onclick="testTitleRegex()" style="padding: 8px 16px; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">判定</button>
+    </div>
+    <div id="debug-result" style="margin-top: 10px; font-size: 14px; font-weight: bold;"></div>
+  </div>
+  <script>
+function testTitleRegex() {
+    const rawInput = document.getElementById('debug-title-input').value;
+    const resultDiv = document.getElementById('debug-result');
+    
+    if (!rawInput.trim()) {
+        resultDiv.innerHTML = '<span style="color: #666;">タイトルを入力してください。</span>';
+        return;
+    }
+
+    // Pythonの unicodedata.normalize('NFKC', ...) に相当する処理
+    const titleStr = rawInput.normalize('NFKC').trim();
+
+    // 除外チェック（SEASON 1など）
+    let isExcluded = false;
+    if (/(season|part|ver|volume|vol|第)\s*1$/i.test(titleStr)) {
+        if (!/1\s*(巻|話)$/.test(titleStr)) {
+            isExcluded = true;
+        }
+    }
+
+    // 1巻判定チェック
+    let isV1 = false;
+    const explicitRegex = /([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])/;
+    const tailRegex = /(?:[^\w\a-zA-Z0-9]|[^\d\a-zA-Z])[1Ⅰ①]\s*$/;
+
+    if (!isExcluded && (explicitRegex.test(titleStr) || tailRegex.test(titleStr))) {
+        isV1 = true;
+    }
+
+    // 結果表示
+    if (isV1) {
+        resultDiv.innerHTML = `<span style="color: #28a745;">✅ 【判定：1巻（対象）】 正規化後: "${titleStr}"</span>`;
+    } else {
+        resultDiv.innerHTML = `<span style="color: #dc3545;">❌ 【判定：対象外】 正規化後: "${titleStr}"</span>`;
+    }
+}
+  </script>
 </body>
 </html>
