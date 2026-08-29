@@ -119,6 +119,7 @@ def fetch_csv_dataframe():
 
 def main():
     print(">>> スクリプト開始", flush=True)
+    
     df = fetch_csv_dataframe()
     df.columns = df.columns.str.strip()
 
@@ -221,8 +222,12 @@ def main():
     jst = datetime.timezone(datetime.timedelta(hours=9))
     now_jst = datetime.datetime.now(jst)
     updated_str = now_jst.strftime('%Y年%m月%d日 %H:%M')
+
+    # last_updated.json の出力（更新日時のみ）
     with open('last_updated.json', 'w', encoding='utf-8') as f:
-        json.dump({"updated_at": updated_str}, f, ensure_ascii=False, indent=2)
+        json.dump({
+            "updated_at": updated_str
+        }, f, ensure_ascii=False, indent=2)
 
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
