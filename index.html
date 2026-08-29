@@ -9,7 +9,6 @@
       --bg-color: #f8f9fa;
       --card-bg: #ffffff;
       --text-color: #333333;
-      --accent-color: #007bff;
       --border-color: #e9ecef;
       --sub-text: #6c757d;
     }
@@ -45,6 +44,7 @@
       font-size: 1.4rem;
     }
 
+    /* 前月・来月ボタン & 月選択のスタイル */
     .month-nav {
       display: flex;
       align-items: center;
@@ -55,8 +55,9 @@
       background: #ffffff;
       border: 1px solid #ced4da;
       border-radius: 4px;
-      padding: 0.3rem 0.6rem;
+      padding: 0.35rem 0.7rem;
       font-size: 0.85rem;
+      font-weight: bold;
       cursor: pointer;
       transition: background-color 0.2s;
     }
@@ -211,6 +212,7 @@
     <div class="header-top">
       <h1>BOOK☆WALKER 1巻・新着カレンダー</h1>
       
+      <!-- 表示月の左隣・右隣に遷移ボタンを配置 -->
       <div class="month-nav">
         <span>表示月:</span>
         <button id="prev-month-btn" class="nav-btn">◀ 前月</button>
@@ -222,6 +224,7 @@
     <div class="controls">
       <div class="filter-group">
         <span>カテゴリ絞り込み:</span>
+        <!-- マンガのみデフォルトON、話・連載はデフォルトOFF -->
         <label class="checkbox-label">
           <input type="checkbox" id="cat-manga" checked> マンガ
         </label>
@@ -241,11 +244,11 @@
 
     async function init() {
       try {
-        const monthsRes = await fetch('months.json');
+        const monthsRes = await fetch('months.json?v=' + Date.now());
         monthsList = await monthsRes.json();
 
         const monthSelect = document.getElementById('month-select');
-        monthsList.forEach((m, idx) => {
+        monthsList.forEach((m) => {
           const opt = document.createElement('option');
           opt.value = m;
           const [y, mon] = m.split('-');
@@ -258,18 +261,20 @@
           monthSelect.value = monthsList[0];
         }
 
-        const dataRes = await fetch('data.json');
+        const dataRes = await fetch('data.json?v=' + Date.now());
         allData = await dataRes.json();
 
         updateNavButtons();
         render();
 
+        // 月セレクト切り替え
         monthSelect.addEventListener('change', (e) => {
           currentMonthIndex = monthsList.indexOf(e.target.value);
           updateNavButtons();
           render();
         });
 
+        // 「前月」ボタン
         document.getElementById('prev-month-btn').addEventListener('click', () => {
           if (currentMonthIndex < monthsList.length - 1) {
             currentMonthIndex++;
@@ -279,6 +284,7 @@
           }
         });
 
+        // 「来月」ボタン
         document.getElementById('next-month-btn').addEventListener('click', () => {
           if (currentMonthIndex > 0) {
             currentMonthIndex--;
@@ -288,6 +294,7 @@
           }
         });
 
+        // チェックボックス切り替え
         document.getElementById('cat-manga').addEventListener('change', render);
         document.getElementById('cat-episodes').addEventListener('change', render);
 
@@ -297,6 +304,7 @@
     }
 
     function updateNavButtons() {
+      // monthsList が降順（新しい月が 0 ）の場合
       document.getElementById('prev-month-btn').disabled = (currentMonthIndex >= monthsList.length - 1);
       document.getElementById('next-month-btn').disabled = (currentMonthIndex <= 0);
     }
@@ -311,7 +319,7 @@
       const currentMonthKey = monthsList[currentMonthIndex];
       const items = allData[currentMonthKey] || [];
 
-      // 絞り込み
+      // カテゴリ絞り込み
       const filtered = items.filter(item => {
         const isEpisode = /話|連載|分冊/i.test(item.title) || /話/i.test(item.category || "");
         if (isEpisode && !showEpisodes) return false;
@@ -324,7 +332,7 @@
         return;
       }
 
-      // 日付（YYYY-MM-DD）毎にグループ化
+      // 日付ごとにグループ化
       const groupedByDate = {};
       filtered.forEach(item => {
         const rawDate = item.release_date ? item.release_date.split(' ')[0] : '日付不明';
