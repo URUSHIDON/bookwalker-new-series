@@ -80,8 +80,8 @@ def is_title_v1(title):
     title_str = str(title).strip()
 
     # 「1」「１」「Ⅰ」「①」などの1巻パターン判定
-    # タイトル末尾の数字、カッコ囲み、巻数指定などを広範にカバー
-    v1_regex = r'([（(【\s\-_]*[1１Ⅰ①][）)\s】巻]*$|[（(【\s\-_][1１Ⅰ①][）)\s】巻]|^[1１Ⅰ①]巻|第[1１Ⅰ①]巻|【合冊版】\s*[1１])'
+    # カッコ・区切り記号・「第」「話」のみを対象として「竜」などの不要な文字を排除
+    v1_regex = r'([（(【\s\-_第話]*[1１Ⅰ①][）)\s】話巻]*$|[（(【\s\-_第][1１Ⅰ①][）)\s】話巻]|^[1１Ⅰ①][話巻]|第[1１Ⅰ①][話巻]|【合冊版】\s*[1１])'
 
     if re.search(v1_regex, title_str):
         return True
@@ -173,6 +173,7 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
+        # 1巻判定（has_v1_title）または新シリーズ判定（is_new_series）のいずれかに合致すれば抽出
         if has_v1_title or is_new_series:
             item_url = str(row.get(url_col, ''))
             target_items.append({
