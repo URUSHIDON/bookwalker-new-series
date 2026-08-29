@@ -2,9 +2,11 @@ import pandas as pd
 import json
 import re
 import os
+import time
 import datetime
 import subprocess
 import urllib.request
+import urllib.error
 import unicodedata
 from html.parser import HTMLParser
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -26,38 +28,87 @@ class OGImageParser(HTMLParser):
             if attrs_dict.get("property") == "og:image":
                 self.image_url = attrs_dict.get("content", "")
 
-def fetch_single_og_image(item_url):
+def fetch_single_og_image(item_url, delay=0.3, max_retries=2):
     if not isinstance(item_url, str) or not item_url.startswith("http"):
         return item_url, ""
 
-    try:
-        req = urllib.request.Request(item_url, headers={
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        })
-        with urllib.request.urlopen(req, timeout=3) as res:
-            html = res.read().decode('utf-8', errors='ignore')
-            parser = OGImageParser()
-            parser.feed(html)
-            return item_url, parser.image_url
-    except Exception:
-        pass
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+        'Referer': 'https://bookwalker.jp/',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
+        'Sec-Fetch-User': '?1',
+        'Upgrade-Insecure-Requests': '1'
+    }
+
+    for attempt in range(max_retries + 1):
+        if delay > 0:
+            time.sleep(delay)
+
+        try:
+            req = urllib.request.Request(item_url, headers=headers)
+            with urllib.request.urlopen(req, timeout=10) as res:
+                parser = OGImageParser()
+                # og:image は通常 <head> 内にあるため、見つかった時点で読み込みを完了して大幅に高速化
+                while True:
+                    chunk = res.read(8192)
+                    if not chunk:
+                        break
+                    parser.feed(chunk.decode('utf-8', errors='ignore'))
+                    if parser.image_url:
+                        break
+                return item_url, parser.image_url
+        except urllib.error.HTTPError as e:
+            if e.code in (403, 429):
+                if attempt < max_retries:
+                    # 403 / 429 一時制限の場合は少し長めに待機してリトライ
+                    time.sleep(1.5 * (attempt + 1))
+                    continue
+                if e.code == 429:
+                    print(f"    ⚠️ [429 Too Many Requests] リクエスト過多エラー: {item_url}", flush=True)
+                else:
+                    print(f"    ⚠️ [403 Forbidden] アクセス拒否: {item_url}", flush=True)
+            elif e.code == 404:
+                print(f"    ⚠️ [404 Not Found] ページ未公開/未登録: {item_url}", flush=True)
+                break
+            else:
+                if attempt < max_retries:
+                    time.sleep(0.5)
+                    continue
+                print(f"    ⚠️ [HTTPエラー {e.code}] {item_url}", flush=True)
+        except urllib.error.URLError as e:
+            if attempt < max_retries:
+                time.sleep(0.5)
+                continue
+            print(f"    ⚠️ [接続/タイムアウトエラー: {e.reason}] {item_url}", flush=True)
+        except Exception as e:
+            if attempt < max_retries:
+                time.sleep(0.5)
+                continue
+            print(f"    ⚠️ [予期せぬエラー: {e}] {item_url}", flush=True)
 
     return item_url, ""
 
-def fetch_all_og_images_parallel(url_list, cache, max_workers=10):
-    targets = [url for url in set(url_list) if url and url.startswith("http") and url not in cache]
+def fetch_all_og_images_parallel(url_list, cache, max_workers=3):
+    targets = [url for url in set(url_list) if url and url.startswith("http") and not cache.get(url)]
     
     if targets:
-        print(f">>> [画像取得] 未キャッシュの {len(targets)} 件を並列通信で取得中...", flush=True)
+        print(f">>> [画像取得] 未取得・再取得対象の {len(targets)} 件を並列通信で取得中 (並列数: {max_workers})...", flush=True)
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            future_to_url = {executor.submit(fetch_single_og_image, url): url for url in targets}
+            future_to_url = {executor.submit(fetch_single_og_image, url, 0.3): url for url in targets}
             completed = 0
+            success_count = 0
             for future in as_completed(future_to_url):
                 url, img_url = future.result()
-                cache[url] = img_url
+                if img_url:
+                    cache[url] = img_url
+                    success_count += 1
                 completed += 1
                 if completed % 50 == 0 or completed == len(targets):
-                    print(f"    - {completed}/{len(targets)} 件の画像URL取得完了", flush=True)
+                    print(f"    - {completed}/{len(targets)} 件完了 (成功: {success_count} 件)", flush=True)
     else:
         print(">>> [画像取得] すべてキャッシュから取得完了！", flush=True)
 
@@ -202,7 +253,7 @@ def main():
 
     # 対象URLの画像を一括取得
     urls_to_fetch = [item["url"] for item in target_items]
-    fetch_all_og_images_parallel(urls_to_fetch, cover_cache, max_workers=10)
+    fetch_all_og_images_parallel(urls_to_fetch, cover_cache, max_workers=3)
 
     # 月ごとにグループ構築
     result = {}
@@ -238,7 +289,7 @@ def main():
         }, f, ensure_ascii=False, indent=2)
 
     save_json_file(HISTORY_FILE, list(new_series_set))
-    save_json_file(CACHE_FILE, cover_cache)
+    save_json_file(CACHE_FILE, {k: v for k, v in cover_cache.items() if v})
 
     if os.path.exists(LOCAL_CSV_PATH):
         os.remove(LOCAL_CSV_PATH)
