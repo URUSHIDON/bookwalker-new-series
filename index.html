@@ -3,301 +3,276 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOOK☆WALKER 1巻・新シリーズ新刊カレンダー</title>
+  <title>BOOK☆WALKER 新刊第1巻一覧</title>
   <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --accent-color: #007bff;
+      --border-color: #e9ecef;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: #f5f6f8;
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      line-height: 1.5;
     }
+
     header {
-      max-width: 1200px;
-      margin: 0 auto 20px auto;
-      background: #fff;
-      padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-    .top-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
+
     h1 {
-      font-size: 1.4rem;
-      margin: 0;
+      margin: 0 0 1rem 0;
+      font-size: 1.5rem;
     }
-    .selector-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    select {
-      font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      background-color: #fff;
-      cursor: pointer;
-    }
-    .filter-container {
-      margin-top: 15px;
-      padding-top: 12px;
-      border-top: 1px solid #eee;
+
+    .controls {
       display: flex;
       flex-wrap: wrap;
+      gap: 1rem;
       align-items: center;
-      gap: 15px;
-      font-size: 0.85rem;
     }
-    .filter-title {
-      font-weight: bold;
-      color: #555;
-    }
-    .filter-item {
+
+    .filter-group {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 0.5rem;
+    }
+
+    select, input[type="text"] {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      user-select: none;
     }
-    #container {
+
+    main {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
     }
+
     .card {
-      background: #fff;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+
     .card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .card img {
+
+    .card-image {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
+      aspect-ratio: 1 / 1.4;
       background-color: #eee;
+      object-fit: cover;
     }
-    .card-body {
-      padding: 10px;
+
+    .card-content {
+      padding: 0.8rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    .badge-container {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-bottom: 5px;
-    }
-    .badge {
-      font-size: 0.65rem;
-      font-weight: bold;
-      color: #fff;
-      background-color: #ff4757;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .cat-badge {
-      font-size: 0.65rem;
-      color: #555;
-      background-color: #eccc68;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .date {
-      font-size: 0.75rem;
-      color: #666;
-      margin-bottom: 4px;
-    }
-    .title {
+
+    .card-title {
       font-size: 0.85rem;
       font-weight: bold;
-      line-height: 1.3;
-      margin-bottom: 8px;
+      margin: 0 0 0.5rem 0;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      line-height: 1.3;
     }
-    .title a {
-      color: #2f3542;
-      text-decoration: none;
-    }
-    .title a:hover {
-      text-decoration: underline;
-    }
-    .publisher {
-      font-size: 0.7rem;
-      color: #888;
+
+    .card-meta {
+      font-size: 0.75rem;
+      color: #6c757d;
       margin-top: auto;
     }
+
+    .card-date {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      font-size: 0.7rem;
+      border-radius: 3px;
+      background-color: #28a745;
+      color: white;
+      margin-bottom: 0.3rem;
+      width: fit-content;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .empty-msg {
+      grid-column: 1 / -1;
       text-align: center;
-      padding: 40px;
-      color: #666;
+      padding: 3rem;
+      color: #6c757d;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="top-bar">
-      <h1>BOOK☆WALKER 1巻・新着カレンダー</h1>
-      <div class="selector-container">
-        <label for="month-select">表示月:</label>
-        <select id="month-select">
-          <option value="">読み込み中...</option>
-        </select>
+    <h1>BOOK☆WALKER 新刊第1巻一覧</h1>
+    <div class="controls">
+      <div class="filter-group">
+        <label for="month-select">配信月:</label>
+        <select id="month-select"></select>
       </div>
-    </div>
-    <div class="filter-container">
-      <span class="filter-title">カテゴリ絞り込み:</span>
-      <div id="category-filters" style="display: flex; gap: 12px; flex-wrap: wrap;"></div>
+
+      <div class="filter-group">
+        <span>カテゴリ絞り込み:</span>
+        <label class="checkbox-label">
+          <input type="checkbox" id="cat-manga" checked> マンガ（単行本）
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="cat-episodes"> 話・連載
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="search-input" placeholder="タイトル・レーベル検索...">
+      </div>
     </div>
   </header>
 
-  <main id="container">
+  <main>
     <div id="book-grid" class="grid"></div>
   </main>
 
   <script>
     let allData = {};
-    let activeCategories = new Set();
-
-    function cleanUrl(rawUrl) {
-      if (!rawUrl) return "#";
-      let url = rawUrl.trim();
-      if (url.startsWith("http://")) {
-        url = url.replace("http://", "https://");
-      }
-      return url;
-    }
+    let currentMonth = "";
 
     async function init() {
       try {
-        const response = await fetch('data.json');
-        allData = await response.json();
+        const monthsRes = await fetch('months.json');
+        const months = await monthsRes.json();
         
-        const months = Object.keys(allData).sort().reverse();
-        const selectEl = document.getElementById('month-select');
-        selectEl.innerHTML = '';
-
-        if (months.length === 0) {
-          selectEl.innerHTML = '<option>データなし</option>';
-          return;
-        }
-
+        const monthSelect = document.getElementById('month-select');
         months.forEach(m => {
           const opt = document.createElement('option');
           opt.value = m;
-          opt.textContent = m.replace('-', '年 ') + '月';
-          selectEl.appendChild(opt);
+          opt.textContent = m;
+          monthSelect.appendChild(opt);
         });
 
-        const currentMonth = new Date().toISOString().slice(0, 7);
-        const defaultMonth = months.includes(currentMonth) ? currentMonth : months[0];
-        selectEl.value = defaultMonth;
+        if (months.length > 0) {
+          currentMonth = months[0];
+          monthSelect.value = currentMonth;
+        }
 
-        setupCategoryFilters();
-        renderMonth(defaultMonth);
+        const dataRes = await fetch('data.json');
+        allData = await dataRes.json();
 
-        selectEl.addEventListener('change', (e) => {
-          renderMonth(e.target.value);
+        render();
+
+        monthSelect.addEventListener('change', (e) => {
+          currentMonth = e.target.value;
+          render();
         });
+
+        document.getElementById('cat-manga').addEventListener('change', render);
+        document.getElementById('cat-episodes').addEventListener('change', render);
+        document.getElementById('search-input').addEventListener('input', render);
 
       } catch (err) {
-        console.error(err);
-        document.getElementById('container').innerHTML = '<div class="empty-msg">データの読み込みに失敗しました。</div>';
+        console.error("データの読み込みに失敗しました:", err);
       }
     }
 
-    function setupCategoryFilters() {
-      const categories = new Set();
-      Object.values(allData).forEach(monthItems => {
-        monthItems.forEach(item => {
-          if (item.category) categories.add(item.category);
-        });
-      });
-
-      activeCategories = new Set(categories);
-      const container = document.getElementById('category-filters');
-      container.innerHTML = '';
-
-      categories.forEach(cat => {
-        const label = document.createElement('label');
-        label.className = 'filter-item';
-        
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.value = cat;
-        checkbox.checked = true;
-
-        checkbox.addEventListener('change', (e) => {
-          if (e.target.checked) {
-            activeCategories.add(cat);
-          } else {
-            activeCategories.delete(cat);
-          }
-          const currentMonth = document.getElementById('month-select').value;
-          renderMonth(currentMonth);
-        });
-
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(cat));
-        container.appendChild(label);
-      });
-    }
-
-    function renderMonth(month) {
+    function render() {
       const grid = document.getElementById('book-grid');
-      grid.innerHTML = '';
+      grid.innerHTML = "";
 
-      const items = allData[month] || [];
-      const filteredItems = items.filter(item => activeCategories.has(item.category));
+      const showManga = document.getElementById('cat-manga').checked;
+      const showEpisodes = document.getElementById('cat-episodes').checked;
+      const keyword = document.getElementById('search-input').value.toLowerCase().trim();
 
-      if (filteredItems.length === 0) {
-        grid.innerHTML = '<div class="empty-msg">該当する作品がありません。</div>';
+      const items = allData[currentMonth] || [];
+
+      const filtered = items.filter(item => {
+        // 「話」「分冊」などの判定
+        const isEpisode = /話|連載|分冊/i.test(item.title) || /話/i.test(item.category || "");
+        
+        if (isEpisode && !showEpisodes) return false;
+        if (!isEpisode && !showManga) return false;
+
+        if (keyword) {
+          const matchTitle = (item.title || "").toLowerCase().includes(keyword);
+          const matchPublisher = (item.publisher || "").toLowerCase().includes(keyword);
+          const matchLabel = (item.label || "").toLowerCase().includes(keyword);
+          if (!matchTitle && !matchPublisher && !matchLabel) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty-msg">該当する作品が見つかりませんでした。</div>';
         return;
       }
 
-      filteredItems.forEach(item => {
-        const card = document.createElement('div');
+      filtered.forEach(item => {
+        const card = document.createElement('a');
         card.className = 'card';
+        card.href = item.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
 
-        const targetUrl = cleanUrl(item.url);
-        const imgUrl = item.image ? item.image : 'https://via.placeholder.com/150x210?text=No+Image';
-        const isNew = item.is_new_series ? '<span class="badge">新シリーズ</span>' : '';
-        const catBadge = item.category ? `<span class="cat-badge">${item.category}</span>` : '';
+        const imgSrc = item.image || 'https://via.placeholder.com/200x280?text=No+Image';
 
         card.innerHTML = `
-          <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">
-            <img src="${imgUrl}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/150x210?text=No+Image'">
-          </a>
-          <div class="card-body">
-            <div class="badge-container">
-              ${isNew}
-              ${catBadge}
+          <img class="card-image" src="${imgSrc}" alt="${item.title}" loading="lazy">
+          <div class="card-content">
+            ${item.is_new_series ? '<span class="badge">新シリーズ</span>' : ''}
+            <div class="card-title">${item.title}</div>
+            <div class="card-meta">
+              <div>${item.publisher || ''}</div>
+              <div class="card-date">${item.release_date || ''}</div>
             </div>
-            <div class="date">${item.release_date}</div>
-            <div class="title">
-              <a href="${targetUrl}" target="_blank" rel="noopener noreferrer">${item.title}</a>
-            </div>
-            <div class="publisher">${item.publisher || ''}</div>
           </div>
         `;
         grid.appendChild(card);
