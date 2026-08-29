@@ -2,17 +2,13 @@ import pandas as pd
 import json
 import re
 import os
-import time
 import datetime
 import subprocess
-import urllib.parse
-import urllib.request
 
 CSV_URL = "https://bookwalker.jp/csv/download.php"
 FAQ_URL = "https://help.bookwalker.jp/faq/301"
 LOCAL_CSV_PATH = "downloaded_data.csv"
 HISTORY_FILE = "series_history.json"
-CACHE_FILE = "cover_cache.json"
 
 def load_json_file(filepath):
     if os.path.exists(filepath):
@@ -27,50 +23,18 @@ def save_json_file(filepath, data):
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-def fetch_google_books_cover(title, publisher="", cache={}):
-    """タイトルと出版社からGoogle Books APIを使って表紙画像URLを取得（強化版）"""
-    # タイトルから「1巻」「第1巻」「【電子限定】」「（話）」などのノイズを徹底的に削除
-    clean_title = re.sub(r'(第?\d+[巻話].*|【.*?】|（.*?）|\(.*?\)|\[.*?\])', '', title)
-    clean_title = re.sub(r'[\s ]+', ' ', clean_title).strip()
+def generate_bookwalker_cover_url(item_url):
+    """BOOK☆WALKERの商品URLから直接表紙画像URLを生成"""
+    if not isinstance(item_url, str):
+        return ""
     
-    if not clean_title:
-        clean_title = title.strip()
-
-    # 検索クエリを作成（タイトル優先）
-    query_str = f"{clean_title} {publisher}".strip()
+    # URLから de12345678 などのUUID/商品IDを抽出
+    match = re.search(r'/(de[a-zA-Z0-9\-]+)/?', item_url)
+    if match:
+        item_id = match.group(1)
+        # BOOK☆WALKERの標準画像サーバーURLを生成（200x200〜300x300相当の表紙画像）
+        return f"https://c.bookwalker.jp/{item_id}/base_component.jpg"
     
-    if query_str in cache:
-        return cache[query_str]
-
-    encoded_query = urllib.parse.quote(clean_title) # APIにはタイトルメインで投げる方がヒット率向上
-    url = f"https://www.googleapis.com/books/v1/volumes?q={encoded_query}&maxResults=1"
-    
-    for attempt in range(2):
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=3) as res:
-                data = json.loads(res.read().decode('utf-8'))
-                
-                if "items" in data and len(data["items"]) > 0:
-                    volume_info = data["items"][0].get("volumeInfo", {})
-                    image_links = volume_info.get("imageLinks", {})
-                    
-                    cover_url = image_links.get("thumbnail") or image_links.get("smallThumbnail") or ""
-                    if cover_url:
-                        # http -> https に置換 + zoomパラメータ調整で高画質化・表示安定化
-                        cover_url = re.sub(r'^http://', 'https://', cover_url)
-                        cache[query_str] = cover_url
-                        time.sleep(0.1)
-                        return cover_url
-                
-                cache[query_str] = ""
-                time.sleep(0.1)
-                return ""
-
-        except Exception:
-            break
-
-    cache[query_str] = ""
     return ""
 
 def is_title_v1(title):
@@ -83,7 +47,7 @@ def is_title_v1(title):
     return False
 
 def download_csv_with_curl():
-    print(">>> [1/4] curl コマンドで CSV ファイルをダウンロード中...", flush=True)
+    print(">>> [1/3] curl コマンドで CSV ファイルをダウンロード中...", flush=True)
     cmd = [
         "curl", "-sL",
         "-A", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -125,13 +89,11 @@ def main():
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付絞り込み（先月〜来月）
-    today = datetime.date.today()
-    start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
-    end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
+# 2. 日付絞り込み（テスト用：2026年8月1日のみ）
+    target_date = "2026-08-01"
 
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
-    df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
+    df = df[df[date_col] == target_date]
 
     # 3. ノイズ除去
     ignore_pattern = (
@@ -140,21 +102,17 @@ def main():
     )
     df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
 
-    print(f">>> [2/4] 絞り込み後の処理対象件数: {len(df)} 件", flush=True)
+    print(f">>> [2/3] 絞り込み後の処理対象件数: {len(df)} 件", flush=True)
 
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
-    cover_cache = load_json_file(CACHE_FILE)
-    if not isinstance(cover_cache, dict):
-        cover_cache = {}
-
     is_initial_run = len(known_series) == 0
     new_series_set = set(known_series)
     result = {}
 
     processed_count = 0
 
-    print(">>> [3/4] Google Books APIで画像を取得中...", flush=True)
-    for idx, (_, row) in enumerate(df.iterrows()):
+    print(">>> [3/3] 画像URLの生成とデータ構築中...", flush=True)
+    for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
         series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip()
@@ -175,28 +133,24 @@ def main():
             if month not in result:
                 result[month] = []
 
-            publisher = str(row.get('発行元', ''))
-            category = str(row.get(category_col, '')).strip()
-            
-            image_url = fetch_google_books_cover(title, publisher, cover_cache)
+            item_url = str(row.get(url_col, ''))
+            image_url = generate_bookwalker_cover_url(item_url)
 
             result[month].append({
                 "title": title,
-                "url": str(row.get(url_col, '')),
+                "url": item_url,
                 "image": image_url,
-                "publisher": publisher,
+                "publisher": str(row.get('発行元', '')),
                 "label": str(row.get('レーベル', '')),
-                "category": category,
+                "category": str(row.get(category_col, '')).strip(),
                 "series": series,
                 "price": str(row.get('価格', '')),
                 "release_date": rel_date,
                 "is_new_series": is_new_series
             })
             processed_count += 1
-            if processed_count % 20 == 0:
-                print(f"    - {processed_count} 件処理完了...", flush=True)
 
-    print(f">>> [4/4] 最終抽出結果: {processed_count} 件のデータを登録しました。", flush=True)
+    print(f">>> 最終抽出結果: {processed_count} 件のデータを登録しました。", flush=True)
 
     for month in result:
         result[month].sort(key=lambda x: x['release_date'])
@@ -209,7 +163,6 @@ def main():
         json.dump(months_list, f, ensure_ascii=False, indent=2)
 
     save_json_file(HISTORY_FILE, list(new_series_set))
-    save_json_file(CACHE_FILE, cover_cache)
 
     if os.path.exists(LOCAL_CSV_PATH):
         os.remove(LOCAL_CSV_PATH)
