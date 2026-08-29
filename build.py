@@ -5,6 +5,7 @@ import os
 import datetime
 import subprocess
 import urllib.request
+import unicodedata
 from html.parser import HTMLParser
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -77,15 +78,22 @@ def is_title_v1(title):
     if pd.isna(title):
         return False
     
-    title_str = str(title).strip()
+    # 1. 全角英数・全角スペース等を半角に正規化し、前後の空白を除去
+    title_str = unicodedata.normalize('NFKC', str(title)).strip()
 
-    # 1. 末尾が「1」「１」「Ⅰ」「①」で終わる
-    if re.search(r'[1１Ⅰ①]\s*$', title_str):
+    # 2. 【除外パターン】「SEASON 1」「PART 1」「第1章」など、巻数ではない 1 を除外
+    if re.search(r'(season|part|ver|volume|vol|第)\s*1$', title_str, re.IGNORECASE):
+        if not re.search(r'1\s*(巻|話)$', title_str):
+            return False
+
+    # 3. 【明示的な1巻表記】「1巻」「第1巻」「1話」「(1)」「【1】」など
+    v1_explicit_regex = r'([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
+    if re.search(v1_explicit_regex, title_str):
         return True
 
-    # 2. 記号や「巻」「話」などに囲まれた「1」を判定
-    v1_regex = r'([（\(【\s\-_第話]*[1１Ⅰ①][）\)】\s\-_話巻]+|第[1１Ⅰ①][話巻]|【合冊版】\s*[1１]|^[1１Ⅰ①][話巻])'
-    if re.search(v1_regex, title_str):
+    # 4. 【末尾の 1/Ⅰ/① 判定】タイトルの最後に置かれた巻数判定
+    # 直前が英数字の一部ではない（例: GATE1 などを除外）独立した 1 を判定
+    if re.search(r'(?:[^\w\a-zA-Z0-9]|[^\d\a-zA-Z])[1Ⅰ①]\s*$', title_str):
         return True
 
     return False
