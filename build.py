@@ -79,11 +79,11 @@ def is_title_v1(title):
     
     title_str = str(title).strip()
 
-    # 1. 末尾が「1」「１」「Ⅰ」「①」で終わる（末尾の全角数字などを確実に捕捉）
+    # 1. 末尾が「1」「１」「Ⅰ」「①」で終わる
     if re.search(r'[1１Ⅰ①]\s*$', title_str):
         return True
 
-    # 2. カッコや記号、巻・話・第などに囲まれた「1」を判定（エスケープバグを完全修正）
+    # 2. 記号や「巻」「話」などに囲まれた「1」を判定
     v1_regex = r'([（\(【\s\-_第話]*[1１Ⅰ①][）\)】\s\-_話巻]+|第[1１Ⅰ①][話巻]|【合冊版】\s*[1１]|^[1１Ⅰ①][話巻])'
     if re.search(v1_regex, title_str):
         return True
@@ -133,15 +133,19 @@ def main():
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付絞り込み（今月・先月・来月）
+    # 2. 日付判定（pd.to_datetime で厳密に日付型にして抽出）
+    df['datetime_dt'] = pd.to_datetime(df[date_col], errors='coerce')
+    
     today = datetime.date.today()
-    start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
-    end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
+    start_date = pd.Timestamp(today.year, today.month, 1) - pd.DateOffset(months=1)
+    end_date = (pd.Timestamp(today.year, today.month, 1) + pd.DateOffset(months=2)) - pd.Timedelta(days=1)
 
-    df[date_col] = df[date_col].astype(str).str.replace('/', '-')
-    df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
+    df = df[(df['datetime_dt'] >= start_date) & (df['datetime_dt'] <= end_date)].copy()
+    
+    # 標準フォーマット (YYYY-MM-DD) に統一して日付列を上書き
+    df[date_col] = df['datetime_dt'].dt.strftime('%Y-%m-%d')
 
-    # 3. ノイズ除去（タイトルの巻き込みを防ぐため「SS付き」「特典」などを除外条件から削除）
+    # 3. ノイズ除去
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
         r'雑誌|定期購読|小冊子|先行|予告'
@@ -164,7 +168,7 @@ def main():
         series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip()
 
-        if not rel_date or len(rel_date) < 7:
+        if not rel_date or rel_date == 'nan':
             continue
 
         has_v1_title = is_title_v1(title)
@@ -175,7 +179,6 @@ def main():
                 is_new_series = True
             new_series_set.add(series)
 
-        # 1巻タイトルであれば無条件追加、または未登録の新規シリーズであれば追加
         if has_v1_title or is_new_series:
             item_url = str(row.get(url_col, ''))
             target_items.append({
@@ -197,7 +200,7 @@ def main():
     # 月ごとにグループ構築
     result = {}
     for item in target_items:
-        month = item["release_date"][:7]
+        month = item["release_date"][:7] # YYYY-MM
         if month not in result:
             result[month] = []
 
@@ -215,6 +218,13 @@ def main():
     months_list = sorted(list(result.keys()), reverse=True)
     with open('months.json', 'w', encoding='utf-8') as f:
         json.dump(months_list, f, ensure_ascii=False, indent=2)
+
+    # 日本時間（JST）で現在日時を取得して出力
+    jst = datetime.timezone(datetime.timedelta(hours=9))
+    now_jst = datetime.datetime.now(jst)
+    updated_str = now_jst.strftime('%Y年%m月%d日 %H:%M')
+    with open('last_updated.json', 'w', encoding='utf-8') as f:
+        json.dump({"updated_at": updated_str}, f, ensure_ascii=False, indent=2)
 
     save_json_file(HISTORY_FILE, list(new_series_set))
     save_json_file(CACHE_FILE, cover_cache)
