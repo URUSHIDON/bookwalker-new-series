@@ -76,11 +76,16 @@ def save_json_file(filepath, data):
 def is_title_v1(title):
     if pd.isna(title):
         return False
-    # タイトルに「1」「1巻」「【合冊版】 1」などが含まれるかチェック
-    patterns = [r'[（(【\s]1[）)\s】]', r'1巻', r'第1巻', r'[\s]1$', r'【合冊版】\s*1']
-    for pat in patterns:
-        if re.search(pat, str(title)):
-            return True
+    
+    title_str = str(title).strip()
+
+    # 「1」「１」「Ⅰ」「①」などの1巻パターン判定
+    # タイトル末尾の数字、カッコ囲み、巻数指定などを広範にカバー
+    v1_regex = r'([（(【\s\-_]*[1１Ⅰ①][）)\s】巻]*$|[（(【\s\-_][1１Ⅰ①][）)\s】巻]|^[1１Ⅰ①]巻|第[1１Ⅰ①]巻|【合冊版】\s*[1１])'
+
+    if re.search(v1_regex, title_str):
+        return True
+
     return False
 
 def download_csv_with_curl():
@@ -134,10 +139,10 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # 3. ノイズ除去（「合冊版」などは除外せず「無料試読」「サンプル」などを除外）
+    # 3. ノイズ除去（タイトルの巻き込みを防ぐため「SS付き」「特典」などを除外条件から削除）
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
-        r'雑誌|定期購読|小冊子|特典|ペーパー|SS付き|イラスト付き|先行|予告'
+        r'雑誌|定期購読|小冊子|先行|予告'
     )
     df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
 
