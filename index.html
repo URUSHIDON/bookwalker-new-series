@@ -242,6 +242,14 @@
     let monthsList = [];
     let currentMonthIndex = 0;
 
+    // 当月（YYYY-MM）を取得する関数
+    function getCurrentYearMonth() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      return `${y}-${m}`;
+    }
+
     async function init() {
       try {
         const monthsRes = await fetch('months.json?v=' + Date.now());
@@ -256,9 +264,20 @@
           monthSelect.appendChild(opt);
         });
 
-        if (monthsList.length > 0) {
+        // 今月（当月）を初期値として検索・セット
+        const currentYM = getCurrentYearMonth();
+        const foundIndex = monthsList.indexOf(currentYM);
+
+        if (foundIndex !== -1) {
+          // months.json に今月が存在すれば今月を初期選択
+          currentMonthIndex = foundIndex;
+        } else if (monthsList.length > 0) {
+          // 今月が存在しない場合は一番新しい月を表示
           currentMonthIndex = 0;
-          monthSelect.value = monthsList[0];
+        }
+
+        if (monthsList.length > 0) {
+          monthSelect.value = monthsList[currentMonthIndex];
         }
 
         const dataRes = await fetch('data.json?v=' + Date.now());
@@ -304,7 +323,7 @@
     }
 
     function updateNavButtons() {
-      // monthsList が降順（新しい月が 0 ）の場合
+      // monthsList が降順（最新月が index 0）の場合のボタン無効化判定
       document.getElementById('prev-month-btn').disabled = (currentMonthIndex >= monthsList.length - 1);
       document.getElementById('next-month-btn').disabled = (currentMonthIndex <= 0);
     }
