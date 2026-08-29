@@ -117,10 +117,10 @@ def main():
 
     print(f">>> 元データ全件数: {len(df)} 件", flush=True)
 
-    # 1. カテゴリ絞り込み
+    # 1. カテゴリ絞り込み（マンガ・コミックを対象）
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付絞り込み（本番用：先月〜来月）
+    # 2. 日付絞り込み（先月〜来月）
     today = datetime.date.today()
     start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
     end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
@@ -128,10 +128,11 @@ def main():
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
     df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
-    # 3. ノイズ除去
+    # 3. ノイズ除去（「話」「連載」「分冊」などをデフォルト除外）
     ignore_pattern = (
         r'無料|期間限定|お試し|試読|特別版|サンプル|増量|立読み|立ち読み|閲覧用|プロモーション|'
-        r'単話|分冊|話売り|【話】|（話）|\(話\)|話：|話\s*-|話\)|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
+        r'単話|分冊|話売り|話版|【話】|（話）|\(話\)|話：|話\s*-|話\)|第\d+話|'
+        r'連載|雑誌|定期購読|小冊子|特典|ペーパー|SS付き|イラスト付き|マイクロ|先行|予告'
     )
     df = df[~df[title_col].astype(str).str.contains(ignore_pattern, regex=True, na=False)]
 
