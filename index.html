@@ -84,17 +84,31 @@
 
     .search-box {
       flex: 1;
-      min-width: 220px;
+      min-width: 200px;
     }
 
     .search-box input {
       width: 100%;
     }
 
-    .checkbox-group {
+    /* カテゴリフィルタ（チェックボックス群） */
+    .category-filter-container {
       display: flex;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
       align-items: center;
+      padding: 4px 0;
+      width: 100%;
+      border-top: 1px solid #f1f3f5;
+      margin-top: 8px;
+      padding-top: 12px;
+    }
+
+    .category-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #495057;
+      margin-right: 4px;
     }
 
     .filter-checkbox {
@@ -102,7 +116,7 @@
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #333;
       user-select: none;
     }
@@ -276,16 +290,6 @@
     <div class="search-box">
       <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
     </div>
-    
-    <!-- 絞り込みチェックボックス -->
-    <div class="checkbox-group">
-      <label class="filter-checkbox">
-        <input type="checkbox" id="v1-only-check"> 1巻のみ
-      </label>
-      <label class="filter-checkbox">
-        <input type="checkbox" id="new-only-check"> 新シリーズのみ
-      </label>
-    </div>
 
     <!-- ソート -->
     <div class="control-group">
@@ -296,6 +300,12 @@
     </div>
 
     <div id="item-count" class="item-count">0 件表示</div>
+
+    <!-- カテゴリ別動的チェックボックス群 -->
+    <div class="category-filter-container">
+      <span class="category-title">カテゴリ：</span>
+      <div id="category-checkboxes" style="display: flex; flex-wrap: wrap; gap: 12px;"></div>
+    </div>
   </div>
 
   <!-- メインコンテンツ -->
@@ -316,6 +326,7 @@
 
         if (months && months.length > 0) {
           setupMonthSelect(months);
+          setupCategoryCheckboxes();
           applyFiltersAndRender();
         } else {
           document.getElementById('main-content').innerHTML = '<div class="no-data">表示できるデータがありません。</div>';
@@ -351,7 +362,57 @@
         opt.textContent = m;
         select.appendChild(opt);
       });
-      select.addEventListener('change', applyFiltersAndRender);
+      select.addEventListener('change', () => {
+        setupCategoryCheckboxes(); // 月変更時に存在するカテゴリを再生成
+        applyFiltersAndRender();
+      });
+    }
+
+    // CSVからカテゴリを動的抽出してチェックボックスを作成
+    function setupCategoryCheckboxes() {
+      const currentMonth = document.getElementById('month-select').value;
+      const items = allData[currentMonth] || [];
+
+      // 重複なしでカテゴリリストを作成
+      const categories = setUniqueCategories(items);
+      const container = document.getElementById('category-checkboxes');
+      container.innerHTML = '';
+
+      if (categories.length === 0) {
+        container.innerHTML = '<span style="font-size: 0.85rem; color: #888;">カテゴリ情報なし</span>';
+        return;
+      }
+
+      categories.forEach(cat => {
+        const label = document.createElement('label');
+        label.className = 'filter-checkbox';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = cat;
+        checkbox.className = 'category-check';
+
+        // デフォルトで「マンガ」が含まれるものだけにチェックを入れる
+        if (cat.includes('マンガ') || cat.includes('コミック')) {
+          checkbox.checked = true;
+        }
+
+        checkbox.addEventListener('change', applyFiltersAndRender);
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(` ${cat}`));
+        container.appendChild(label);
+      });
+    }
+
+    function setUniqueCategories(items) {
+      const catSet = new Set();
+      items.forEach(item => {
+        if (item.category && item.category !== 'nan') {
+          catSet.add(item.category);
+        }
+      });
+      return Array.from(catSet).sort();
     }
 
     function applyFiltersAndRender() {
@@ -359,9 +420,10 @@
       const rawItems = allData[currentMonth] || [];
 
       const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
-      const v1Only = document.getElementById('v1-only-check').checked;
-      const newOnly = document.getElementById('new-only-check').checked;
       const sortType = document.getElementById('sort-select').value;
+
+      // チェックされているカテゴリを取得
+      const checkedCategories = Array.from(document.querySelectorAll('.category-check:checked')).map(cb => cb.value);
 
       // 絞り込み
       let filtered = rawItems.filter(item => {
@@ -369,10 +431,9 @@
         const matchPublisher = (item.publisher || '').toLowerCase().includes(searchQuery);
         const matchSearch = matchTitle || matchPublisher;
 
-        const matchV1 = v1Only ? item.is_v1 : true;
-        const matchNew = newOnly ? item.is_new_series : true;
+        const matchCategory = checkedCategories.length === 0 || checkedCategories.includes(item.category);
 
-        return matchSearch && matchV1 && matchNew;
+        return matchSearch && matchCategory;
       });
 
       // 件数表示
@@ -448,8 +509,6 @@
     }
 
     document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
-    document.getElementById('v1-only-check').addEventListener('change', applyFiltersAndRender);
-    document.getElementById('new-only-check').addEventListener('change', applyFiltersAndRender);
     document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
 
     document.addEventListener('DOMContentLoaded', init);
