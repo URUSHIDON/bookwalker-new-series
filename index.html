@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>新刊マンガ 1巻・新シリーズ一覧</title>
   <style>
-    :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --accent-color: #38bdf8;
-      --badge-new: #ef4444;
-      --border-color: #334155;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,25 +13,22 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
+      background-color: #f8f9fa;
+      color: #333333;
       padding: 24px 16px;
-      max-width: 1280px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     header {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     h1 {
       font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 16px;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: #212529;
     }
 
     /* 月選択タブ */
@@ -49,13 +36,13 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .tab-btn {
-      background: var(--card-bg);
-      color: var(--text-sub);
-      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: #495057;
+      border: 1px solid #ced4da;
       padding: 8px 18px;
       border-radius: 20px;
       cursor: pointer;
@@ -65,35 +52,33 @@
     }
 
     .tab-btn:hover {
-      color: var(--text-main);
-      border-color: var(--accent-color);
+      background: #e9ecef;
+      color: #212529;
     }
 
     .tab-btn.active {
-      background: var(--accent-color);
-      color: #0f172a;
-      border-color: var(--accent-color);
+      background: #0d6efd;
+      color: #ffffff;
+      border-color: #0d6efd;
     }
 
     /* データ更新日時 */
     .last-updated {
       font-size: 0.85rem;
-      color: var(--text-sub);
+      color: #6c757d;
       margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    /* フィルター・コントロールエリア */
+    /* コントロールエリア (検索・ソート) */
     .controls {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      background: var(--card-bg);
+      background: #ffffff;
       padding: 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
       margin-bottom: 24px;
       align-items: center;
     }
@@ -105,17 +90,15 @@
 
     .search-box input {
       width: 100%;
-      padding: 8px 14px;
+      padding: 8px 12px;
       border-radius: 6px;
-      border: 1px solid var(--border-color);
-      background: #0f172a;
-      color: var(--text-main);
+      border: 1px solid #ced4da;
       font-size: 0.9rem;
+      outline: none;
     }
 
     .search-box input:focus {
-      outline: none;
-      border-color: var(--accent-color);
+      border-color: #0d6efd;
     }
 
     .filter-options {
@@ -131,23 +114,23 @@
       gap: 6px;
       cursor: pointer;
       font-size: 0.9rem;
-      color: var(--text-main);
+      color: #333;
       user-select: none;
     }
 
     .filter-select {
       padding: 8px 12px;
       border-radius: 6px;
-      border: 1px solid var(--border-color);
-      background: #0f172a;
-      color: var(--text-main);
+      border: 1px solid #ced4da;
+      background: #ffffff;
+      color: #333;
       font-size: 0.9rem;
       cursor: pointer;
     }
 
     .item-count {
       font-size: 0.85rem;
-      color: var(--text-sub);
+      color: #6c757d;
       margin-left: auto;
     }
 
@@ -160,25 +143,25 @@
 
     /* カードデザイン */
     .item-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .item-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-      border-color: #475569;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
     }
 
     .img-wrapper {
       width: 100%;
       aspect-ratio: 1 / 1.4;
-      background: #0f172a;
+      background: #f1f3f5;
       position: relative;
       overflow: hidden;
     }
@@ -193,13 +176,13 @@
       position: absolute;
       top: 8px;
       left: 8px;
-      background-color: var(--badge-new);
-      color: #fff;
+      background-color: #dc3545;
+      color: #ffffff;
       font-size: 0.7rem;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 4px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     .item-body {
@@ -211,7 +194,7 @@
 
     .item-date {
       font-size: 0.75rem;
-      color: var(--accent-color);
+      color: #0d6efd;
       font-weight: 600;
       margin-bottom: 4px;
     }
@@ -220,7 +203,7 @@
       font-size: 0.9rem;
       font-weight: 600;
       line-height: 1.4;
-      color: var(--text-main);
+      color: #212529;
       text-decoration: none;
       margin-bottom: 8px;
       display: -webkit-box;
@@ -230,15 +213,15 @@
     }
 
     .item-title:hover {
-      color: var(--accent-color);
+      color: #0d6efd;
     }
 
     .item-meta {
       margin-top: auto;
       padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid #f1f3f5;
       font-size: 0.75rem;
-      color: var(--text-sub);
+      color: #6c757d;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
@@ -253,14 +236,14 @@
 
     .price {
       font-weight: 600;
-      color: var(--text-main);
+      color: #212529;
     }
 
     .no-data {
       grid-column: 1 / -1;
       text-align: center;
       padding: 48px;
-      color: var(--text-sub);
+      color: #6c757d;
     }
 
     @media (max-width: 640px) {
@@ -282,16 +265,16 @@
 <body>
 
   <header>
-    <h1>📚 新刊マンガ 1巻・新シリーズ</h1>
+    <h1>📚 新刊マンガ 1巻・新シリーズ一覧</h1>
     
     <!-- 月選択タブ -->
     <div id="month-tabs" class="month-tabs"></div>
 
-    <!-- データ更新日時を表示する場所 -->
+    <!-- データ更新日時 -->
     <div id="last-updated" class="last-updated">データ更新日時：取得中...</div>
   </header>
 
-  <!-- コントロールバー（検索・フィルタ・ソート） -->
+  <!-- コントロールバー -->
   <div class="controls">
     <div class="search-box">
       <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
@@ -312,7 +295,7 @@
     <div id="item-count" class="item-count">0 件表示</div>
   </div>
 
-  <!-- カード一覧表示領域 -->
+  <!-- メインコンテンツ -->
   <main>
     <div id="item-grid" class="item-grid"></div>
   </main>
@@ -344,7 +327,7 @@
       }
     }
 
-    // データ更新日時（last_updated.json）の読み込み
+    // データ更新日時の取得
     async function loadUpdateTime() {
       try {
         const res = await fetch('last_updated.json');
@@ -382,7 +365,7 @@
       const newOnly = document.getElementById('new-only-check').checked;
       const sortType = document.getElementById('sort-select').value;
 
-      // 1. 絞り込み (検索 & 新シリーズのみ)
+      // 絞り込み
       let filtered = rawItems.filter(item => {
         const matchTitle = item.title.toLowerCase().includes(searchQuery);
         const matchPublisher = (item.publisher || '').toLowerCase().includes(searchQuery);
@@ -393,7 +376,7 @@
         return matchSearch && matchNew;
       });
 
-      // 2. 並び替え
+      // 並び替え
       filtered.sort((a, b) => {
         if (sortType === 'date-asc') {
           return a.release_date.localeCompare(b.release_date);
@@ -405,10 +388,10 @@
         return 0;
       });
 
-      // 3. 件数更新
+      // 件数表示
       document.getElementById('item-count').textContent = `${filtered.length} 件表示`;
 
-      // 4. 描画
+      // 描画
       renderGrid(filtered);
     }
 
@@ -427,7 +410,7 @@
 
         const imgSrc = item.image && item.image.startsWith('http') 
           ? item.image 
-          : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%231e293b"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%2364748b" font-size="14">No Image</text></svg>';
+          : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%23f1f3f5"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23adb5bd" font-size="14">No Image</text></svg>';
 
         card.innerHTML = `
           <div class="img-wrapper">
@@ -447,7 +430,6 @@
       });
     }
 
-    // イベントリスナーの登録
     document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
     document.getElementById('new-only-check').addEventListener('change', applyFiltersAndRender);
     document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
