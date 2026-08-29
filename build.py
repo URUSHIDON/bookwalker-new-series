@@ -87,13 +87,13 @@ def is_title_v1(title):
             return False
 
     # 3. 【明示的な1巻表記】「1巻」「第1巻」「1話」「(1)」「【1】」など
-    v1_explicit_regex = r'([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
+    v1_explicit_regex = r'(?<!\d)([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
     if re.search(v1_explicit_regex, title_str):
         return True
 
     # 4. 【末尾の 1/Ⅰ/① 判定】タイトルの最後に置かれた巻数判定
     # 直前が英数字の一部ではない（例: GATE1 などを除外）独立した 1 を判定
-    if re.search(r'(?:[^0-9a-zA-Z])[1Ⅰ①]\s*$', title_str):
+    if re.search(r'(?<!\d)[^0-9a-zA-Z][1Ⅰ①]\s*$', title_str):
         return True
 
     return False
