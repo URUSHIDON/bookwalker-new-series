@@ -105,7 +105,6 @@
       padding: 0 1rem;
     }
 
-    /* 日付セクションのスタイル */
     .date-section {
       margin-bottom: 2.5rem;
     }
@@ -249,7 +248,6 @@
         monthsList.forEach((m, idx) => {
           const opt = document.createElement('option');
           opt.value = m;
-          // 表示形式を "2026年 08月" のスタイルに整形
           const [y, mon] = m.split('-');
           opt.textContent = `${y}年 ${mon}月`;
           monthSelect.appendChild(opt);
@@ -266,7 +264,6 @@
         updateNavButtons();
         render();
 
-        // イベントリスナー
         monthSelect.addEventListener('change', (e) => {
           currentMonthIndex = monthsList.indexOf(e.target.value);
           updateNavButtons();
@@ -300,7 +297,6 @@
     }
 
     function updateNavButtons() {
-      // monthsList は降順（新しい月がインデックス0）を想定
       document.getElementById('prev-month-btn').disabled = (currentMonthIndex >= monthsList.length - 1);
       document.getElementById('next-month-btn').disabled = (currentMonthIndex <= 0);
     }
@@ -315,7 +311,7 @@
       const currentMonthKey = monthsList[currentMonthIndex];
       const items = allData[currentMonthKey] || [];
 
-      // 絞り込み処理
+      // 絞り込み
       const filtered = items.filter(item => {
         const isEpisode = /話|連載|分冊/i.test(item.title) || /話/i.test(item.category || "");
         if (isEpisode && !showEpisodes) return false;
@@ -331,25 +327,26 @@
       // 日付（YYYY-MM-DD）毎にグループ化
       const groupedByDate = {};
       filtered.forEach(item => {
-        const dateKey = item.release_date || '日付不明';
-        if (!groupedByDate[dateKey]) {
-          groupedByDate[dateKey] = [];
+        const rawDate = item.release_date ? item.release_date.split(' ')[0] : '日付不明';
+        if (!groupedByDate[rawDate]) {
+          groupedByDate[rawDate] = [];
         }
-        groupedByDate[dateKey].push(item);
+        groupedByDate[rawDate].push(item);
       });
 
-      // 日付順にソートして描画
+      // 日付順にソート（昇順）
       const sortedDates = Object.keys(groupedByDate).sort();
 
       sortedDates.forEach(dateStr => {
         const dateSection = document.createElement('div');
         dateSection.className = 'date-section';
 
-        // 見出し用の日付フォーマット（例: "8月1日"）
         let formattedHeading = dateStr;
         if (dateStr.includes('-')) {
           const parts = dateStr.split('-');
-          formattedHeading = `${parseInt(parts[1], 10)}月${parseInt(parts[2], 10)}日`;
+          if (parts.length >= 3) {
+            formattedHeading = `${parseInt(parts[1], 10)}月${parseInt(parts[2], 10)}日`;
+          }
         }
 
         const heading = document.createElement('div');
