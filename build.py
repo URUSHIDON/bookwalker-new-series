@@ -12,6 +12,7 @@ CSV_URL = "https://bookwalker.jp/csv/download.php"
 FAQ_URL = "https://help.bookwalker.jp/faq/301"
 LOCAL_CSV_PATH = "downloaded_data.csv"
 HISTORY_FILE = "series_history.json"
+CACHE_FILE = "cover_cache.json"
 
 class OGImageParser(HTMLParser):
     def __init__(self):
@@ -29,6 +30,7 @@ def fetch_bookwalker_og_image(item_url, cache={}):
     if not isinstance(item_url, str) or not item_url.startswith("http"):
         return ""
     
+    # キャッシュに存在するなら通信せずに返す
     if item_url in cache:
         return cache[item_url]
 
@@ -44,13 +46,13 @@ def fetch_bookwalker_og_image(item_url, cache={}):
             image_url = parser.image_url
             if image_url:
                 cache[item_url] = image_url
-                time.sleep(0.2)  # サーバー負荷軽減用ウェイト
+                time.sleep(0.1)  # サーバー負荷軽減用ウェイト
                 return image_url
     except Exception:
         pass
 
     cache[item_url] = ""
-    time.sleep(0.1)
+    time.sleep(0.05)
     return ""
 
 def load_json_file(filepath):
@@ -118,10 +120,13 @@ def main():
     # 1. カテゴリ絞り込み
     df = df[df[category_col].astype(str).str.contains('マンガ|コミック', na=False)]
 
-    # 2. 日付絞り込み（テスト用：2026年8月1日のみ）
-    target_date = "2026-08-01"
+    # 2. 日付絞り込み（本番用：先月〜来月）
+    today = datetime.date.today()
+    start_date = (today.replace(day=1) - datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
+    end_date = (today.replace(day=28) + datetime.timedelta(days=60)).strftime('%Y-%m-%d')
+
     df[date_col] = df[date_col].astype(str).str.replace('/', '-')
-    df = df[df[date_col] == target_date]
+    df = df[(df[date_col] >= start_date) & (df[date_col] <= end_date)]
 
     # 3. ノイズ除去
     ignore_pattern = (
@@ -133,6 +138,10 @@ def main():
     print(f">>> [2/3] 絞り込み後の処理対象件数: {len(df)} 件", flush=True)
 
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
+    cover_cache = load_json_file(CACHE_FILE)
+    if not isinstance(cover_cache, dict):
+        cover_cache = {}
+
     is_initial_run = len(known_series) == 0
     new_series_set = set(known_series)
     result = {}
@@ -162,7 +171,7 @@ def main():
                 result[month] = []
 
             item_url = str(row.get(url_col, ''))
-            image_url = fetch_bookwalker_og_image(item_url)
+            image_url = fetch_bookwalker_og_image(item_url, cover_cache)
 
             result[month].append({
                 "title": title,
@@ -177,7 +186,7 @@ def main():
                 "is_new_series": is_new_series
             })
             processed_count += 1
-            if processed_count % 10 == 0:
+            if processed_count % 50 == 0:
                 print(f"    - {processed_count} 件処理完了...", flush=True)
 
     print(f">>> 最終抽出結果: {processed_count} 件のデータを登録しました。", flush=True)
@@ -192,7 +201,9 @@ def main():
     with open('months.json', 'w', encoding='utf-8') as f:
         json.dump(months_list, f, ensure_ascii=False, indent=2)
 
+    # 履歴と画像キャッシュを保存
     save_json_file(HISTORY_FILE, list(new_series_set))
+    save_json_file(CACHE_FILE, cover_cache)
 
     if os.path.exists(LOCAL_CSV_PATH):
         os.remove(LOCAL_CSV_PATH)
