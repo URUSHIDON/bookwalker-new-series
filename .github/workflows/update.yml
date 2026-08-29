@@ -1,21 +1,20 @@
-name: Daily BookWalker First Volume Update
+name: Update BookWalker New Series Data
 
 on:
   schedule:
-    # 毎日 JST 午前3:00 (UTC 18:00) に自動実行
-    - cron: '0 18 * * *'
-  workflow_dispatch: # 手動実行ボタン（動作確認用）
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+    # 毎日 午前9時（JST）に自動実行 (UTC 0:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 手動実行ボタンも有効化
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -26,39 +25,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pandas selenium
-          
-      - name: Install dependencies
-        run: pip install pandas requests
-        
-      - name: Run script
-        timeout-minutes: 3
+          pip install pandas
+
+      - name: Run build script
+        timeout-minutes: 15
         run: python build.py
-        
+
       - name: Commit and Push generated files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json series_history.json
+          git add data.json months.json series_history.json cover_cache.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto update generated data [skip ci]"
           git push
-
-      # 新しいシリーズ履歴(series_history.json)を自動コミットしてGitHubに保存
-      - name: Commit & Push updated history
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add series_history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update series history" && git push)
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
