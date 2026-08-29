@@ -3,417 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BOOK☆WALKER 1巻・新着カレンダー</title>
+  <title>新刊マンガ・新シリーズ一覧</title>
   <style>
-    :root {
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --border-color: #e9ecef;
-      --sub-text: #6c757d;
-    }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      line-height: 1.5;
-    }
-
-    header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 1.4rem;
-    }
-
-    /* 前月・来月ボタン & 月選択のスタイル */
-    .month-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-btn {
-      background: #ffffff;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      padding: 0.35rem 0.7rem;
-      font-size: 0.85rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .nav-btn:hover:not(:disabled) {
-      background-color: #e9ecef;
-    }
-
-    .nav-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    select {
-      padding: 0.35rem 0.6rem;
-      border: 1px solid #ced4da;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .filter-group {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      cursor: pointer;
-    }
-
-    main {
       max-width: 1200px;
-      margin: 1.5rem auto;
-      padding: 0 1rem;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      color: #333;
     }
-
-    .date-section {
-      margin-bottom: 2.5rem;
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
     }
-
-    .date-heading {
-      font-size: 1.3rem;
+    .month-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      border-radius: 4px;
       font-weight: bold;
-      border-bottom: 2px solid #333;
-      padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
-      width: 100%;
     }
-
-    .grid {
+    .tab-btn.active {
+      background: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+    .update-time {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .item-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
     }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+    .item-card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
       border-radius: 6px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      color: inherit;
     }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .card-image {
+    .item-img {
       width: 100%;
-      aspect-ratio: 1 / 1.42;
-      background-color: #eee;
+      height: 280px;
       object-fit: cover;
+      background-color: #f0f0f0;
     }
-
-    .card-content {
-      padding: 0.6rem;
+    .item-body {
+      padding: 12px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-
-    .badge {
-      display: inline-block;
-      padding: 0.15rem 0.35rem;
-      font-size: 0.65rem;
-      border-radius: 3px;
-      margin-bottom: 0.3rem;
-      width: fit-content;
-      font-weight: bold;
-    }
-
-    .badge-manga {
-      background-color: #ffe8a1;
-      color: #856404;
-    }
-
-    .badge-episode {
-      background-color: #e2e3e5;
-      color: #383d41;
-    }
-
-    .card-date {
-      font-size: 0.7rem;
-      color: var(--sub-text);
-      margin-bottom: 0.2rem;
-    }
-
-    .card-title {
+    .item-date {
       font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 4px;
+    }
+    .item-title {
+      font-size: 0.95rem;
       font-weight: bold;
-      margin: 0 0 0.4rem 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      line-height: 1.25;
+      margin-bottom: 8px;
+      line-height: 1.3;
+      text-decoration: none;
+      color: #007bff;
     }
-
-    .card-publisher {
+    .item-title:hover {
+      text-decoration: underline;
+    }
+    .badge-new {
+      display: inline-block;
+      background-color: #dc3545;
+      color: #fff;
       font-size: 0.7rem;
-      color: var(--sub-text);
-      margin-top: auto;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-bottom: 6px;
+      align-self: flex-start;
     }
-
-    .empty-msg {
-      text-align: center;
-      padding: 4rem;
-      color: var(--sub-text);
+    .item-meta {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: auto;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-top">
-      <h1>BOOK☆WALKER 1巻・新着カレンダー</h1>
-      
-      <!-- 表示月の左隣・右隣に遷移ボタンを配置 -->
-      <div class="month-nav">
-        <span>表示月:</span>
-        <button id="prev-month-btn" class="nav-btn">◀ 前月</button>
-        <select id="month-select"></select>
-        <button id="next-month-btn" class="nav-btn">来月 ▶</button>
-      </div>
-    </div>
+  <h1>新刊マンガ 1巻・新シリーズ一覧</h1>
 
-    <div class="controls">
-      <div class="filter-group">
-        <span>カテゴリ絞り込み:</span>
-        <!-- マンガのみデフォルトON、話・連載はデフォルトOFF -->
-        <label class="checkbox-label">
-          <input type="checkbox" id="cat-manga" checked> マンガ
-        </label>
-        <label class="checkbox-label">
-          <input type="checkbox" id="cat-episodes"> 話・連載（マンガ）
-        </label>
-      </div>
-    </div>
-  </header>
+  <!-- 月選択タブ -->
+  <div id="month-tabs" class="month-tabs"></div>
 
-  <main id="content-area"></main>
+  <!-- データ更新日時の表示領域 -->
+  <div id="update-time" class="update-time">データ更新日時：読み込み中...</div>
+
+  <!-- カード一覧表示領域 -->
+  <div id="item-grid" class="item-grid"></div>
 
   <script>
     let allData = {};
-    let monthsList = [];
-    let currentMonthIndex = 0;
-
-    // 当月（YYYY-MM）を取得する関数
-    function getCurrentYearMonth() {
-      const now = new Date();
-      const y = now.getFullYear();
-      const m = String(now.getMonth() + 1).padStart(2, '0');
-      return `${y}-${m}`;
-    }
 
     async function init() {
       try {
-        const monthsRes = await fetch('months.json?v=' + Date.now());
-        monthsList = await monthsRes.json();
+        // 更新日時の読み込み
+        loadUpdateTime();
 
-        const monthSelect = document.getElementById('month-select');
-        monthsList.forEach((m) => {
-          const opt = document.createElement('option');
-          opt.value = m;
-          const [y, mon] = m.split('-');
-          opt.textContent = `${y}年 ${mon}月`;
-          monthSelect.appendChild(opt);
-        });
+        // 表示月リストの取得
+        const monthsRes = await fetch('months.json');
+        const months = await monthsRes.json();
 
-        // 今月（当月）を初期値として検索・セット
-        const currentYM = getCurrentYearMonth();
-        const foundIndex = monthsList.indexOf(currentYM);
-
-        if (foundIndex !== -1) {
-          // months.json に今月が存在すれば今月を初期選択
-          currentMonthIndex = foundIndex;
-        } else if (monthsList.length > 0) {
-          // 今月が存在しない場合は一番新しい月を表示
-          currentMonthIndex = 0;
-        }
-
-        if (monthsList.length > 0) {
-          monthSelect.value = monthsList[currentMonthIndex];
-        }
-
-        const dataRes = await fetch('data.json?v=' + Date.now());
+        // メインデータの取得
+        const dataRes = await fetch('data.json');
         allData = await dataRes.json();
 
-        updateNavButtons();
-        render();
-
-        // 月セレクト切り替え
-        monthSelect.addEventListener('change', (e) => {
-          currentMonthIndex = monthsList.indexOf(e.target.value);
-          updateNavButtons();
-          render();
-        });
-
-        // 「前月」ボタン
-        document.getElementById('prev-month-btn').addEventListener('click', () => {
-          if (currentMonthIndex < monthsList.length - 1) {
-            currentMonthIndex++;
-            monthSelect.value = monthsList[currentMonthIndex];
-            updateNavButtons();
-            render();
-          }
-        });
-
-        // 「来月」ボタン
-        document.getElementById('next-month-btn').addEventListener('click', () => {
-          if (currentMonthIndex > 0) {
-            currentMonthIndex--;
-            monthSelect.value = monthsList[currentMonthIndex];
-            updateNavButtons();
-            render();
-          }
-        });
-
-        // チェックボックス切り替え
-        document.getElementById('cat-manga').addEventListener('change', render);
-        document.getElementById('cat-episodes').addEventListener('change', render);
-
+        if (months.length > 0) {
+          renderTabs(months);
+          renderItems(months[0]); // 最新月を表示
+        } else {
+          document.getElementById('item-grid').innerHTML = '<p>表示できるデータがありません。</p>';
+        }
       } catch (err) {
-        console.error("データの読み込みに失敗しました:", err);
+        console.error('データ読み込みエラー:', err);
+        document.getElementById('item-grid').innerHTML = '<p>データの読み込みに失敗しました。</p>';
       }
     }
 
-    function updateNavButtons() {
-      // monthsList が降順（最新月が index 0）の場合のボタン無効化判定
-      document.getElementById('prev-month-btn').disabled = (currentMonthIndex >= monthsList.length - 1);
-      document.getElementById('next-month-btn').disabled = (currentMonthIndex <= 0);
+    async function loadUpdateTime() {
+      try {
+        const res = await fetch('last_updated.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        document.getElementById('update-time').textContent = `データ更新日時：${data.updated_at}`;
+      } catch {
+        document.getElementById('update-time').textContent = '';
+      }
     }
 
-    function render() {
-      const main = document.getElementById('content-area');
-      main.innerHTML = "";
+    function renderTabs(months) {
+      const container = document.getElementById('month-tabs');
+      container.innerHTML = '';
 
-      const showManga = document.getElementById('cat-manga').checked;
-      const showEpisodes = document.getElementById('cat-episodes').checked;
-
-      const currentMonthKey = monthsList[currentMonthIndex];
-      const items = allData[currentMonthKey] || [];
-
-      // カテゴリ絞り込み
-      const filtered = items.filter(item => {
-        const isEpisode = /話|連載|分冊/i.test(item.title) || /話/i.test(item.category || "");
-        if (isEpisode && !showEpisodes) return false;
-        if (!isEpisode && !showManga) return false;
-        return true;
+      months.forEach((m, index) => {
+        const btn = document.createElement('button');
+        btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+        btn.textContent = m;
+        btn.onclick = () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderItems(m);
+        };
+        container.appendChild(btn);
       });
+    }
 
-      if (filtered.length === 0) {
-        main.innerHTML = '<div class="empty-msg">表示できる作品がありません。</div>';
+    function renderItems(month) {
+      const container = document.getElementById('item-grid');
+      container.innerHTML = '';
+
+      const items = allData[month] || [];
+      if (items.length === 0) {
+        container.innerHTML = '<p>この月の対象アイテムはありません。</p>';
         return;
       }
 
-      // 日付ごとにグループ化
-      const groupedByDate = {};
-      filtered.forEach(item => {
-        const rawDate = item.release_date ? item.release_date.split(' ')[0] : '日付不明';
-        if (!groupedByDate[rawDate]) {
-          groupedByDate[rawDate] = [];
-        }
-        groupedByDate[rawDate].push(item);
-      });
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'item-card';
 
-      // 日付順にソート（昇順）
-      const sortedDates = Object.keys(groupedByDate).sort();
+        const imgSrc = item.image || 'https://via.placeholder.com/200x280?text=No+Image';
 
-      sortedDates.forEach(dateStr => {
-        const dateSection = document.createElement('div');
-        dateSection.className = 'date-section';
-
-        let formattedHeading = dateStr;
-        if (dateStr.includes('-')) {
-          const parts = dateStr.split('-');
-          if (parts.length >= 3) {
-            formattedHeading = `${parseInt(parts[1], 10)}月${parseInt(parts[2], 10)}日`;
-          }
-        }
-
-        const heading = document.createElement('div');
-        heading.className = 'date-heading';
-        heading.textContent = formattedHeading;
-        dateSection.appendChild(heading);
-
-        const grid = document.createElement('div');
-        grid.className = 'grid';
-
-        groupedByDate[dateStr].forEach(item => {
-          const isEpisode = /話|連載|分冊/i.test(item.title) || /話/i.test(item.category || "");
-          const card = document.createElement('a');
-          card.className = 'card';
-          card.href = item.url;
-          card.target = '_blank';
-          card.rel = 'noopener noreferrer';
-
-          const imgSrc = item.image || 'https://via.placeholder.com/200x280?text=No+Image';
-
-          card.innerHTML = `
-            <img class="card-image" src="${imgSrc}" alt="${item.title}" loading="lazy">
-            <div class="card-content">
-              <span class="badge ${isEpisode ? 'badge-episode' : 'badge-manga'}">
-                ${isEpisode ? '話・連載（マンガ）' : 'マンガ'}
-              </span>
-              <div class="card-date">${item.release_date}</div>
-              <div class="card-title">${item.title}</div>
-              <div class="card-publisher">${item.publisher || ''}</div>
+        card.innerHTML = `
+          <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
+          <div class="item-body">
+            <div class="item-date">${item.release_date} 発売</div>
+            ${item.is_new_series ? '<span class="badge-new">新シリーズ</span>' : ''}
+            <a href="${item.url}" target="_blank" rel="noopener" class="item-title">${item.title}</a>
+            <div class="item-meta">
+              <div>${item.publisher}</div>
+              <div>${item.price ? item.price + '円' : ''}</div>
             </div>
-          `;
-          grid.appendChild(card);
-        });
-
-        dateSection.appendChild(grid);
-        main.appendChild(dateSection);
+          </div>
+        `;
+        container.appendChild(card);
       });
     }
 
-    init();
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>
