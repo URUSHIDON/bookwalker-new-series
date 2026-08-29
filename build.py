@@ -211,6 +211,16 @@ def main():
 
     print(f">>> [2/3] 絞り込み後の処理対象件数: {len(df)} 件", flush=True)
 
+    # 既存の data.json から過去の初回登録日（registered_at）マップを復元
+    existing_data = load_json_file('data.json')
+    registered_map = {}
+    if isinstance(existing_data, dict):
+        for m_key, items in existing_data.items():
+            if isinstance(items, list):
+                for it in items:
+                    if isinstance(it, dict) and it.get("url"):
+                        registered_map[it["url"]] = it.get("registered_at") or today.strftime('%Y-%m-%d')
+
     known_series = set(load_json_file(HISTORY_FILE) if isinstance(load_json_file(HISTORY_FILE), list) else [])
     cover_cache = load_json_file(CACHE_FILE)
     if not isinstance(cover_cache, dict):
@@ -219,6 +229,7 @@ def main():
     is_initial_run = len(known_series) == 0
     new_series_set = set(known_series)
     target_items = []
+    today_str = today.strftime('%Y-%m-%d')
 
     for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
@@ -238,6 +249,7 @@ def main():
 
         if has_v1_title or is_new_series:
             item_url = str(row.get(url_col, ''))
+            reg_date = registered_map.get(item_url, today_str)
             target_items.append({
                 "title": title,
                 "url": item_url,
@@ -247,6 +259,7 @@ def main():
                 "series": series,
                 "price": str(row.get('価格', '')),
                 "release_date": rel_date,
+                "registered_at": reg_date,
                 "is_v1": has_v1_title,
                 "is_new_series": is_new_series
             })

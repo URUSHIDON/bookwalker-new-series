@@ -166,17 +166,24 @@
     }
 
     .img-wrapper {
+      display: block;
       width: 100%;
       aspect-ratio: 1 / 1.4;
       background: #f1f3f5;
       position: relative;
       overflow: hidden;
+      text-decoration: none;
     }
 
     .item-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.2s ease;
+    }
+
+    .img-wrapper:hover .item-img {
+      transform: scale(1.03);
     }
 
     .badge-container {
@@ -199,6 +206,7 @@
 
     .badge-v1 { background-color: #198754; }
     .badge-new { background-color: #dc3545; }
+    .badge-recent { background-color: #fd7e14; }
 
     .item-body {
       padding: 12px;
@@ -233,6 +241,22 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+    }
+
+    .item-meta-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+      max-width: 110px;
+    }
+
+    .item-sub-info {
+      font-size: 0.7rem;
+      color: #868e96;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .publisher {
@@ -291,11 +315,25 @@
       <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
     </div>
 
+    <!-- 新着フィルタ (3, 7, 14日) -->
+    <div class="control-group">
+      <label for="recent-filter">新着：</label>
+      <select id="recent-filter" class="select-box">
+        <option value="all">全期間</option>
+        <option value="3">3日以内に追加</option>
+        <option value="7">7日以内に追加</option>
+        <option value="14">14日以内に追加</option>
+      </select>
+    </div>
+
     <!-- ソート -->
     <div class="control-group">
+      <label for="sort-select">並び順：</label>
       <select id="sort-select" class="select-box">
         <option value="date-asc">発売日順 (昇順)</option>
         <option value="date-desc">発売日順 (降順)</option>
+        <option value="registered-desc">登録日順 (新しい順)</option>
+        <option value="registered-asc">登録日順 (古い順)</option>
       </select>
     </div>
 
@@ -431,8 +469,12 @@
 
       const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
       const sortType = document.getElementById('sort-select').value;
+      const recentFilter = document.getElementById('recent-filter').value;
 
       const checkedCategories = Array.from(document.querySelectorAll('.category-check:checked')).map(cb => cb.value);
+
+      const now = new Date();
+      const todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
       let filtered = rawItems.filter(item => {
         const matchTitle = item.title.toLowerCase().includes(searchQuery);
@@ -441,47 +483,76 @@
 
         const matchCategory = checkedCategories.length === 0 || checkedCategories.includes(item.category);
 
-        return matchSearch && matchCategory;
+        let matchRecent = true;
+        if (recentFilter !== 'all') {
+          const daysLimit = parseInt(recentFilter, 10);
+          if (item.registered_at) {
+            const parts = item.registered_at.split('-');
+            const regDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+            const diffDays = Math.floor((todayDate - regDate) / (1000 * 60 * 60 * 24));
+            matchRecent = diffDays >= 0 && diffDays <= daysLimit;
+          } else {
+            matchRecent = false;
+          }
+        }
+
+        return matchSearch && matchCategory && matchRecent;
       });
 
       document.getElementById('item-count').textContent = `${filtered.length} 件表示`;
 
+      const isRegisteredSort = sortType.startsWith('registered-');
       const grouped = {};
       filtered.forEach(item => {
-        const date = item.release_date || '発売日未定';
-        if (!grouped[date]) grouped[date] = [];
-        grouped[date].push(item);
+        const key = isRegisteredSort
+          ? (item.registered_at ? `登録日：${item.registered_at}` : '登録日未定')
+          : (item.release_date || '発売日未定');
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push(item);
       });
 
-      const sortedDates = Object.keys(grouped).sort((a, b) => {
-        return sortType === 'date-asc' ? a.localeCompare(b) : b.localeCompare(a);
+      const sortedKeys = Object.keys(grouped).sort((a, b) => {
+        if (sortType === 'date-asc' || sortType === 'registered-asc') {
+          return a.localeCompare(b);
+        } else {
+          return b.localeCompare(a);
+        }
       });
 
-      renderGroupedView(grouped, sortedDates);
+      // グループ内の並び替え
+      sortedKeys.forEach(key => {
+        if (isRegisteredSort) {
+          grouped[key].sort((a, b) => (a.release_date || '').localeCompare(b.release_date || ''));
+        } else {
+          grouped[key].sort((a, b) => (b.registered_at || '').localeCompare(a.registered_at || ''));
+        }
+      });
+
+      renderGroupedView(grouped, sortedKeys, isRegisteredSort, todayDate);
     }
 
-    function renderGroupedView(grouped, dates) {
+    function renderGroupedView(grouped, keys, isRegisteredSort, todayDate) {
       const main = document.getElementById('main-content');
       main.innerHTML = '';
 
-      if (dates.length === 0) {
+      if (keys.length === 0) {
         main.innerHTML = '<div class="no-data">条件に一致するマンガが見つかりませんでした。</div>';
         return;
       }
 
-      dates.forEach(date => {
+      keys.forEach(key => {
         const section = document.createElement('section');
         section.className = 'date-section';
 
         const header = document.createElement('h2');
         header.className = 'date-header';
-        header.textContent = date;
+        header.textContent = key;
         section.appendChild(header);
 
         const grid = document.createElement('div');
         grid.className = 'item-grid';
 
-        grouped[date].forEach(item => {
+        grouped[key].forEach(item => {
           const card = document.createElement('div');
           card.className = 'item-card';
 
@@ -489,18 +560,37 @@
             ? item.image 
             : 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="280" viewBox="0 0 200 280"><rect width="100%" height="100%" fill="%23f1f3f5"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23adb5bd" font-size="14">No Image</text></svg>';
 
+          // 直近3日以内の登録ならNEWバッジを表示
+          let isRecentNew = false;
+          if (item.registered_at && todayDate) {
+            const parts = item.registered_at.split('-');
+            const regDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+            const diffDays = Math.floor((todayDate - regDate) / (1000 * 60 * 60 * 24));
+            if (diffDays >= 0 && diffDays <= 3) {
+              isRecentNew = true;
+            }
+          }
+
+          const subInfoText = isRegisteredSort
+            ? `発売: ${item.release_date || '未定'}`
+            : (item.registered_at ? `登録: ${item.registered_at}` : '');
+
           card.innerHTML = `
-            <div class="img-wrapper">
+            <a href="${item.url}" target="_blank" rel="noopener" class="img-wrapper">
               <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
               <div class="badge-container">
+                ${isRecentNew ? '<span class="badge badge-recent">NEW</span>' : ''}
                 ${item.is_v1 ? '<span class="badge badge-v1">1巻</span>' : ''}
                 ${item.is_new_series ? '<span class="badge badge-new">新シリーズ</span>' : ''}
               </div>
-            </div>
+            </a>
             <div class="item-body">
               <a href="${item.url}" target="_blank" rel="noopener" class="item-title" title="${item.title}">${item.title}</a>
               <div class="item-meta">
-                <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
+                <div class="item-meta-left">
+                  <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
+                  ${subInfoText ? `<span class="item-sub-info">${subInfoText}</span>` : ''}
+                </div>
                 <span class="price">${item.price ? item.price + '円' : ''}</span>
               </div>
             </div>
@@ -515,6 +605,7 @@
 
     document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
     document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
+    document.getElementById('recent-filter').addEventListener('change', applyFiltersAndRender);
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
