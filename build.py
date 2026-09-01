@@ -52,7 +52,6 @@ def fetch_single_og_image(item_url, delay=0.3, max_retries=2):
             req = urllib.request.Request(item_url, headers=headers)
             with urllib.request.urlopen(req, timeout=10) as res:
                 parser = OGImageParser()
-                # og:image は通常 <head> 内にあるため、見つかった時点で読み込みを完了して大幅に高速化
                 while True:
                     chunk = res.read(8192)
                     if not chunk:
@@ -64,7 +63,6 @@ def fetch_single_og_image(item_url, delay=0.3, max_retries=2):
         except urllib.error.HTTPError as e:
             if e.code in (403, 429):
                 if attempt < max_retries:
-                    # 403 / 429 一時制限の場合は少し長めに待機してリトライ
                     time.sleep(1.5 * (attempt + 1))
                     continue
                 if e.code == 429:
@@ -129,22 +127,31 @@ def is_title_v1(title):
     if pd.isna(title):
         return False
     
-    # 1. 全角英数・全角スペース等を半角に正規化し、前後の空白を除去
+    # 1. 全角英数・全角スペース等を半角に正規化
     title_str = unicodedata.normalize('NFKC', str(title)).strip()
+    
+    # 文頭の【最新刊】などの接頭辞を除去
+    title_clean = re.sub(r'^【最新刊】\s*', '', title_str)
 
-    # 2. 【除外パターン】「SEASON 1」「PART 1」「第1章」など、巻数ではない 1 を除外
-    if re.search(r'(season|part|ver|volume|vol|第)\s*1$', title_str, re.IGNORECASE):
-        if not re.search(r'1\s*(巻|話)$', title_str):
+    # 2. 【絶対除外ルール】2巻以降の明確な巻数表記（2〜99）があれば即座に対象外
+    # 「2巻」「（2）」「第2巻」「 2」などを捕捉（単位や文脈の数字は除く）
+    if re.search(r'([（\(【\s\-_第]*[2-9]\d*[）\)】\s\-_話巻]+|第[2-9]\d*[話巻]|(?<!\d)[2-9]\d*\s*巻)', title_clean):
+        # 「5階級」「3度目」「2026年」などの文脈は除外対象から外す
+        if not re.search(r'[2-9]\d*(階級|度|人|話|章|分|秒|日|年|位)', title_clean):
             return False
 
-    # 3. 【明示的な1巻表記】「1巻」「第1巻」「1話」「(1)」「【1】」など
-    v1_explicit_regex = r'(?<!\d)([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
-    if re.search(v1_explicit_regex, title_str):
+    # 3. 【除外パターン】「SEASON 1」「PART 1」など（巻数ではない1）
+    if re.search(r'(season|part|ver|volume|vol|第)\s*1$', title_clean, re.IGNORECASE):
+        if not re.search(r'1\s*(巻|話)$', title_clean):
+            return False
+
+    # 4. 【明示的な1巻表記】「(1)」「1巻」「第1巻」「【1】」「【合冊版】1」など
+    v1_explicit_regex = r'([（\(【\s\-_第]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
+    if re.search(v1_explicit_regex, title_clean):
         return True
 
-    # 4. 【末尾の 1/Ⅰ/① 判定】タイトルの最後に置かれた巻数判定
-    # 直前が英数字の一部ではない（例: GATE1 などを除外）独立した 1 を判定
-    if re.search(r'(?<!\d)[^0-9a-zA-Z][1Ⅰ①]\s*$', title_str):
+    # 5. 【末尾の 1/Ⅰ/① 判定】タイトルの最後が 1 で終わっているか
+    if re.search(r'[1Ⅰ①]\s*$', title_clean):
         return True
 
     return False
@@ -233,19 +240,25 @@ def main():
 
     for _, row in df.iterrows():
         title = str(row.get(title_col, ''))
-        series = str(row.get(series_col, '')).strip()
+        raw_series = str(row.get(series_col, '')).strip()
         rel_date = str(row.get(date_col, '')).strip()
 
         if not rel_date or rel_date == 'nan':
             continue
 
+        # シリーズ名から【最新刊】や(1)などの巻数表記を除去して正規化
+        clean_series = re.sub(r'^【最新刊】\s*', '', raw_series)
+        clean_series = re.sub(r'[（\(【\s\-_]*\d+[）\)】\s\-_話巻]*$', '', clean_series).strip()
+
         has_v1_title = is_title_v1(title)
 
         is_new_series = False
-        if series and series != 'nan':
-            if series not in known_series and not is_initial_run:
-                is_new_series = True
-            new_series_set.add(series)
+        if clean_series and clean_series != 'nan':
+            # 1巻判定を通過している場合のみ「新シリーズ」判定を行う
+            if clean_series not in known_series and not is_initial_run:
+                if has_v1_title:
+                    is_new_series = True
+            new_series_set.add(clean_series)
 
         if has_v1_title or is_new_series:
             item_url = str(row.get(url_col, ''))
@@ -256,7 +269,7 @@ def main():
                 "publisher": str(row.get('発行元', '')),
                 "label": str(row.get('レーベル', '')),
                 "category": str(row.get(category_col, '')).strip(),
-                "series": series,
+                "series": raw_series,
                 "price": str(row.get('価格', '')),
                 "release_date": rel_date,
                 "registered_at": reg_date,
@@ -281,7 +294,7 @@ def main():
     print(f">>> 最終抽出結果: {len(target_items)} 件のデータを登録しました。", flush=True)
 
     for month in result:
-        result[month].sort(key=lambda x: x['release_date'])
+        result[month].sort(key=x: x['release_date'])
 
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
