@@ -294,7 +294,7 @@ def main():
     print(f">>> 最終抽出結果: {len(target_items)} 件のデータを登録しました。", flush=True)
 
     for month in result:
-        result[month].sort(key=x: x['release_date'])
+        result[month].sort(key=lambda x: x['release_date'])
 
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
