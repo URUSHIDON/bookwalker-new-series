@@ -2,9 +2,9 @@ name: Update BookWalker New Series Data
 
 on:
   schedule:
-    # 毎日 午前9時（JST）に自動実行 (UTC 0:00)
-    - cron: '0 0 * * *'
-  workflow_dispatch: # 手動実行ボタンも有効化
+    # JST 午前3:00 (UTC 18:00)
+    - cron: '0 18 * * *'
+  workflow_dispatch: # 手動実行ボタンも残しておくのがおすすめ
 
 jobs:
   build-and-deploy:
