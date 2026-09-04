@@ -124,34 +124,81 @@ def save_json_file(filepath, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 def is_title_v1(title):
-    if pd.isna(title):
+    if not title or pd.isna(title):
         return False
     
-    # 1. 全角英数・全角スペース等を半角に正規化
+    # 1. 全角英数・全角スペース・全角記号を半角に正規化
     title_str = unicodedata.normalize('NFKC', str(title)).strip()
     
     # 文頭の【最新刊】などの接頭辞を除去
     title_clean = re.sub(r'^【最新刊】\s*', '', title_str)
 
-    # 2. 【絶対除外ルール】2巻以降の明確な巻数表記（2〜99）があれば即座に対象外
-    # 「2巻」「（2）」「第2巻」「 2」などを捕捉（単位や文脈の数字は除く）
-    if re.search(r'([（\(【\s\-_第]*[2-9]\d*[）\)】\s\-_話巻]+|第[2-9]\d*[話巻]|(?<!\d)[2-9]\d*\s*巻)', title_clean):
-        # 「5階級」「3度目」「2026年」などの文脈は除外対象から外す
-        if not re.search(r'[2-9]\d*(階級|度|人|話|章|分|秒|日|年|位)', title_clean):
+    # -------------------------------------------------------------
+    # ステップ1: 明確な【2巻以降・2話以降・他巻】の除外ルール
+    # -------------------------------------------------------------
+    # 1-1. 括弧内の2以上の数字: (2)〜, （11）, 【241】, [2] など
+    if re.search(r'[（\(【\[]\s*(?:[2-9]|\d{2,})\s*[）\)】\]]', title_clean):
+        return False
+
+    # 1-2. 2以上の巻数・話数・エピソード単位
+    # 例: 2巻, 第11巻, 61話, 第23話, 32コマ目, 31限目, 40流し目, 第94講義, 57発目 など
+    ep_units = r'(?:巻|話|号(?!室|車)|コマ|コマ目|限目|流し目|発目|講義|狩|食|試合|回|弾)'
+    if re.search(r'(?<!\d)(?:第\s*)?(?:[2-9]|\d{2,})\s*' + ep_units, title_clean):
+        return False
+
+    # 1-3. 英語表記のvol / season / part / ep / # + 2以上の数字 (例: vol.241, season 2, #2, ep.29, 2nd set)
+    if re.search(r'(?i)(?:vol\.?|volume|ver\.?|part|season|#|ep\.?|episode)\s*(?:[2-9]|\d{2,})\b', title_clean):
+        return False
+    if re.search(r'(?i)(?:[2-9]|\d{2,})\s*(?:st|nd|rd|th)\s*(?:set|season|part|ep)', title_clean):
+        return False
+
+    # 1-4. ハイフン前の2以上の数字 (例: "10 - (1)", "11 - (1)")
+    if re.search(r'(?<!\d)(?:[2-9]|\d{2,})\s*[-‐―ー]\s*[（\(【\[]1[）\)】\]]', title_clean):
+        return False
+
+    # 1-5. 末尾が2以上の数字、ローマ数字(II〜)、丸数字(②〜) (例: " 61", " 11", " 21", " 2", " II", " ②")
+    if re.search(r'(?<!\d)(?:[2-9]|\d{2,3}|[2-9]\d{3,}(?<!20\d\d)(?<!19\d\d)|[Ⅱ-Ⅻ②-⑳])\s*$', title_clean):
+        # 末尾の直前が単位（歳、年、日、分、秒、人、階級、度、章、位など）で終わっている場合は除外しない
+        if not re.search(r'(?:階級|度|人|章|分|秒|日|年|位|歳)\s*$', title_clean):
             return False
 
-    # 3. 【除外パターン】「SEASON 1」「PART 1」など（巻数ではない1）
-    if re.search(r'(season|part|ver|volume|vol|第)\s*1$', title_clean, re.IGNORECASE):
-        if not re.search(r'1\s*(巻|話)$', title_clean):
+    # -------------------------------------------------------------
+    # ステップ2: 【巻数ではない1】の除外
+    # -------------------------------------------------------------
+    # 「SEASON 1」「PART 1」など（末尾にあり、かつ1巻/1話ではないもの）
+    if re.search(r'(?i)(?:season|part|ver\.?|第)\s*1\s*$', title_clean):
+        if not re.search(r'1\s*(?:巻|話)$', title_clean):
             return False
+    # 「第1章」など
+    if re.search(r'第\s*1\s*章', title_clean):
+        return False
 
-    # 4. 【明示的な1巻表記】「(1)」「1巻」「第1巻」「【1】」「【合冊版】1」など
-    v1_explicit_regex = r'([（\(【\s\-_第]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])'
-    if re.search(v1_explicit_regex, title_clean):
+    # -------------------------------------------------------------
+    # ステップ3: 明示的な【第1巻・第1話・第1弾】の合致判定 (True)
+    # -------------------------------------------------------------
+    # 3-1. 括弧で囲まれた1: (1), 【1】, [1]（※前後に数字が連続していないこと）
+    if re.search(r'(?<!\d)[（\(【\[]\s*1\s*[）\)】\]](?!\d)', title_clean):
         return True
 
-    # 5. 【末尾の 1/Ⅰ/① 判定】タイトルの最後が 1 で終わっているか
-    if re.search(r'[1Ⅰ①]\s*$', title_clean):
+    # 3-2. 明示的な1巻・1話・第1巻・第1話: 1巻, 第1巻, 1話, 第1話, 1号
+    if re.search(r'(?<!\d)(?:第\s*)?1\s*(?:巻|話|号)(?!\d)', title_clean):
+        return True
+
+    # 3-3. 【合冊版】1, 文頭の1巻/1話
+    if re.search(r'【合冊版】\s*1(?!\d)', title_clean):
+        return True
+    if re.search(r'^1\s*(?:巻|話)(?!\d)', title_clean):
+        return True
+
+    # 3-4. vol.1, #1
+    if re.search(r'(?i)(?:vol\.?|volume|#)\s*1(?!\d)', title_clean):
+        return True
+
+    # -------------------------------------------------------------
+    # ステップ4: 【末尾の 1 / Ⅰ / ①】判定 (True)
+    # -------------------------------------------------------------
+    # 直前が英数字ではなく独立して置かれた 1 / Ⅰ / ① で終わる（例: "タイトル 1", "タイトル ①"）
+    if re.search(r'(?<![0-9a-zA-Z])[1Ⅰ①]\s*$', title_clean):
         return True
 
     return False
