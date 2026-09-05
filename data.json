@@ -347,7 +347,7 @@
       "release_date": "2026-10-05",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d735547615a5b19fb0422441952436c/t_700x780.jpg"
     },
     {
@@ -3513,7 +3513,7 @@
       "release_date": "2026-09-05",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b1543286d66140b34848d9d4a6b5c53/t_700x780.jpg"
     },
     {
@@ -3541,7 +3541,7 @@
       "release_date": "2026-09-05",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dbabe527c2e87cb0d64287100f0fbe5/t_700x780.jpg"
     },
     {
@@ -3569,7 +3569,7 @@
       "release_date": "2026-09-05",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/58086637844ae39813476e266811385/t_700x780.jpg"
     },
     {
@@ -3583,7 +3583,7 @@
       "release_date": "2026-09-05",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/363a185e4b7923a3094a5fcaaad1ac4/t_700x780.jpg"
     },
     {
@@ -3621,7 +3621,7 @@
       "label": "GANMA！",
       "category": "マンガ",
       "series": "おとなの防具屋さん【GANMA!版】（GANMA！）",
-      "price": "0",
+      "price": "560",
       "release_date": "2026-09-06",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3635,12 +3635,26 @@
       "label": "ティラミス",
       "category": "マンガ",
       "series": "死刑宣告された悪役令嬢は、仮面の辺境伯になぜか溺愛されています。【電子限定単行本】（ティラミス）",
-      "price": "0",
+      "price": "660",
       "release_date": "2026-09-06",
       "registered_at": "2026-09-04",
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/36474d6da40a5983614884b1af9956d/t_700x780.jpg"
+    },
+    {
+      "title": "ゼロ0～時空魔法で未来を超える～ 第1話",
+      "url": "https://bookwalker.jp/de10dc2232-63d2-47c8-bc49-b9f7c728233a/",
+      "publisher": "SBCr",
+      "label": "Rakuten Content Central",
+      "category": "話・連載（マンガ）",
+      "series": "ゼロ0～時空魔法で未来を超える～（Rakuten Content Central）",
+      "price": "0",
+      "release_date": "2026-09-06",
+      "registered_at": "2026-09-05",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/640fad71f244f5bd734fa291d3d2c62/t_700x780.jpg"
     },
     {
       "title": "一角獣の枕 1巻",
@@ -3919,7 +3933,7 @@
       "release_date": "2026-09-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d843263ca290e6add643ab28d5728fe/t_700x780.jpg"
     },
     {
@@ -3947,7 +3961,7 @@
       "release_date": "2026-09-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e3628942cf624c9c524c49be17f34e8/t_700x780.jpg"
     },
     {
@@ -4465,7 +4479,7 @@
       "release_date": "2026-09-10",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3cf13ff1cf743c963248ac68db6bbf4/t_700x780.jpg"
     },
     {
@@ -5011,7 +5025,7 @@
       "release_date": "2026-09-11",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f1d899262953478dc7435ac28da122a/t_700x780.jpg"
     },
     {
@@ -5151,7 +5165,7 @@
       "release_date": "2026-09-11",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/6d2b7e7cdea36296164412dc2ec272a/t_700x780.jpg"
     },
     {
@@ -5249,7 +5263,7 @@
       "release_date": "2026-09-11",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c48220ad053da0889b4087239413693/t_700x780.jpg"
     },
     {
@@ -5599,7 +5613,7 @@
       "release_date": "2026-09-15",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b2348f03a13c029ac94edca08eafd9c/t_700x780.jpg"
     },
     {
@@ -5781,7 +5795,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/21442b71c3973db35b46ec71b595ca4/t_700x780.jpg"
     },
     {
@@ -5837,7 +5851,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e6e5838aca2601897e47239afd8593e/t_700x780.jpg"
     },
     {
@@ -5851,7 +5865,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3ff9dcaff4d01e90884a8ea32f26f59/t_700x780.jpg"
     },
     {
@@ -5865,7 +5879,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/15b7966958bf719b9c419ad7bd48398/t_700x780.jpg"
     },
     {
@@ -5893,7 +5907,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/145739ecb78109a2154d5e50ff078e4/t_700x780.jpg"
     },
     {
@@ -6033,7 +6047,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a8b62f488d668cb10543ebfedbfee15/t_700x780.jpg"
     },
     {
@@ -6047,7 +6061,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b9a4dbe83a800b9c584489257a55bb2/t_700x780.jpg"
     },
     {
@@ -6131,7 +6145,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/48d6886988d0e0a43d445053bc9f214/t_700x780.jpg"
     },
     {
@@ -6145,7 +6159,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/363db2aea9235394fc414b02ce58cb5/t_700x780.jpg"
     },
     {
@@ -6187,7 +6201,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/da6512fe7f14ad9d154446ee83e171a/t_700x780.jpg"
     },
     {
@@ -6495,7 +6509,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/745f62cd114683b16c4d77d43779297/t_700x780.jpg"
     },
     {
@@ -6509,7 +6523,7 @@
       "release_date": "2026-09-20",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9391a64c50b17aa893433aed5f2a5ef/t_700x780.jpg"
     },
     {
@@ -11295,7 +11309,7 @@
       "label": "ティラミス",
       "category": "マンガ",
       "series": "無愛想で糖度高めなカレの愛（ティラミス）",
-      "price": "180",
+      "price": "90",
       "release_date": "2026-08-09",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -12849,7 +12863,7 @@
       "label": "マンガボックス",
       "category": "話・連載（マンガ）",
       "series": "「お姉様はずるい」と奪うのなら、対価は払ってもらいます～不遇令嬢は二度目の人生を復讐と人外からの愛に生きる～【分冊版】（マンガボックス）",
-      "price": "0",
+      "price": "113",
       "release_date": "2026-08-16",
       "registered_at": "2026-09-04",
       "is_v1": true,
