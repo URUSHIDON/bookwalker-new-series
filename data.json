@@ -361,7 +361,7 @@
       "release_date": "2026-10-06",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/36ac6b858f7f5f957e4fab2557e0488/t_700x780.jpg"
     },
     {
@@ -1089,7 +1089,7 @@
       "release_date": "2026-10-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8b3456c738d6be9e9646e53495bafd7/t_700x780.jpg"
     },
     {
@@ -1133,6 +1133,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/675069983a34ca9f0c4b41d43c2fd01/t_700x780.jpg"
+    },
+    {
+      "title": "図書館の主【合本版】　１",
+      "url": "https://bookwalker.jp/de8d2203ba-3967-4eed-a322-2e0179afd069/",
+      "publisher": "芳文社",
+      "label": "芳文社コミックス",
+      "category": "マンガ",
+      "series": "図書館の主【合本版】（芳文社コミックス）",
+      "price": "0",
+      "release_date": "2026-10-14",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/de327b8027eb6faef0411a18acb082e/t_700x780.jpg"
+    },
+    {
+      "title": "信長のシェフ【合本版】　１",
+      "url": "https://bookwalker.jp/dec9c27069-c37b-4a98-9d58-2ceced23dd7d/",
+      "publisher": "芳文社",
+      "label": "芳文社コミックス",
+      "category": "マンガ",
+      "series": "信長のシェフ【合本版】（芳文社コミックス）",
+      "price": "0",
+      "release_date": "2026-10-14",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/22703ff116134a80e84588973be32af/t_700x780.jpg"
     },
     {
       "title": "あなたとさよならするための方法～忘れら令嬢の婚活奮闘記～ 第１話「誓ったはずの未来」（１）",
@@ -1593,7 +1621,7 @@
       "release_date": "2026-10-22",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ae5ae0a9428b50ace94b05d2a900de4/t_700x780.jpg"
     },
     {
@@ -1779,6 +1807,62 @@
       "image": "https://c.bookwalker.jp/659dd7e498227883f64694a47a6085b/t_700x780.jpg"
     },
     {
+      "title": "月曜日、君と会えたら 1",
+      "url": "https://bookwalker.jp/defe1f4bdf-93aa-4777-8722-981ff0f5d48c/",
+      "publisher": "集英社",
+      "label": "マーガレットコミックスDIGITAL",
+      "category": "話・連載（マンガ）",
+      "series": "月曜日、君と会えたら（マーガレットコミックスDIGITAL）",
+      "price": "0",
+      "release_date": "2026-10-25",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/636bb4df4a34789e96431bdcd67f0bb/t_700x780.jpg"
+    },
+    {
+      "title": "月曜日、君と会えたら 単行本版 1",
+      "url": "https://bookwalker.jp/de843facb8-c9bf-461c-9a1f-83509310a986/",
+      "publisher": "集英社",
+      "label": "マーガレットコミックスDIGITAL",
+      "category": "マンガ",
+      "series": "月曜日、君と会えたら 単行本版（マーガレットコミックスDIGITAL）",
+      "price": "0",
+      "release_date": "2026-10-25",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/f8985f8ff995b6bc444d5fd8fe23dc1/t_700x780.jpg"
+    },
+    {
+      "title": "猫かわいがり 1",
+      "url": "https://bookwalker.jp/dec2896eb5-3ca3-4693-a40c-18620638d679/",
+      "publisher": "集英社",
+      "label": "マーガレットコミックスDIGITAL",
+      "category": "話・連載（マンガ）",
+      "series": "猫かわいがり（マーガレットコミックスDIGITAL）",
+      "price": "0",
+      "release_date": "2026-10-25",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e35898dc03bdfe88d444287ee8c4fb7/t_700x780.jpg"
+    },
+    {
+      "title": "猫かわいがり 単行本版 1",
+      "url": "https://bookwalker.jp/de3ddb0514-cde0-487b-9cba-7ab48d1f3d8b/",
+      "publisher": "集英社",
+      "label": "マーガレットコミックスDIGITAL",
+      "category": "マンガ",
+      "series": "猫かわいがり 単行本版（マーガレットコミックスDIGITAL）",
+      "price": "0",
+      "release_date": "2026-10-25",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/1a922d13888536b0a540b83f975be54/t_700x780.jpg"
+    },
+    {
       "title": "プリズム輪舞曲 1",
       "url": "https://bookwalker.jp/dee119a777-0aa7-4d1e-80d2-cbedd1682dd6/",
       "publisher": "集英社",
@@ -1791,6 +1875,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/674846a9b44738ab744f832872e3a47/t_700x780.jpg"
+    },
+    {
+      "title": "メロいです椎名さん！ 1",
+      "url": "https://bookwalker.jp/de7af07338-a482-4668-8535-732e89960bcf/",
+      "publisher": "集英社",
+      "label": "マーガレットコミックスDIGITAL",
+      "category": "話・連載（マンガ）",
+      "series": "メロいです椎名さん！（マーガレットコミックスDIGITAL）",
+      "price": "0",
+      "release_date": "2026-10-25",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/ab8c23be1d3f818f9240bbcc39c1396/t_700x780.jpg"
     },
     {
       "title": "黒豹閣下の婚約者 1",
@@ -5123,7 +5221,7 @@
       "release_date": "2026-09-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/58353faeac7020964442433a1eb4c08/t_700x780.jpg"
     },
     {
@@ -5417,7 +5515,7 @@
       "release_date": "2026-09-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f7835d5243118faed64bbc0bce1649f/t_700x780.jpg"
     },
     {
@@ -5819,7 +5917,7 @@
       "label": "マンガPark",
       "category": "話・連載（マンガ）",
       "series": "イグナイト・マイハート［ばら売り］（マンガPark）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5833,7 +5931,7 @@
       "label": "ＧＡコミック",
       "category": "マンガ",
       "series": "異世界転生した元教師、【臨時教師】として崩壊した魔術学園を救う。（コミック）（ＧＡコミック）",
-      "price": "0",
+      "price": "730",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5847,7 +5945,7 @@
       "label": "ＧＡコミック",
       "category": "マンガ",
       "series": "イマリさんは旅上戸（コミック）（ＧＡコミック）",
-      "price": "0",
+      "price": "730",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5861,7 +5959,7 @@
       "label": "コミックアウル",
       "category": "話・連載（マンガ）",
       "series": "この絵には裏がある（コミックアウル）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5875,7 +5973,7 @@
       "label": "コミックアウル",
       "category": "マンガ",
       "series": "この絵には裏がある（コミックアウル）",
-      "price": "0",
+      "price": "600",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5889,7 +5987,7 @@
       "label": "U-NEXT Comic",
       "category": "話・連載（マンガ）",
       "series": "ショートを見たらシんじゃうよ？ 【分冊版】（U-NEXT Comic）",
-      "price": "0",
+      "price": "260",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5903,7 +6001,7 @@
       "label": "GSComic",
       "category": "話・連載（マンガ）",
       "series": "その運命を推さないで（GSComic）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5917,7 +6015,7 @@
       "label": "U-NEXT Comic",
       "category": "話・連載（マンガ）",
       "series": "たまゆらの花嫁～大正浪漫、冷徹な総督様が私を離さない～ 【分冊版】（U-NEXT Comic）",
-      "price": "0",
+      "price": "195",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5931,7 +6029,7 @@
       "label": "コミックアウル",
       "category": "話・連載（マンガ）",
       "series": "復讐の標本～顔を変えた姉の10年～（コミックアウル）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5945,7 +6043,7 @@
       "label": "モンスターコミックス",
       "category": "マンガ",
       "series": "辺境領主の俺は悪役令嬢として追放された嫁のため、大国を滅ぼすことにした。（コミック）（モンスターコミックス）",
-      "price": "0",
+      "price": "740",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-07",
       "is_v1": true,
@@ -5959,7 +6057,7 @@
       "label": "U-NEXT Comic",
       "category": "話・連載（マンガ）",
       "series": "没落騎士令嬢と孤独な王子～お守りすべき王子殿下は××になる呪いをかけられていました～ 【分冊版】（U-NEXT Comic）",
-      "price": "0",
+      "price": "260",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5973,7 +6071,7 @@
       "label": "マンガPark",
       "category": "話・連載（マンガ）",
       "series": "優菜ちゃんは夢の中［ばら売り］（マンガPark）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-12",
       "registered_at": "2026-09-07",
       "is_v1": true,
@@ -6005,7 +6103,7 @@
       "release_date": "2026-09-13",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e06914d11e853aa5354d81fe0e8c2d5/t_700x780.jpg"
     },
     {
@@ -6117,7 +6215,7 @@
       "release_date": "2026-09-14",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/25c4834f24ba1094bf466e99ad1f40a/t_700x780.jpg"
     },
     {
@@ -6175,6 +6273,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/c072d5db5608b198c74199387d3a3f9/t_700x780.jpg"
+    },
+    {
+      "title": "贋作の第十番【電子特典漫画付き】　1",
+      "url": "https://bookwalker.jp/de206d636a-276a-4429-bb0b-f2ff704ca4c3/",
+      "publisher": "秋田書店",
+      "label": "ボニータ・コミックス",
+      "category": "マンガ",
+      "series": "贋作の第十番（ボニータ・コミックス）",
+      "price": "0",
+      "release_date": "2026-09-15",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/ee773a5dad55b69ed942b15644b28da/t_700x780.jpg"
     },
     {
       "title": "国を飛び出した公爵令嬢の幸せは溺愛ではないはずです！？【単話売】 1話",
@@ -6275,7 +6387,7 @@
       "image": "https://c.bookwalker.jp/297e94ab18fc15ac6849022b62a8765/t_700x780.jpg"
     },
     {
-      "title": "なんぼの食卓 1",
+      "title": "なんぼの食卓　1",
       "url": "https://bookwalker.jp/de15274bc5-d022-4d0d-8fc6-e6204054ca4c/",
       "publisher": "秋田書店",
       "label": "ボニータ・コミックス",
@@ -6359,7 +6471,7 @@
       "image": "https://c.bookwalker.jp/b840d94ae4b3098e4446358ee40b04f/t_700x780.jpg"
     },
     {
-      "title": "めちゃくちゃ追放される話(1)",
+      "title": "めちゃくちゃ追放される話(1)【電子限定特典付】",
       "url": "https://bookwalker.jp/de7ee8b242-24cf-4fe3-9405-96485f0c41a4/",
       "publisher": "ヒーローズ",
       "label": "ヒーローズコミックス ふらっと",
@@ -6425,7 +6537,7 @@
       "release_date": "2026-09-16",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/6ce217339a787aa2ae412cc33eb2b25/t_700x780.jpg"
     },
     {
@@ -6733,7 +6845,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/071b33ff16e568ae504f6a574236673/t_700x780.jpg"
     },
     {
@@ -6859,7 +6971,7 @@
       "release_date": "2026-09-17",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/68d016dc1f850bb94f4a36947fd3ca4/t_700x780.jpg"
     },
     {
@@ -7027,7 +7139,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/564fe88327cb20a6b64e9ba3c3f9676/t_700x780.jpg"
     },
     {
@@ -7097,7 +7209,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3acf46f9a4a16580ae42509fff30b14/t_700x780.jpg"
     },
     {
@@ -7111,7 +7223,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/db031f2d6c79b7bed64b9232471b289/t_700x780.jpg"
     },
     {
@@ -7419,7 +7531,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a7d80af692b14196c94ad6b5a797f40/t_700x780.jpg"
     },
     {
@@ -7489,7 +7601,7 @@
       "release_date": "2026-09-18",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7eea8a08e63ba8b6244721d10ca2e85/t_700x780.jpg"
     },
     {
@@ -7533,6 +7645,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/9b76a1de40a20985d54f0cea42af5da/t_700x780.jpg"
+    },
+    {
+      "title": "婚約破棄されたけど、追放された先の国の年下王太子に気に入られています 1",
+      "url": "https://bookwalker.jp/de65b4ba9f-1f0e-4fb9-b0ef-3a5826f9116a/",
+      "publisher": "パルプライド",
+      "label": "エンジェライト文庫",
+      "category": "ライトノベル",
+      "series": "婚約破棄されたけど、追放された先の国の年下王太子に気に入られています（エンジェライト文庫）",
+      "price": "0",
+      "release_date": "2026-09-19",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/90c02ba7f80e3f80d746098f3f9e427/t_700x780.jpg"
     },
     {
       "title": "追放配信.com～え？ 冤罪で大学を追放された俺が“公認探索者”で『社長』ですか？ 美人姉妹が秘書についてくる？ またまた御冗談を……え、マジ？～ 1",
@@ -7647,6 +7773,20 @@
       "image": "https://c.bookwalker.jp/be4266301b9fb5b4fd4c2b34d23a714/t_700x780.jpg"
     },
     {
+      "title": "修学旅行～京都・奈良4泊4日～(話売り)　#1",
+      "url": "https://bookwalker.jp/de80499c50-edee-4e7d-a9a5-619f4808e7c7/",
+      "publisher": "秋田書店",
+      "label": "少年チャンピオン・コミックス",
+      "category": "話・連載（マンガ）",
+      "series": "修学旅行～京都・奈良4泊4日～(話売り)（少年チャンピオン・コミックス）",
+      "price": "0",
+      "release_date": "2026-09-20",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/0e8cd64a8b5e2ba22d43f4e15911b12/t_700x780.jpg"
+    },
+    {
       "title": "全員覚悟ガンギマリなエロゲーの邪教徒モブに転生してしまった件(話売り)　#1",
       "url": "https://bookwalker.jp/de27935476-98ce-409b-854c-50ace6ef827e/",
       "publisher": "秋田書店",
@@ -7731,6 +7871,20 @@
       "image": "https://c.bookwalker.jp/2ee1768970c8b2a12f4b455e2b3cba3/t_700x780.jpg"
     },
     {
+      "title": "その子供、伝説の剣聖につき 連載版：1-1",
+      "url": "https://bookwalker.jp/de9eb5de88-213b-49de-abad-041eb5a10084/",
+      "publisher": "ブシロードワークス",
+      "label": "ブシロードコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "その子供、伝説の剣聖につき 連載版（ブシロードコミックス）",
+      "price": "0",
+      "release_date": "2026-09-22",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/cb03c69c69e7b28e8b419feb6a3e2f5/t_700x780.jpg"
+    },
+    {
       "title": "溺愛ボディメイク ～ぽちゃ女子、年下トレーナーと「開発」セッション！？～　（1）",
       "url": "https://bookwalker.jp/de81443c87-72c3-4b4e-b6f8-50c7cc294a53/",
       "publisher": "ぶんか社",
@@ -7743,6 +7897,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/2104930ba73912b5314c5ed145fc05e/t_700x780.jpg"
+    },
+    {
+      "title": "葩々々 ひらひらひら 連載版：1-1",
+      "url": "https://bookwalker.jp/de6e235feb-0a82-49bf-bf91-cb98072486c4/",
+      "publisher": "ブシロードワークス",
+      "label": "ブシロードコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "葩々々 ひらひらひら 連載版（ブシロードコミックス）",
+      "price": "0",
+      "release_date": "2026-09-22",
+      "registered_at": "2026-09-11",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/51d50ee43166348c494893bf71ff1ff/t_700x780.jpg"
     },
     {
       "title": "うちの夫が最悪なので１",
@@ -7993,7 +8161,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7e381b2a994b8bb6b740ba3bad2ccb6/t_700x780.jpg"
     },
     {
@@ -8077,7 +8245,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7be6a77522addd9ea449b128d761c7f/t_700x780.jpg"
     },
     {
@@ -8119,7 +8287,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/87c488e62ac9cd95a2406008fd7b0e6/t_700x780.jpg"
     },
     {
@@ -8147,7 +8315,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ee3d97daa6a635a08a44e675970286e/t_700x780.jpg"
     },
     {
@@ -8217,7 +8385,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/70d3f83b732993a06246fd0258912e2/t_700x780.jpg"
     },
     {
@@ -8315,7 +8483,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/691bea995f7541b940486703a25ef5b/t_700x780.jpg"
     },
     {
@@ -8357,7 +8525,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/79f9194a55e731bbb4443c2c0d2cbce/t_700x780.jpg"
     },
     {
@@ -8371,7 +8539,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ec0714bee968fc92614f2c5da22432a/t_700x780.jpg"
     },
     {
@@ -8413,7 +8581,7 @@
       "release_date": "2026-09-25",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cc1d72d2bfceeaa1964d37d6cf62a6f/t_700x780.jpg"
     },
     {
@@ -8469,7 +8637,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dad8db1b8a5553866c4ec0b024afb1e/t_700x780.jpg"
     },
     {
@@ -8511,7 +8679,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/27ea1345480e9fba95434de9ba3f855/t_700x780.jpg"
     },
     {
@@ -8525,7 +8693,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1c25c90dc7c71e9f184a993b3432672/t_700x780.jpg"
     },
     {
@@ -8539,7 +8707,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9ec7fd792884d19ef84be9ae645abdc/t_700x780.jpg"
     },
     {
@@ -8553,7 +8721,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/25f28fb60ba44989aa4fd26741f8aef/t_700x780.jpg"
     },
     {
@@ -8595,7 +8763,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dde2104535e871980a480996b2776ba/t_700x780.jpg"
     },
     {
@@ -8609,7 +8777,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/26f58485f83fdcb07c466204de74dc2/t_700x780.jpg"
     },
     {
@@ -8623,7 +8791,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/41f2077332252b8a584136b452a8659/t_700x780.jpg"
     },
     {
@@ -8693,7 +8861,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-10",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5620333944962f8e3e4205a2f4cb753/t_700x780.jpg"
     },
     {
