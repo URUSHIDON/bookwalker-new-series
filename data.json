@@ -1145,7 +1145,7 @@
       "release_date": "2026-10-14",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/de327b8027eb6faef0411a18acb082e/t_700x780.jpg"
     },
     {
@@ -1159,7 +1159,7 @@
       "release_date": "2026-10-14",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/22703ff116134a80e84588973be32af/t_700x780.jpg"
     },
     {
@@ -1817,7 +1817,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/636bb4df4a34789e96431bdcd67f0bb/t_700x780.jpg"
     },
     {
@@ -1831,7 +1831,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f8985f8ff995b6bc444d5fd8fe23dc1/t_700x780.jpg"
     },
     {
@@ -1845,7 +1845,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e35898dc03bdfe88d444287ee8c4fb7/t_700x780.jpg"
     },
     {
@@ -1859,7 +1859,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1a922d13888536b0a540b83f975be54/t_700x780.jpg"
     },
     {
@@ -1887,7 +1887,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ab8c23be1d3f818f9240bbcc39c1396/t_700x780.jpg"
     },
     {
@@ -5217,7 +5217,7 @@
       "label": "やんのかCOMIC/斬",
       "category": "話・連載（マンガ）",
       "series": "五つの塔の頂へ【単話版】（やんのかCOMIC/斬）",
-      "price": "180",
+      "price": "0",
       "release_date": "2026-09-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
@@ -6079,13 +6079,27 @@
       "image": "https://c.bookwalker.jp/84599c81337a3282eb4e14c07fd148b/t_700x780.jpg"
     },
     {
+      "title": "愛人は逃げる【電子単行本版】 第1巻",
+      "url": "https://bookwalker.jp/def41f853c-e776-489f-accd-2c021d88aa36/",
+      "publisher": "SBCr",
+      "label": "恋々バニラ",
+      "category": "マンガ",
+      "series": "愛人は逃げる【電子単行本版】（恋々バニラ）",
+      "price": "650",
+      "release_date": "2026-09-13",
+      "registered_at": "2026-09-12",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/9c892df6e718a5822f4f7889b1d5c07/t_700x780.jpg"
+    },
+    {
       "title": "交際0日婚ですが何か？【合冊版】　1巻",
       "url": "https://bookwalker.jp/de7f6ee242-20e1-4010-9a3f-ab53ac68ab4f/",
       "publisher": "Bコミ",
       "label": "コスモス",
       "category": "マンガ",
       "series": "交際0日婚ですが何か？【合冊版】（コスモス）",
-      "price": "0",
+      "price": "600",
       "release_date": "2026-09-13",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -6099,7 +6113,7 @@
       "label": "ホラー シルキー",
       "category": "話・連載（マンガ）",
       "series": "ひまわり畑で…［1話売り］（ホラー シルキー）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-13",
       "registered_at": "2026-09-10",
       "is_v1": true,
@@ -6285,7 +6299,7 @@
       "release_date": "2026-09-15",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ee773a5dad55b69ed942b15644b28da/t_700x780.jpg"
     },
     {
@@ -7657,7 +7671,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/90c02ba7f80e3f80d746098f3f9e427/t_700x780.jpg"
     },
     {
@@ -7783,7 +7797,7 @@
       "release_date": "2026-09-20",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/0e8cd64a8b5e2ba22d43f4e15911b12/t_700x780.jpg"
     },
     {
@@ -7881,7 +7895,7 @@
       "release_date": "2026-09-22",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cb03c69c69e7b28e8b419feb6a3e2f5/t_700x780.jpg"
     },
     {
@@ -7909,7 +7923,7 @@
       "release_date": "2026-09-22",
       "registered_at": "2026-09-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/51d50ee43166348c494893bf71ff1ff/t_700x780.jpg"
     },
     {
