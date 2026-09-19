@@ -291,7 +291,7 @@
       "release_date": "2026-10-02",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/aaf6f3ae43ac75b4d041259caf5db70/t_700x780.jpg"
     },
     {
@@ -319,7 +319,7 @@
       "release_date": "2026-10-02",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/05f1e77a34140b8dc048eecdd4cbee2/t_700x780.jpg"
     },
     {
@@ -697,7 +697,7 @@
       "release_date": "2026-10-05",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/eeddd7cf26d80aa3314c3336a709a18/t_700x780.jpg"
     },
     {
@@ -739,7 +739,7 @@
       "release_date": "2026-10-06",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7b4d389807509c9262403aabdefdcca/t_700x780.jpg"
     },
     {
@@ -1551,7 +1551,7 @@
       "release_date": "2026-10-12",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/41c3e4347394f2b75d48b406d007e7f/t_700x780.jpg"
     },
     {
@@ -1679,6 +1679,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/555d9ab937d731b7c94eab6d038123f/t_700x780.jpg"
+    },
+    {
+      "title": "火閻魔人～鬼払い～１",
+      "url": "https://bookwalker.jp/dea6aaba3f-4aa5-41d3-b113-0b6c7729841e/",
+      "publisher": "大洋図書",
+      "label": "エンペラーズコミックス",
+      "category": "マンガ",
+      "series": "火閻魔人～鬼払い～（エンペラーズコミックス）",
+      "price": "0",
+      "release_date": "2026-10-15",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/444407e3c12858b52e4f9a7509e2299/t_700x780.jpg"
     },
     {
       "title": "七彩の魔術師～捨てられた少女は二度目の人生を妖精と歩む～@COMIC 第1巻",
@@ -1915,7 +1929,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f6ea52b7b5547fa23b4561372f5c48d/t_700x780.jpg"
     },
     {
@@ -2097,7 +2111,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/aff72c07d1f6a683db42e04c805a943/t_700x780.jpg"
     },
     {
@@ -2391,7 +2405,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cebe63628c2325bece4fde10a6fa3dd/t_700x780.jpg"
     },
     {
@@ -2643,7 +2657,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8f7e61057f56d9a23042eec8fd3d457/t_700x780.jpg"
     },
     {
@@ -2657,7 +2671,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/be2e85b43c4de697d94f26aed2c2820/t_700x780.jpg"
     },
     {
@@ -2671,7 +2685,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/82ff559ee39dd9abc34c8c92ec7b8c2/t_700x780.jpg"
     },
     {
@@ -2685,7 +2699,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3e939e9848bb6faf984cbcf87762267/t_700x780.jpg"
     },
     {
@@ -5973,7 +5987,7 @@
       "label": "やんのかCOMIC/斬",
       "category": "話・連載（マンガ）",
       "series": "五つの塔の頂へ【単話版】（やんのかCOMIC/斬）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-09-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
@@ -9113,7 +9127,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/0bc0284c62b7808b104b0f4556ed909/t_700x780.jpg"
     },
     {
@@ -9155,7 +9169,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c95394c31762c2820842acf823d5243/t_700x780.jpg"
     },
     {
@@ -9169,7 +9183,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ead828ca12f8f69cbf482562309a2dd/t_700x780.jpg"
     },
     {
@@ -9183,7 +9197,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2e851be256cbfba96c42c8659f5343e/t_700x780.jpg"
     },
     {
@@ -9211,7 +9225,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3350277ec5f19ea7e842dcf7ee7568b/t_700x780.jpg"
     },
     {
@@ -9281,7 +9295,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/df16c9689b1e7f92fc444fd14e2c048/t_700x780.jpg"
     },
     {
@@ -9295,7 +9309,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/39caf5fa17305c80ac4456af9c4ede0/t_700x780.jpg"
     },
     {
@@ -9337,7 +9351,7 @@
       "release_date": "2026-09-19",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/918bcf8d70e343a628435898940f283/t_700x780.jpg"
     },
     {
@@ -9347,7 +9361,7 @@
       "label": "Kiss",
       "category": "マンガ",
       "series": "ここに復縁フラグが立っています（Kiss）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -9361,7 +9375,7 @@
       "label": "Kiss",
       "category": "話・連載（マンガ）",
       "series": "ここに復縁フラグが立っています　プチキス（Kiss）",
-      "price": "0",
+      "price": "190",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-08",
       "is_v1": true,
@@ -9375,7 +9389,7 @@
       "label": "少年チャンピオン・コミックス",
       "category": "話・連載（マンガ）",
       "series": "修学旅行～京都・奈良4泊4日～(話売り)（少年チャンピオン・コミックス）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-11",
       "is_v1": true,
@@ -9389,7 +9403,7 @@
       "label": "マンガBANGコミックス",
       "category": "マンガ",
       "series": "実家を二度追放された俺、弱小国に拾われて無双の英雄となる。【スキル鑑定・極】が発現して、騎士や魔法使いたちの能力を片っ端から底上げしてたら、いつのまにか世界最強国家になっていたようです。（マンガBANGコミックス）",
-      "price": "0",
+      "price": "750",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-14",
       "is_v1": true,
@@ -9403,7 +9417,7 @@
       "label": "チャンピオンクロス",
       "category": "話・連載（マンガ）",
       "series": "全員覚悟ガンギマリなエロゲーの邪教徒モブに転生してしまった件(話売り)（チャンピオンクロス）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -9417,7 +9431,7 @@
       "label": "姉フレンド",
       "category": "マンガ",
       "series": "タイパな彼女（姉フレンド）",
-      "price": "0",
+      "price": "540",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-08",
       "is_v1": true,
@@ -9431,12 +9445,26 @@
       "label": "マンガBANGコミックス",
       "category": "マンガ",
       "series": "闘狂覚醒少女（マンガBANGコミックス）",
-      "price": "0",
+      "price": "800",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-14",
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/8c322114a21e92b7ab47fcfb6af9be3/t_700x780.jpg"
+    },
+    {
+      "title": "伯爵様、どうか私を雇ってください！～婚約者を奪った姉を祝福するなんて無理です～ 1",
+      "url": "https://bookwalker.jp/de357771f1-90b6-4375-9380-ba407859ae6e/",
+      "publisher": "クリーク・アンド・リバー社",
+      "label": "――",
+      "category": "マンガ",
+      "series": "伯爵様、どうか私を雇ってください！～婚約者を奪った姉を祝福するなんて無理です～（クリーク・アンド・リバー社）",
+      "price": "200",
+      "release_date": "2026-09-20",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e95051d1e0b841ba5148db4b939892b/t_700x780.jpg"
     },
     {
       "title": "ハニトラ・メソッド（１）",
@@ -9445,7 +9473,7 @@
       "label": "姉フレンド",
       "category": "マンガ",
       "series": "ハニトラ・メソッド（姉フレンド）",
-      "price": "0",
+      "price": "540",
       "release_date": "2026-09-20",
       "registered_at": "2026-09-08",
       "is_v1": true,
@@ -10013,6 +10041,20 @@
       "image": "https://c.bookwalker.jp/842c643aa4bdd89e5d4a11114e27bd1/t_700x780.jpg"
     },
     {
+      "title": "サラリーマン、異世界で飯を食べる【分冊版】１",
+      "url": "https://bookwalker.jp/de896294ba-94a9-411b-b54f-75aac8ee425a/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "サラリーマン、異世界で飯を食べる【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-09-25",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e277c3f21b7e3499fe4f09d68580df0/t_700x780.jpg"
+    },
+    {
       "title": "ザ・ベンテン 令和版 家政婦転生物語 1",
       "url": "https://bookwalker.jp/de69abcb08-0604-4f2b-b710-167b134eb80e/",
       "publisher": "集英社",
@@ -10209,6 +10251,20 @@
       "image": "https://c.bookwalker.jp/a49c96911eaeeab61b43c918b3a41e9/t_700x780.jpg"
     },
     {
+      "title": "何の取り柄もない平凡な俺が美人双子姉妹を命懸けで助けた結果、実はヤンデレだった二人をガチ惚れさせてしまった件【分冊版】１",
+      "url": "https://bookwalker.jp/de915f846c-9a7a-42ba-ab4a-23e727809d4f/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "何の取り柄もない平凡な俺が美人双子姉妹を命懸けで助けた結果、実はヤンデレだった二人をガチ惚れさせてしまった件【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-09-25",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/faa048feb0ae3d9ab74904d9cfa290b/t_700x780.jpg"
+    },
+    {
       "title": "二代目聖女は戦わない　１",
       "url": "https://bookwalker.jp/deacbe6d73-a509-45b5-b9ea-43bb3876367f/",
       "publisher": "KADOKAWA",
@@ -10361,6 +10417,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/691bea995f7541b940486703a25ef5b/t_700x780.jpg"
+    },
+    {
+      "title": "不敗の雑魚将軍【分冊版】１",
+      "url": "https://bookwalker.jp/dec8d43293-7fa9-4dcc-8ac9-79f6b5d4b652/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "不敗の雑魚将軍【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-09-25",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/be0b103d874fb79e99409f47145c579/t_700x780.jpg"
     },
     {
       "title": "Berry’sFantasy悪役令嬢として婚約破棄されたところ、執着心強めな第二王子が溺愛してきました。1巻",
@@ -10517,6 +10587,20 @@
       "image": "https://c.bookwalker.jp/6db4b816224ce286df40e562ee4e7bf/t_700x780.jpg"
     },
     {
+      "title": "リセマラ∞デスゲーマー【分冊版】１",
+      "url": "https://bookwalker.jp/debcdea7d3-91d6-4506-9f73-f9b421e798c4/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "リセマラ∞デスゲーマー【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-09-25",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/5798deb54197f0a76043ebdb8607012/t_700x780.jpg"
+    },
+    {
       "title": "ろくでなしな君の甘すぎる献身 1",
       "url": "https://bookwalker.jp/dee55721d2-fa5f-4856-80cb-e9e72a891ec0/",
       "publisher": "集英社",
@@ -10611,7 +10695,7 @@
       "release_date": "2026-09-26",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4937073/t_700x780.jpg"
     },
     {
@@ -10839,6 +10923,20 @@
       "image": "https://c.bookwalker.jp/f5b18111605a8cb3ea4ee272c36c404/t_700x780.jpg"
     },
     {
+      "title": "かがみさまのお屋敷【単話】（１）",
+      "url": "https://bookwalker.jp/dea6ee66eb-19e8-4160-8903-7b89eac74ef6/",
+      "publisher": "小学館",
+      "label": "シードコミックスF",
+      "category": "マンガ",
+      "series": "かがみさまのお屋敷【単話】（シードコミックスF）",
+      "price": "0",
+      "release_date": "2026-09-27",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/46d60fd614ff9284cf412fced7f269e/t_700x780.jpg"
+    },
+    {
       "title": "作家刑事毒島 連載版：1-1",
       "url": "https://bookwalker.jp/de8da3fb88-f716-4c1f-9dcd-41aa665a7fff/",
       "publisher": "ブシロードワークス",
@@ -10851,6 +10949,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/04256f09873b93b4a8422f64f2bb44c/t_700x780.jpg"
+    },
+    {
+      "title": "魔女の結婚～愛し子の世界征服を手伝いますが、転生のことは秘密です～@comic【単話】（１）",
+      "url": "https://bookwalker.jp/de04293ae0-95fb-4b38-ba8a-794127ec62ab/",
+      "publisher": "小学館",
+      "label": "シードコミックスF",
+      "category": "マンガ",
+      "series": "魔女の結婚～愛し子の世界征服を手伝いますが、転生のことは秘密です～@comic【単話】（シードコミックスF）",
+      "price": "0",
+      "release_date": "2026-09-27",
+      "registered_at": "2026-09-19",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/5ac6933a9343849d884bf1db4665442/t_700x780.jpg"
     },
     {
       "title": "異世界の騎士は風呂上がりのアイスをご所望です 1",
@@ -10933,7 +11045,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-04",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/eda30f2e275571acf848dd32d782c17/t_700x780.jpg"
     },
     {
@@ -11059,7 +11171,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/14c69c98b94bccbf8b4ff5e1daa56c0/t_700x780.jpg"
     },
     {
@@ -11087,7 +11199,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/83132df5f672ba8820499b8ffe0afc4/t_700x780.jpg"
     },
     {
@@ -11157,7 +11269,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f103f6fe1e5ea89dac4c0557b72d1cf/t_700x780.jpg"
     },
     {
@@ -11283,7 +11395,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/6f833740080d78a85c498bff7e8cd13/t_700x780.jpg"
     },
     {
@@ -11367,7 +11479,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5f550d889e24d7b63e40776e0aff5d8/t_700x780.jpg"
     },
     {
@@ -11479,7 +11591,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/59194bb6136824b594457870e6b17f4/t_700x780.jpg"
     },
     {
@@ -11507,7 +11619,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/12673d5603069ea9a7432a667613cf1/t_700x780.jpg"
     },
     {
@@ -11521,7 +11633,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/168c4699f87a5f903a46883ad8e5972/t_700x780.jpg"
     },
     {
@@ -11675,7 +11787,7 @@
       "release_date": "2026-09-30",
       "registered_at": "2026-09-18",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8d623582bcfc1b8ac24ff7616ee13a5/t_700x780.jpg"
     },
     {
