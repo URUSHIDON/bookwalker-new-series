@@ -515,7 +515,7 @@
       "release_date": "2026-10-02",
       "registered_at": "2026-09-21",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ff5f7fd0d3b42cb1fd4925da2a805f7/t_700x780.jpg"
     },
     {
@@ -9589,7 +9589,7 @@
       "release_date": "2026-09-22",
       "registered_at": "2026-09-21",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f3f0e323283c3697ad46591f23371a9/t_700x780.jpg"
     },
     {
@@ -9641,7 +9641,7 @@
       "label": "チェリッシュ",
       "category": "話・連載（マンガ）",
       "series": "うちの夫が最悪なので（チェリッシュ）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-23",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -9655,7 +9655,7 @@
       "label": "piccomics",
       "category": "マンガ",
       "series": "俺だけレベルアップな件～外伝～（piccomics）",
-      "price": "0",
+      "price": "950",
       "release_date": "2026-09-23",
       "registered_at": "2026-09-14",
       "is_v1": true,
@@ -9669,7 +9669,7 @@
       "label": "Precious Love",
       "category": "話・連載（マンガ）",
       "series": "和装契約恋愛帖～初恋のカレは着物がお好き？～（Precious Love）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-09-23",
       "registered_at": "2026-09-15",
       "is_v1": true,
@@ -9683,7 +9683,7 @@
       "label": "チェリッシュ",
       "category": "話・連載（マンガ）",
       "series": "私が処女で、上司がED。（チェリッシュ）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-09-23",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -9841,7 +9841,7 @@
       "release_date": "2026-09-24",
       "registered_at": "2026-09-21",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c04df0782bf961908e439643bbcd3f2/t_700x780.jpg"
     },
     {
@@ -11231,6 +11231,20 @@
       "image": "https://c.bookwalker.jp/af5ef8c2c183029ade4fb7a658a62c5/t_700x780.jpg"
     },
     {
+      "title": "異世界道楽に飽きたら　【単行本版】　第１巻　【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/de9e867edc-e2c4-46a3-ba1b-a731d2772bf9/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "異世界道楽に飽きたら　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/830241c1d9982d99ed4d0f12d5a8970/t_700x780.jpg"
+    },
+    {
       "title": "宇宙人はいらない（１）",
       "url": "https://bookwalker.jp/de433be372-63c6-45cb-86bb-7c4d5cf860af/",
       "publisher": "小学館",
@@ -11327,6 +11341,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/2789a6a0d16cbda01c4df3b5fb11322/t_700x780.jpg"
+    },
+    {
+      "title": "康太の異世界ごはん　【単行本版】　第１巻　【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/dee2d08221-c1a2-459b-ac3c-03bd6e6f1d04/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "康太の異世界ごはん　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/071d6ea03c83a19ea44ae12a6634361/t_700x780.jpg"
+    },
+    {
+      "title": "棺の魔王　【単行本版】　第１巻【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/de75bb34a1-e01a-4dc0-86b1-dadfea2700fd/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "棺の魔王　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/a665347ac4a49783154875835b0adc6/t_700x780.jpg"
     },
     {
       "title": "#1(1)",
@@ -11483,6 +11525,20 @@
       "image": "https://c.bookwalker.jp/6f833740080d78a85c498bff7e8cd13/t_700x780.jpg"
     },
     {
+      "title": "小さな魔女と野良犬騎士　【単行本版】　第１巻【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/dee09cbfce-617e-424c-bc1e-3bd8ac5f3895/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "小さな魔女と野良犬騎士　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/ef66ec38b16abb90cb47bd4bd8408e4/t_700x780.jpg"
+    },
+    {
       "title": "追放予定（希望）の悪役令嬢に転生したので、悪役らしく物語を支配する。（１）",
       "url": "https://bookwalker.jp/de928cd0ab-84f2-4227-9e26-549fe81fdb78/",
       "publisher": "講談社",
@@ -11511,6 +11567,20 @@
       "image": "https://c.bookwalker.jp/9d15d983337c8ba83246c3f73a6aa48/t_700x780.jpg"
     },
     {
+      "title": "転生少女の履歴書　【単行本版】　第１巻　【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/def9b7aef4-6089-468d-9c98-bebf1c504f66/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "転生少女の履歴書　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/bbe96643ea766c9d6d4328d2a86fcb2/t_700x780.jpg"
+    },
+    {
       "title": "第1話 - (1)",
       "url": "https://bookwalker.jp/de9c709465-e7fe-4d6d-8a1d-4d4f14fc61be/",
       "publisher": "集英社",
@@ -11537,6 +11607,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/65582aa77b43668fe94b77a767dc4a3/t_700x780.jpg"
+    },
+    {
+      "title": "南条翔は其の狐の如く　【単行本版】　第１巻　【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/de79030c52-0476-4775-bcb0-1100489372f2/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "南条翔は其の狐の如く　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/5a6407fb2ad9839a93499f814fbb310/t_700x780.jpg"
     },
     {
       "title": "二次会はキミとふたりで【単話】（１）",
@@ -11747,6 +11831,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/89ddf562d5c7b6bbfe46b85a31bb5bf/t_700x780.jpg"
+    },
+    {
+      "title": "無属性魔法の救世主　【単行本版】　第１巻　【BOOK☆WALKER限定版】",
+      "url": "https://bookwalker.jp/de85bc111f-52a8-4204-b515-21b9144d7441/",
+      "publisher": "主婦の友社",
+      "label": "ヒーローコミックス",
+      "category": "マンガ",
+      "series": "無属性魔法の救世主　【単行本版】（ヒーローコミックス）",
+      "price": "0",
+      "release_date": "2026-09-30",
+      "registered_at": "2026-09-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/0afacb24bf5c9b818d4eb47683ebf57/t_700x780.jpg"
     },
     {
       "title": "無敵の人になった悪役令嬢ですが、全員バッドエンドに道連れですわ！【単話】（１）",
