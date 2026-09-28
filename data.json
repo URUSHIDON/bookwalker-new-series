@@ -221,7 +221,7 @@
       "release_date": "2026-10-01",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ec5a9cfe27c3ea83e54c20136180f07/t_700x780.jpg"
     },
     {
@@ -547,6 +547,20 @@
       "image": "https://c.bookwalker.jp/02c35e5f03288dbdbd4c0591a93db47/t_700x780.jpg"
     },
     {
+      "title": "マジョモジョ＜連載版＞1話 喪女と呪い",
+      "url": "https://bookwalker.jp/dea97dbb5a-9ee3-4e64-b90f-e724d6777e87/",
+      "publisher": "少年画報社",
+      "label": "――",
+      "category": "話・連載（マンガ）",
+      "series": "マジョモジョ＜連載版＞（少年画報社）",
+      "price": "0",
+      "release_date": "2026-10-02",
+      "registered_at": "2026-09-28",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/08363b038f1e1b853e46779b20bc194/t_700x780.jpg"
+    },
+    {
       "title": "メイダ　Vol.1",
       "url": "https://bookwalker.jp/deacbf1df5-b535-4bd4-a7a5-4900c26a470d/",
       "publisher": "KADOKAWA",
@@ -559,20 +573,6 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/699999999/t_700x780.jpg"
-    },
-    {
-      "title": "妄想女子の上原さんは初恋中【単話版】(1)",
-      "url": "https://bookwalker.jp/de8961740f-7a26-45b5-bb8e-fdd03c0a0d42/",
-      "publisher": "CLLENN",
-      "label": "GG-COMICS",
-      "category": "話・連載（マンガ）",
-      "series": "妄想女子の上原さんは初恋中【単話版】（GG-COMICS）",
-      "price": "0",
-      "release_date": "2026-10-02",
-      "registered_at": "2026-09-21",
-      "is_v1": true,
-      "is_new_series": false,
-      "image": "https://c.bookwalker.jp/ff5f7fd0d3b42cb1fd4925da2a805f7/t_700x780.jpg"
     },
     {
       "title": "遊莉センパイ、対戦よろしくお願いします。【単行本】 第1巻",
@@ -669,7 +669,7 @@
       "release_date": "2026-10-04",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d43fe23e123d30956f47a144d1b9ff9/t_700x780.jpg"
     },
     {
@@ -935,7 +935,7 @@
       "release_date": "2026-10-06",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c6284cdabb8e35ab79435055cf08be6/t_700x780.jpg"
     },
     {
@@ -3273,7 +3273,7 @@
       "release_date": "2026-10-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/214439eeabfa99ae814e586b50413d7/t_700x780.jpg"
     },
     {
@@ -3401,6 +3401,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/e0ef5e837cd1a6a90f4429c0df6d4c3/t_700x780.jpg"
+    },
+    {
+      "title": "妄想女子の上原さんは初恋中【単話版】(1)",
+      "url": "https://bookwalker.jp/de8961740f-7a26-45b5-bb8e-fdd03c0a0d42/",
+      "publisher": "CLLENN",
+      "label": "GG-COMICS",
+      "category": "話・連載（マンガ）",
+      "series": "妄想女子の上原さんは初恋中【単話版】（GG-COMICS）",
+      "price": "0",
+      "release_date": "2026-10-30",
+      "registered_at": "2026-09-21",
+      "is_v1": true,
+      "is_new_series": false,
+      "image": "https://c.bookwalker.jp/ff5f7fd0d3b42cb1fd4925da2a805f7/t_700x780.jpg"
+    },
+    {
+      "title": "【電子版限定特典付き】落第召喚士な彼女の使い魔（俺）が最強すぎる件1",
+      "url": "https://bookwalker.jp/dee01e6bf1-5507-48b0-b208-e04e555d38fd/",
+      "publisher": "ホビージャパン",
+      "label": "ＨＪ文庫",
+      "category": "ライトノベル",
+      "series": "落第召喚士な彼女の使い魔（俺）が最強すぎる件（ＨＪ文庫）",
+      "price": "0",
+      "release_date": "2026-10-30",
+      "registered_at": "2026-09-28",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/fd6f1af73e1d28b161499ddc54609a8/t_700x780.jpg"
     }
   ],
   "2026-09": [
@@ -7695,7 +7723,7 @@
       "label": "アヴァルスコミックス",
       "category": "話・連載（マンガ）",
       "series": "悪女が生き残る方法～伯爵令嬢に転生したけど処刑されるなんてお断りです～ THE COMIC【分冊版】（アヴァルスコミックス）",
-      "price": "0",
+      "price": "160",
       "release_date": "2026-09-15",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -8569,6 +8597,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/15a5fecdbd4075a63948a4624a78f27/t_700x780.jpg"
+    },
+    {
+      "title": "残業の代価【タテヨミ】(1)",
+      "url": "https://bookwalker.jp/debad7c9f9-b5cd-429d-a403-4093d944d96c/",
+      "publisher": "Chirari Club",
+      "label": "――",
+      "category": "話・連載（マンガ）",
+      "series": "残業の代価【タテヨミ】（Chirari Club）",
+      "price": "0",
+      "release_date": "2026-09-17",
+      "registered_at": "2026-09-28",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/ff9c8245503b589eb24bc055f735f2a/t_700x780.jpg"
     },
     {
       "title": "赤竜カルセアリン【タテヨミ】第1話",
@@ -12039,7 +12081,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c78b37ed9ec2958d184b26180ddf5b3/t_700x780.jpg"
     },
     {
@@ -12053,7 +12095,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a29d1e6183cc948ad443a873f8ae963/t_700x780.jpg"
     },
     {
@@ -12095,7 +12137,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/bbd1d7b142c8e6bd624d3801a16625b/t_700x780.jpg"
     },
     {
@@ -12123,7 +12165,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/841fd6839eaeda811149f3e52757b1d/t_700x780.jpg"
     },
     {
@@ -12137,7 +12179,7 @@
       "release_date": "2026-09-28",
       "registered_at": "2026-09-27",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/71206e29c6338497a84bb9c792cdb8a/t_700x780.jpg"
     },
     {
@@ -12189,7 +12231,7 @@
       "label": "ニチブンコミックス",
       "category": "マンガ",
       "series": "宇宙番長☆ジャガサキ（ニチブンコミックス）",
-      "price": "0",
+      "price": "900",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -12203,7 +12245,7 @@
       "label": "――",
       "category": "マンガ",
       "series": "異世界駆除おじさん（ラピッドブレインコミックス）",
-      "price": "0",
+      "price": "740",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-17",
       "is_v1": true,
@@ -12217,7 +12259,7 @@
       "label": "ヤングアニマルWeb",
       "category": "マンガ",
       "series": "天才詐欺師の異世界世直し（ヤングアニマルWeb）",
-      "price": "0",
+      "price": "690",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -12245,7 +12287,7 @@
       "label": "コミックノワール",
       "category": "話・連載（マンガ）",
       "series": "復讐なら、ぼくに任せて～クズ保育士、地獄送り～（コミックノワール）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-25",
       "is_v1": true,
@@ -12259,7 +12301,7 @@
       "label": "ヒーローズコミックス わいるど",
       "category": "マンガ",
       "series": "蜜夜さんはサキュバスらしい（ヒーローズコミックス わいるど）",
-      "price": "0",
+      "price": "800",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-14",
       "is_v1": true,
@@ -12273,7 +12315,7 @@
       "label": "ヤングアニマル",
       "category": "マンガ",
       "series": "ワールドエンダー　―世界に嫌われた君とのN回目―（ヤングアニマル）",
-      "price": "0",
+      "price": "690",
       "release_date": "2026-09-29",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -18561,7 +18603,7 @@
       "label": "RCユニコーン",
       "category": "話・連載（マンガ）",
       "series": "やんごとなきエレバス　銀河の姫提督は５階級降格＆僻地左遷でもタダじゃあやられてやんないから、首根っこ洗って待っていやがれですよ【単話版】（RCユニコーン）",
-      "price": "120",
+      "price": "60",
       "release_date": "2026-08-14",
       "registered_at": "2026-09-04",
       "is_v1": true,
