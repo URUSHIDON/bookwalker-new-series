@@ -389,7 +389,7 @@
       "release_date": "2026-11-06",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1f65c96057c6f0a0ea42ece3b257638/t_700x780.jpg"
     },
     {
@@ -501,7 +501,7 @@
       "release_date": "2026-11-06",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ce2098c8f9c1c7b9ef48b03acea88d6/t_700x780.jpg"
     },
     {
@@ -683,7 +683,7 @@
       "release_date": "2026-11-10",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8b9b9fe3392c7b87a84dadc97a6f6f8/t_700x780.jpg"
     },
     {
@@ -767,7 +767,7 @@
       "release_date": "2026-11-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9df548f712683ba75b4d79cfa24f12a/t_700x780.jpg"
     },
     {
@@ -781,7 +781,7 @@
       "release_date": "2026-11-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d3a448545f79aca7b34bcf27467096f/t_700x780.jpg"
     },
     {
@@ -795,7 +795,7 @@
       "release_date": "2026-11-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b2c9c02d0b4d78b88b4965add97cba5/t_700x780.jpg"
     },
     {
@@ -865,7 +865,7 @@
       "release_date": "2026-11-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3a2c2910e2a6408bc945065a1196eb1/t_700x780.jpg"
     },
     {
@@ -991,7 +991,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e664dd2cbd11378d0640aecaf3179b5/t_700x780.jpg"
     },
     {
@@ -1731,7 +1731,7 @@
       "label": "GANMA！",
       "category": "話・連載（マンガ）",
       "series": "春雷とノイズ【単話版】（GANMA！）",
-      "price": "85",
+      "price": "10",
       "release_date": "2026-10-01",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -2463,7 +2463,7 @@
       "release_date": "2026-10-03",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e0549a44c55cfdb7da49a07253f5ae6/t_700x780.jpg"
     },
     {
@@ -2477,7 +2477,7 @@
       "release_date": "2026-10-03",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9a5d6b388bc9f086d54b83c2c16c3f9/t_700x780.jpg"
     },
     {
@@ -2509,13 +2509,41 @@
       "image": "https://c.bookwalker.jp/28db0643e64ae6948d4b6409568db63/t_700x780.jpg"
     },
     {
+      "title": "最後の秋、あなたに溺れて 第1話",
+      "url": "https://bookwalker.jp/dedc752f56-84b2-4dcd-9f3a-95a6d0a6f8c8/",
+      "publisher": "SBCr",
+      "label": "――",
+      "category": "話・連載（マンガ）",
+      "series": "最後の秋、あなたに溺れて（SBCr）",
+      "price": "0",
+      "release_date": "2026-10-04",
+      "registered_at": "2026-10-03",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/0fae3d3becb93aa39f4cf34c27f4d53/t_700x780.jpg"
+    },
+    {
+      "title": "シェ不倫！～キス魔なシェフとのアブナイ関係～　分冊版　1話",
+      "url": "https://bookwalker.jp/defbedd06a-928b-45eb-ac2a-c7c141fe32da/",
+      "publisher": "クリーク・アンド・リバー社",
+      "label": "EX漫画のシュララ",
+      "category": "話・連載（マンガ）",
+      "series": "シェ不倫！～キス魔なシェフとのアブナイ関係～　分冊版（EX漫画のシュララ）",
+      "price": "0",
+      "release_date": "2026-10-04",
+      "registered_at": "2026-10-03",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/563032e64c1eaf970f421e0f704b836/t_700x780.jpg"
+    },
+    {
       "title": "柊二さんの至れり尽くせり ～目が覚めたら無愛想な先輩が溺愛彼氏に～【単話版】（１）",
       "url": "https://bookwalker.jp/deb64d92d5-4125-4a6b-837a-356dc68a754a/",
       "publisher": "GANMA!",
       "label": "GANMA！",
       "category": "話・連載（マンガ）",
       "series": "柊二さんの至れり尽くせり ～目が覚めたら無愛想な先輩が溺愛彼氏に～【単話版】（GANMA！）",
-      "price": "0",
+      "price": "10",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-17",
       "is_v1": true,
@@ -2529,7 +2557,7 @@
       "label": "GANMA！",
       "category": "マンガ",
       "series": "セクシュアル青春譚（GANMA！）",
-      "price": "0",
+      "price": "510",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-24",
       "is_v1": true,
@@ -2543,7 +2571,7 @@
       "label": "ティラミス",
       "category": "マンガ",
       "series": "ひざまずいて、愛を乞え～御曹司の一途な愛執～【電子限定単行本】（ティラミス）",
-      "price": "0",
+      "price": "330",
       "release_date": "2026-10-04",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -2557,7 +2585,7 @@
       "label": "シードコミックスF",
       "category": "マンガ",
       "series": "双子公爵の執心～貧乏令嬢の私が名門公爵家でこんなに溺愛されるなんて～（シードコミックスF）",
-      "price": "0",
+      "price": "800",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-27",
       "is_v1": true,
@@ -2571,7 +2599,7 @@
       "label": "GANMA！",
       "category": "マンガ",
       "series": "ボクはまだ夫ですか？～くまムッの黄昏～（GANMA！）",
-      "price": "0",
+      "price": "630",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-24",
       "is_v1": true,
@@ -2585,7 +2613,7 @@
       "label": "GANMA！",
       "category": "マンガ",
       "series": "私のいいなり執事がこわい（GANMA！）",
-      "price": "0",
+      "price": "630",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -2897,7 +2925,7 @@
       "release_date": "2026-10-06",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/db6a2c57869c7782514c2316c300695/t_700x780.jpg"
     },
     {
@@ -4451,7 +4479,7 @@
       "release_date": "2026-10-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4a88dd2c013c74a5714893a7de6b1c0/t_700x780.jpg"
     },
     {
@@ -4507,7 +4535,7 @@
       "release_date": "2026-10-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9ca0f292855a4489474cd35420e137e/t_700x780.jpg"
     },
     {
@@ -4563,7 +4591,7 @@
       "release_date": "2026-10-14",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/34c24dd1263b91abf74452462fc1ce0/t_700x780.jpg"
     },
     {
@@ -4829,7 +4857,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/fe3bb205d75ff8b4714e5fd61c017cc/t_700x780.jpg"
     },
     {
@@ -4843,7 +4871,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/71fbc0f684e14091e742ad60ab60121/t_700x780.jpg"
     },
     {
@@ -4871,7 +4899,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/20b79dc432158683674b5b985ca8324/t_700x780.jpg"
     },
     {
@@ -4983,7 +5011,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9baadc818986b6bcd14100ec0b7ac5a/t_700x780.jpg"
     },
     {
@@ -4997,7 +5025,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cf92bc17d3c00fbbcc47cc1510e6aa2/t_700x780.jpg"
     },
     {
@@ -5039,7 +5067,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4850ad3a2c57ef9c9c48f5bf75862d0/t_700x780.jpg"
     },
     {
@@ -5305,7 +5333,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/70d9a568117a9696b14484e86e1c42a/t_700x780.jpg"
     },
     {
@@ -5375,7 +5403,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-02",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ae716cac7c29d9bb1b416335230798c/t_700x780.jpg"
     },
     {
@@ -8075,7 +8103,7 @@
       "label": "ティラミス",
       "category": "マンガ",
       "series": "死刑宣告された悪役令嬢は、仮面の辺境伯になぜか溺愛されています。【電子限定単行本】（ティラミス）",
-      "price": "660",
+      "price": "330",
       "release_date": "2026-09-06",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -13380,12 +13408,12 @@
       "publisher": "アルファポリス",
       "label": "レジーナCOMICS",
       "category": "話・連載（マンガ）",
-      "series": "お飾りの側妃ですね？わかりました。どうぞ私のことは放っといてください！（レジーナCOMICS）",
+      "series": "お飾りの側妃ですね？わかりました。どうぞ私のことは放っといてください！（分冊版）（レジーナCOMICS）",
       "price": "0",
       "release_date": "2026-09-25",
       "registered_at": "2026-09-24",
       "is_v1": true,
-      "is_new_series": false,
+      "is_new_series": true,
       "image": "https://c.bookwalker.jp/cac74c6df5ea2bb9ad4d397ac48479e/t_700x780.jpg"
     },
     {
@@ -13786,12 +13814,12 @@
       "publisher": "アルファポリス",
       "label": "レジーナCOMICS",
       "category": "話・連載（マンガ）",
-      "series": "前世で処刑された聖女、今は黒薬師と呼ばれています（レジーナCOMICS）",
+      "series": "前世で処刑された聖女、今は黒薬師と呼ばれています（分冊版）（レジーナCOMICS）",
       "price": "0",
       "release_date": "2026-09-25",
       "registered_at": "2026-09-24",
       "is_v1": true,
-      "is_new_series": false,
+      "is_new_series": true,
       "image": "https://c.bookwalker.jp/fe2bd6993e42febf1848586210e36c1/t_700x780.jpg"
     },
     {
