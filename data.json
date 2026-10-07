@@ -71,6 +71,20 @@
       "image": "https://c.bookwalker.jp/de9a60c7d34807afdd49b89fb7d75ab/t_700x780.jpg"
     },
     {
+      "title": "軍閥興亡史１",
+      "url": "https://bookwalker.jp/deb38f00c5-5041-4f8e-b8bb-26ce77ff6276/",
+      "publisher": "電書バト",
+      "label": "――",
+      "category": "実用",
+      "series": "軍閥興亡史（電書バト）",
+      "price": "0",
+      "release_date": "2026-11-01",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/50bac2d15b0f51876a4b0a840eb95b7/t_700x780.jpg"
+    },
+    {
       "title": "氷皇子は砂漠の姫に狙われる【分冊版】 1",
       "url": "https://bookwalker.jp/dedc8ee2cb-88f5-458c-824b-b761d166facd/",
       "publisher": "スクウェア・エニックス",
@@ -319,7 +333,7 @@
       "release_date": "2026-11-04",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/adc19e90752d83957544b3b12584b89/t_700x780.jpg"
     },
     {
@@ -333,7 +347,7 @@
       "release_date": "2026-11-04",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d0a7faee5703a3934043ed3db4f4113/t_700x780.jpg"
     },
     {
@@ -347,7 +361,7 @@
       "release_date": "2026-11-04",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f9a0740b42551db0d24fb53df81355f/t_700x780.jpg"
     },
     {
@@ -361,7 +375,7 @@
       "release_date": "2026-11-04",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5dd43aa024856cb77f435b80ed6e808/t_700x780.jpg"
     },
     {
@@ -377,6 +391,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/4f3b1c1a82d774b1d64d9873d3c0615/t_700x780.jpg"
+    },
+    {
+      "title": "天音お嬢様の言うことには　1巻",
+      "url": "https://bookwalker.jp/de07315269-a7a6-45d5-a7c0-56bafaa2379b/",
+      "publisher": "白泉社",
+      "label": "LaLa",
+      "category": "マンガ",
+      "series": "天音お嬢様の言うことには（LaLa）",
+      "price": "0",
+      "release_date": "2026-11-05",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/b4497582bdb1c8ac5e4db896cb4fba3/t_700x780.jpg"
     },
     {
       "title": "嘘告されるらしいので、楽しんでみることにした 1巻",
@@ -631,17 +659,17 @@
       "image": "https://c.bookwalker.jp/46ba2193d63d5096f64267a6643ff13/t_700x780.jpg"
     },
     {
-      "title": "ぼくと5人の不倫相手 分冊版 第1話",
+      "title": "ぼくと5人の不倫相手 記憶喪失のぼくは5人の女に断罪される 分冊版 第1話",
       "url": "https://bookwalker.jp/dededcec24-2dd1-4d54-9320-bdd6fbef78ee/",
       "publisher": "コアミックス",
       "label": "ゼノンコミックス",
       "category": "話・連載（マンガ）",
-      "series": "ぼくと5人の不倫相手 分冊版（ゼノンコミックス）",
+      "series": "ぼくと5人の不倫相手 記憶喪失のぼくは5人の女に断罪される 分冊版（ゼノンコミックス）",
       "price": "0",
       "release_date": "2026-11-06",
       "registered_at": "2026-10-01",
       "is_v1": true,
-      "is_new_series": false,
+      "is_new_series": true,
       "image": "https://c.bookwalker.jp/43ca756d77de95bc1848a9b50f2d49f/t_700x780.jpg"
     },
     {
@@ -711,8 +739,22 @@
       "release_date": "2026-11-09",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/10569326172c0ca71c4ec1d395a7ad0/t_700x780.jpg"
+    },
+    {
+      "title": "モンスターストライク ルシファーさんの堕落ごはん　1巻",
+      "url": "https://bookwalker.jp/deca3b9516-dca6-48d5-b14d-c4eacad6b86a/",
+      "publisher": "新潮社",
+      "label": "バンチコミックス",
+      "category": "マンガ",
+      "series": "モンスターストライク ルシファーさんの堕落ごはん（バンチコミックス）",
+      "price": "0",
+      "release_date": "2026-11-09",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/f94087923b3c409a724c3bbd7de8287/t_700x780.jpg"
     },
     {
       "title": "追放幼女の領地開拓記～シナリオ開始前に追放された悪役令嬢が民のためにやりたい放題した結果がこちらです～@COMIC 第1巻",
@@ -795,7 +837,7 @@
       "release_date": "2026-11-12",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3ac9063660e0b0bad142e7dfebb0668/t_700x780.jpg"
     },
     {
@@ -991,7 +1033,7 @@
       "release_date": "2026-11-14",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/701f67f29e89928a8d469ab689c8d51/t_700x780.jpg"
     },
     {
@@ -1005,7 +1047,7 @@
       "release_date": "2026-11-15",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1529655dd4ceab97d245711a0dafba8/t_700x780.jpg"
     },
     {
@@ -1047,7 +1089,7 @@
       "release_date": "2026-11-15",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a4a6f2c1c22f6f80b943293a4fb6e2f/t_700x780.jpg"
     },
     {
@@ -1103,7 +1145,7 @@
       "release_date": "2026-11-17",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3eaf40f764f471964743b392ba7a7cf/t_700x780.jpg"
     },
     {
@@ -1117,7 +1159,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/10352fdb5e9dfd9a9e43144c9c71337/t_700x780.jpg"
     },
     {
@@ -1131,7 +1173,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c073f07c5b1f10b5ba475629cc0587b/t_700x780.jpg"
     },
     {
@@ -1145,7 +1187,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cdc414800557dd96b845d380a3f98a3/t_700x780.jpg"
     },
     {
@@ -1159,7 +1201,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/11cbdc7fa92e3386d343887f13d6367/t_700x780.jpg"
     },
     {
@@ -1173,7 +1215,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a6ec0ad44435fd85124b4c85eb11572/t_700x780.jpg"
     },
     {
@@ -1201,7 +1243,7 @@
       "release_date": "2026-11-18",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/04e380d9bee819815a47c75423b13a4/t_700x780.jpg"
     },
     {
@@ -1259,6 +1301,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/d9dd235bcaec30a81b446ba00a4310b/t_700x780.jpg"
+    },
+    {
+      "title": "推しの彼女（仮）になりまして 1",
+      "url": "https://bookwalker.jp/debcbfb248-b779-4709-a931-361853dd0c00/",
+      "publisher": "シーモアコミックス",
+      "label": "恋するソワレ",
+      "category": "マンガ",
+      "series": "推しの彼女（仮）になりまして（恋するソワレ）",
+      "price": "0",
+      "release_date": "2026-11-20",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/9830f953cb960b906c4f358d6ab3cd2/t_700x780.jpg"
     },
     {
       "title": "【単話版】クズな彼との推し契約　第1話（1）",
@@ -1467,7 +1523,7 @@
       "release_date": "2026-11-23",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ac0cbcd7b26525acb2402230d717311/t_700x780.jpg"
     },
     {
@@ -1481,7 +1537,7 @@
       "release_date": "2026-11-24",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4ad128d43df25f823e447cd00fef29a/t_700x780.jpg"
     },
     {
@@ -3387,7 +3443,7 @@
       "release_date": "2026-10-07",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8b3815d1b2a8fabed14bfe1c136e835/t_700x780.jpg"
     },
     {
@@ -3443,7 +3499,7 @@
       "release_date": "2026-10-07",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3150a47b43c290a6cb414267726c712/t_700x780.jpg"
     },
     {
@@ -3597,7 +3653,7 @@
       "release_date": "2026-10-07",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/563a214fca82029fef4729640fa2c46/t_700x780.jpg"
     },
     {
@@ -3779,7 +3835,7 @@
       "release_date": "2026-10-07",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1616e1e06f001d92114bc0c20340d3c/t_700x780.jpg"
     },
     {
@@ -3831,7 +3887,7 @@
       "label": "別冊少年マガジン",
       "category": "マンガ",
       "series": "アイ・ヘイ・チュー（別冊少年マガジン）",
-      "price": "0",
+      "price": "540",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-25",
       "is_v1": true,
@@ -3845,11 +3901,11 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "明日カップ・イン【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1000",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2f7605e37526308e6249bc1f4c436ed/t_700x780.jpg"
     },
     {
@@ -3859,7 +3915,7 @@
       "label": "マガジンポケット",
       "category": "マンガ",
       "series": "一億年修行の無自覚剣聖～ただの棒だと馬鹿にされた万能の神器と、極限の修行で生み出した『剣鬼』の人格で異世界を圧倒する～（マガジンポケット）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-25",
       "is_v1": true,
@@ -3873,7 +3929,7 @@
       "label": "アクションコミックス",
       "category": "話・連載（マンガ）",
       "series": "いつかはオールライト 分冊版（アクションコミックス）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -3887,11 +3943,11 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "いとしのエリー【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4935274e7e61ee860e4f626d29c0b03/t_700x780.jpg"
     },
     {
@@ -3901,11 +3957,11 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "海猫亭へようこそ【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1000",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b6a96deaeef6b787734ab9176afe057/t_700x780.jpg"
     },
     {
@@ -3915,7 +3971,7 @@
       "label": "よもんがクロメ",
       "category": "話・連載（マンガ）",
       "series": "鬼王と贄巫女の死に至る婚姻（分冊版）（よもんがクロメ）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3929,7 +3985,7 @@
       "label": "スリーズノベル",
       "category": "ライトノベル",
       "series": "愚かな王太子に捨てられた私を、兄王陛下が離してくれません（スリーズノベル）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3943,7 +3999,7 @@
       "label": "バンチコミックス",
       "category": "マンガ",
       "series": "介護とハイエナ（バンチコミックス）",
-      "price": "0",
+      "price": "700",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3957,7 +4013,7 @@
       "label": "マガジンポケット",
       "category": "マンガ",
       "series": "解除師カンナの魔術録（マガジンポケット）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-15",
       "is_v1": true,
@@ -3971,7 +4027,7 @@
       "label": "スリーズノベル",
       "category": "ライトノベル",
       "series": "「彼女は死にました。」私はあなたの子を産みません。（スリーズノベル）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3985,7 +4041,7 @@
       "label": "アクションコミックス",
       "category": "マンガ",
       "series": "神様の定食屋（コミック）（アクションコミックス）",
-      "price": "0",
+      "price": "740",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -3999,11 +4055,11 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "唐獅子教師【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1000",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a29d0b3518de7486644641cf917104a/t_700x780.jpg"
     },
     {
@@ -4013,7 +4069,7 @@
       "label": "comicルクス",
       "category": "マンガ",
       "series": "騎士団総長の花嫁 すべてを諦めた妻を望んだ冷酷公爵の溺愛（comicルクス）",
-      "price": "0",
+      "price": "700",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-09",
       "is_v1": true,
@@ -4027,7 +4083,7 @@
       "label": "マガジンポケット",
       "category": "マンガ",
       "series": "ゲームが進むにつれてどんどん役目がなくなっていく脳筋キャラに転生した俺は、それでも物理を極めることにした（マガジンポケット）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-25",
       "is_v1": true,
@@ -4041,7 +4097,7 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "こちら、異世界サポートセンターのスズキが承ります（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4055,7 +4111,7 @@
       "label": "バンチコミックス",
       "category": "マンガ",
       "series": "Code;OSINT コードオシント 引きこもり探偵と彼女の猟犬（バンチコミックス）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-07",
       "is_v1": true,
@@ -4069,12 +4125,26 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "作家刑事毒島（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/51dc6842d6d9dcbfee47fd6362d57a5/t_700x780.jpg"
+    },
+    {
+      "title": "『精霊の花嫁』の兄は、騎士を諦めて悔いなく生きることにしました（コミック）　第１話",
+      "url": "https://bookwalker.jp/de34e0a28a-d5b2-4955-a801-a93dbe3dbe7e/",
+      "publisher": "SBクリエイティブ",
+      "label": "ツギクルコミックス",
+      "category": "マンガ",
+      "series": "『精霊の花嫁』の兄は、騎士を諦めて悔いなく生きることにしました（コミック）（ツギクルコミックス）",
+      "price": "0",
+      "release_date": "2026-10-08",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/d4f58bc49b96ca9bec473b2946de778/t_700x780.jpg"
     },
     {
       "title": "世界最強の魔力持ちは平穏に暮らしたい！ 何故か王太子殿下に執着されています 1",
@@ -4083,7 +4153,7 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "世界最強の魔力持ちは平穏に暮らしたい！ 何故か王太子殿下に執着されています（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4097,7 +4167,7 @@
       "label": "comicタント",
       "category": "マンガ",
       "series": "それでも、あなたと食事がしたい。（comicタント）",
-      "price": "0",
+      "price": "700",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-09",
       "is_v1": true,
@@ -4111,7 +4181,7 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "タタラの唄姫　桜花乙女帳（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4125,7 +4195,7 @@
       "label": "ブシロードコミックス",
       "category": "話・連載（マンガ）",
       "series": "タタラの唄姫　桜花乙女帳 連載版（ブシロードコミックス）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-08",
       "is_v1": true,
@@ -4139,7 +4209,7 @@
       "label": "ブシロードコミックス",
       "category": "話・連載（マンガ）",
       "series": "タタラの唄姫　桜花乙女帳 連載版（ブシロードコミックス）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-08",
       "is_v1": true,
@@ -4153,7 +4223,7 @@
       "label": "別冊少年マガジン",
       "category": "マンガ",
       "series": "ダンジョンの測量士～地図で無双するダンジョン攻略～（別冊少年マガジン）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-25",
       "is_v1": true,
@@ -4167,7 +4237,7 @@
       "label": "ヴァルキリーコミックス",
       "category": "マンガ",
       "series": "ダンジョン領主の下克上　～いきなりド底辺ダンジョンのマスターにされたゲームデザイナー、ブラック業界を生き抜いた社畜能力で運命を切り開く～シリーズ（ヴァルキリーコミックス）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-30",
       "is_v1": true,
@@ -4181,7 +4251,7 @@
       "label": "ジュールコミックス",
       "category": "マンガ",
       "series": "団地のふたり（コミック）（ジュールコミックス）",
-      "price": "0",
+      "price": "740",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -4195,7 +4265,7 @@
       "label": "エンジェライト文庫",
       "category": "ライトノベル",
       "series": "転生したら悪役継母でした～離縁されましたが、最強公爵様と天使な義息子に愛されているのでむしろ本望です～（エンジェライト文庫）",
-      "price": "0",
+      "price": "700",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -4209,7 +4279,7 @@
       "label": "――",
       "category": "マンガ",
       "series": "二度目の人生、敵たちを後悔させてみせます（weavin）",
-      "price": "0",
+      "price": "980",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-30",
       "is_v1": true,
@@ -4223,7 +4293,7 @@
       "label": "ニチブンコミックス",
       "category": "マンガ",
       "series": "ハイタッチ（ニチブンコミックス）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4237,7 +4307,7 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "BanG Dream！ ゆめ∞みた あられ∞あらぶレーション（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4251,7 +4321,7 @@
       "label": "月刊少年シリウス",
       "category": "マンガ",
       "series": "冰剣の魔術師が世界を統べる２～世界最強の魔術師である少年は、魔術学院に入学する～（月刊少年シリウス）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-30",
       "is_v1": true,
@@ -4265,7 +4335,7 @@
       "label": "ブシロードコミックス",
       "category": "マンガ",
       "series": "葩々々 ひらひらひら（ブシロードコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4279,7 +4349,7 @@
       "label": "バンチコミックス",
       "category": "マンガ",
       "series": "フレネミー～女の友情は一生ですか？～（バンチコミックス）",
-      "price": "0",
+      "price": "680",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-07",
       "is_v1": true,
@@ -4307,7 +4377,7 @@
       "label": "ブシロードノベル",
       "category": "ライトノベル",
       "series": "迷宮見廻りバズ・ニンジャ 横暴腹黒幼馴染ダンジョン配信者からクビにされた裏方モブ忍者が、ギャルのサムライに拾われて真の居場所を見つける話。（ブシロードノベル）",
-      "price": "0",
+      "price": "1450",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4321,7 +4391,7 @@
       "label": "スリーズノベル",
       "category": "ライトノベル",
       "series": "元サレ妻のヒロインは、ひとりで竜を倒したい～浮気者の攻略対象者には頼りません～（スリーズノベル）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-08",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -4335,7 +4405,7 @@
       "label": "アクションコミックス",
       "category": "マンガ",
       "series": "Leap Link Loop（アクションコミックス）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-10-08",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -4353,7 +4423,7 @@
       "release_date": "2026-10-09",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/401f2e84fa51e2a7b144b9f3f13c177/t_700x780.jpg"
     },
     {
@@ -4651,6 +4721,20 @@
       "image": "https://c.bookwalker.jp/f7b59660871410b4c84389d06e8a5e1/t_700x780.jpg"
     },
     {
+      "title": "孫悟空【合本版】　1",
+      "url": "https://bookwalker.jp/de5944d986-dd8c-45cf-bbd3-97d58cb05db7/",
+      "publisher": "グループ・ゼロ",
+      "label": "マンガの金字塔",
+      "category": "マンガ",
+      "series": "孫悟空【合本版】（マンガの金字塔）",
+      "price": "0",
+      "release_date": "2026-10-09",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/2da8f432c34e15b9c24fa3cda804162/t_700x780.jpg"
+    },
+    {
       "title": "大正はつ恋婚～いのち短し契れよめおと～ 1",
       "url": "https://bookwalker.jp/de71a8eb16-f5a7-4bbb-b398-794a9feb69c7/",
       "publisher": "シーモアコミックス",
@@ -4889,6 +4973,20 @@
       "image": "https://c.bookwalker.jp/abc4e8320e8ba288f84a6e11e12dd51/t_700x780.jpg"
     },
     {
+      "title": "プロレス・スターウォーズ【合本版】　1",
+      "url": "https://bookwalker.jp/deb8467a76-baa9-4f48-9430-a93f67a81cad/",
+      "publisher": "グループ・ゼロ",
+      "label": "マンガの金字塔",
+      "category": "マンガ",
+      "series": "プロレス・スターウォーズ【合本版】（マンガの金字塔）",
+      "price": "0",
+      "release_date": "2026-10-09",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/5deb07f3f6160998eb4315ec4d249e3/t_700x780.jpg"
+    },
+    {
       "title": "ほしのさんちは日々是漫画（１）",
       "url": "https://bookwalker.jp/de3795591f-c87c-4cff-bc33-ba0282682cb2/",
       "publisher": "小学館",
@@ -4987,6 +5085,20 @@
       "image": "https://c.bookwalker.jp/638699b1d6dc9d989c482a1a6bf3ac4/t_700x780.jpg"
     },
     {
+      "title": "緑山高校【合本版】　1",
+      "url": "https://bookwalker.jp/de00e77a74-c045-42c2-807c-f4aff84cb351/",
+      "publisher": "グループ・ゼロ",
+      "label": "マンガの金字塔",
+      "category": "マンガ",
+      "series": "緑山高校【合本版】（マンガの金字塔）",
+      "price": "0",
+      "release_date": "2026-10-09",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/c1a3cf84174012a0e549138d42c7a5f/t_700x780.jpg"
+    },
+    {
       "title": "無自覚Ωと番様～一夜の過ちのはずが、御曹司αに溺愛されています～ 1",
       "url": "https://bookwalker.jp/de817b4a98-92ee-46b7-9899-9b87cb852dd5/",
       "publisher": "シーモアコミックス（トレモア）",
@@ -5043,6 +5155,20 @@
       "image": "https://c.bookwalker.jp/fb33906bb951279ae04f8f51cbc9cfa/t_700x780.jpg"
     },
     {
+      "title": "涙弾【合本版】　1",
+      "url": "https://bookwalker.jp/de91cb1f1b-3eec-4b4e-97d9-a174130202dd/",
+      "publisher": "グループ・ゼロ",
+      "label": "マンガの金字塔",
+      "category": "マンガ",
+      "series": "涙弾【合本版】（マンガの金字塔）",
+      "price": "0",
+      "release_date": "2026-10-09",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/4931d958f92e15a84b4c13a076644c6/t_700x780.jpg"
+    },
+    {
       "title": "レンチとくだもの（１）",
       "url": "https://bookwalker.jp/de2089a14e-42c0-46e8-8ceb-793f0868116a/",
       "publisher": "小学館",
@@ -5095,7 +5221,7 @@
       "release_date": "2026-10-10",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1d6c120afe24e087284321634993be3/t_700x780.jpg"
     },
     {
@@ -5109,7 +5235,7 @@
       "release_date": "2026-10-10",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/91ce9ef2090b8aa1124ff6ec4c274ac/t_700x780.jpg"
     },
     {
@@ -5141,6 +5267,20 @@
       "image": "https://c.bookwalker.jp/491fc1acae88f4a3b44d1ed7b30a2ae/t_700x780.jpg"
     },
     {
+      "title": "僕の陛下になってください ～学園国家革命前夜～(話売り)　#1",
+      "url": "https://bookwalker.jp/defdf5e4fc-c547-484e-b2c9-1f2314ee0cc6/",
+      "publisher": "秋田書店",
+      "label": "プリンセス・コミックス",
+      "category": "話・連載（マンガ）",
+      "series": "僕の陛下になってください ～学園国家革命前夜～(話売り)（プリンセス・コミックス）",
+      "price": "0",
+      "release_date": "2026-10-10",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/b2daed45374e2daca5410ec9e99dd12/t_700x780.jpg"
+    },
+    {
       "title": "没落騎士令嬢と孤独な王子～お守りすべき王子殿下は××になる呪いをかけられていました～ 1巻",
       "url": "https://bookwalker.jp/dedc46eeef-46ef-4f72-b701-1d74b9d7d4df/",
       "publisher": "U-NEXT",
@@ -5153,6 +5293,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/b7132465ec52daa1f844090212b5846/t_700x780.jpg"
+    },
+    {
+      "title": "ましろお嬢様は完璧執事を攻略できない！(話売り)　#1",
+      "url": "https://bookwalker.jp/ded919e16d-d380-49c4-8ed1-fda1923932ea/",
+      "publisher": "秋田書店",
+      "label": "プリンセス・コミックス",
+      "category": "話・連載（マンガ）",
+      "series": "ましろお嬢様は完璧執事を攻略できない！(話売り)（プリンセス・コミックス）",
+      "price": "0",
+      "release_date": "2026-10-10",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/9789cdc44a07a2b5e241ee82995da6b/t_700x780.jpg"
     },
     {
       "title": "業の炎に導かれて～時を越えて今、あなたのおそばに～（1）",
@@ -5181,6 +5335,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/2a8758f7d8128a8eb1470c097dfc95a/t_700x780.jpg"
+    },
+    {
+      "title": "3億円当たったら夫が敵になった【単行本版】1巻",
+      "url": "https://bookwalker.jp/de3009c433-b7f4-4e87-916b-a1050b2e164c/",
+      "publisher": "1LDK",
+      "label": "Be yourself",
+      "category": "マンガ",
+      "series": "3億円当たったら夫が敵になった【単行本版】（Be yourself）",
+      "price": "0",
+      "release_date": "2026-10-11",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/aee58385b61a268d2549c6556005352/t_700x780.jpg"
     },
     {
       "title": "AI家政婦クララ【タテヨミ】 第1話　クララ、来る",
@@ -5323,6 +5491,20 @@
       "image": "https://c.bookwalker.jp/50a2fc27b01cd2aab04d3273588b071/t_700x780.jpg"
     },
     {
+      "title": "サブスクリプション・ラブ　分冊版（１）",
+      "url": "https://bookwalker.jp/dea5fdc94d-5ec4-4658-9680-a4e30da9c473/",
+      "publisher": "講談社",
+      "label": "パルシィ",
+      "category": "話・連載（マンガ）",
+      "series": "サブスクリプション・ラブ　分冊版（パルシィ）",
+      "price": "0",
+      "release_date": "2026-10-13",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/8d23bb1653726a8b1d439c3d1ffeae8/t_700x780.jpg"
+    },
+    {
       "title": "虐げられ令嬢ですが、なぜか女嫌いのエリート魔術師に溺愛されました(1)",
       "url": "https://bookwalker.jp/de786baba2-5ee8-4943-94d6-8cd3c9749a2a/",
       "publisher": "ステインラボ",
@@ -5347,7 +5529,7 @@
       "release_date": "2026-10-14",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a31fbe1a173ef7b44445d81b7e48fac/t_700x780.jpg"
     },
     {
@@ -5613,7 +5795,7 @@
       "release_date": "2026-10-15",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4695628193b4d797cd4488e26728f0e/t_700x780.jpg"
     },
     {
@@ -5683,7 +5865,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/31f872fdc769da85f24e0d735ef1c21/t_700x780.jpg"
     },
     {
@@ -6037,6 +6219,34 @@
       "image": "https://c.bookwalker.jp/796e7020a70a17a8e243324acb9ed7e/t_700x780.jpg"
     },
     {
+      "title": "葵くんはムキムキ彼女を肯定したい 1",
+      "url": "https://bookwalker.jp/de5a1a47e3-4566-43fe-8b78-8837dac997b7/",
+      "publisher": "Renta!オリジナル",
+      "label": "Rentaコミックス",
+      "category": "マンガ",
+      "series": "葵くんはムキムキ彼女を肯定したい（Rentaコミックス）",
+      "price": "0",
+      "release_date": "2026-10-17",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/382ee449ebc7c0a0e04fdc571345136/t_700x780.jpg"
+    },
+    {
+      "title": "葵くんはムキムキ彼女を肯定したい【単話】 1",
+      "url": "https://bookwalker.jp/de9714e25d-3b72-4bbf-9418-569a57ae1156/",
+      "publisher": "Renta!オリジナル",
+      "label": "Rentaコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "葵くんはムキムキ彼女を肯定したい（Rentaコミックス）",
+      "price": "0",
+      "release_date": "2026-10-17",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/8a3431ce00fd138433443720923016d/t_700x780.jpg"
+    },
+    {
       "title": "雑魚が半グレを狩る　底辺サバイバーの復讐【分冊版】（1）",
       "url": "https://bookwalker.jp/de5c107216-9d1e-4dde-86be-ec50a84f8c87/",
       "publisher": "Amazia",
@@ -6205,6 +6415,20 @@
       "image": "https://c.bookwalker.jp/9db8a4e93db40092934d5bf3390531f/t_700x780.jpg"
     },
     {
+      "title": "Ａｎｋ　：　ａ　ｍｉｒｒｏｒｉｎｇ　ａｐｅ（１）",
+      "url": "https://bookwalker.jp/def91692e0-9ce8-4f83-b20a-bc76b3a3bbb0/",
+      "publisher": "講談社",
+      "label": "月刊ヤングマガジン",
+      "category": "マンガ",
+      "series": "Ａｎｋ：　ａ　ｍｉｒｒｏｒｉｎｇ　ａｐｅ（月刊ヤングマガジン）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/6ce8d2008fa62cb98a4f07c8cfc7972/t_700x780.jpg"
+    },
+    {
       "title": "英霊召喚されたんだけど多分俺はまだ死んでない 1",
       "url": "https://bookwalker.jp/de3a7ebb91-59ce-4f63-a654-ffa9b6033494/",
       "publisher": "オーバーラップ",
@@ -6261,6 +6485,20 @@
       "image": "https://c.bookwalker.jp/7a4fba51e8b153bb9945c877b8ee79b/t_700x780.jpg"
     },
     {
+      "title": "ジエイナドライヴ（１）",
+      "url": "https://bookwalker.jp/de2fe7886f-e8d8-4810-ae4d-9f116a4bdc35/",
+      "publisher": "講談社",
+      "label": "コミックＤＡＹＳ",
+      "category": "マンガ",
+      "series": "ジエイナドライヴ（コミックＤＡＹＳ）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e7229092b45bccb5034aa23eec4cdef/t_700x780.jpg"
+    },
+    {
       "title": "捨てられた大聖女はエルフから溺愛されて自国に舞い戻る【電子単行本】１巻",
       "url": "https://bookwalker.jp/de562e4486-4761-4652-8568-4c3d48fc5b94/",
       "publisher": "ホンコミ",
@@ -6271,7 +6509,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9fcedceab21d2db9d94b6bbf6333471/t_700x780.jpg"
     },
     {
@@ -6301,6 +6539,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/699b3e032fc9c68130445e89ee72927/t_700x780.jpg"
+    },
+    {
+      "title": "１００年留年してるエルフ（１）",
+      "url": "https://bookwalker.jp/dede18eee1-19cf-4b08-b61a-768bcb1a0e30/",
+      "publisher": "講談社",
+      "label": "ヤングマガジン",
+      "category": "マンガ",
+      "series": "１００年留年してるエルフ（ヤングマガジン）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/f4942fb5c50d7b8bc648389ddb85dd0/t_700x780.jpg"
+    },
+    {
+      "title": "ポッピン・ポッピン・ペナルティ（１）",
+      "url": "https://bookwalker.jp/decad11bdf-0baf-4a0b-99e7-2378527fdcf3/",
+      "publisher": "講談社",
+      "label": "コミックＤＡＹＳ",
+      "category": "マンガ",
+      "series": "ポッピン・ポッピン・ペナルティ（コミックＤＡＹＳ）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/57d0a4728d9fa8825e47a978e3f008c/t_700x780.jpg"
     },
     {
       "title": "魔王と勇者の戦いの裏で　断章 1",
@@ -6653,6 +6919,20 @@
       "image": "https://c.bookwalker.jp/83b87f9da36390b4c3432905d0ed585/t_700x780.jpg"
     },
     {
+      "title": "物理型白魔導師の軌跡１",
+      "url": "https://bookwalker.jp/de4f761197-ec22-4057-8107-8dc953a61ec4/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "マンガ",
+      "series": "物理型白魔導師の軌跡（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/a7e3c62da700d3bca94cccf54076acd/t_700x780.jpg"
+    },
+    {
       "title": "Berry’sFantasy六歳の王女ですが、嫌われ竜騎士に嫁ぐことになりました～兄姉に虐げられた末っ子が、過保護に愛でられ幸せになるまで～1巻",
       "url": "https://bookwalker.jp/deec6d282d-510f-4039-a5d3-32531746412e/",
       "publisher": "スターツ出版",
@@ -6665,6 +6945,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/bd797ff70055ada8a4492457daedd6b/t_700x780.jpg"
+    },
+    {
+      "title": "魔女姫クレアは人形と踊る１",
+      "url": "https://bookwalker.jp/ded67349e5-fdb2-4108-80f9-525b4896682a/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "マンガ",
+      "series": "魔女姫クレアは人形と踊る（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-07",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/77eb582bbaa1a3b41c4f31c6cb17dfb/t_700x780.jpg"
     },
     {
       "title": "真っ白な青 1",
@@ -6999,7 +7293,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/31fb2675ac4493bd08456e0e24d512f/t_700x780.jpg"
     },
     {
@@ -7013,7 +7307,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-10-06",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/81d8628fcd2c3ebaa34f08527f998db/t_700x780.jpg"
     },
     {
@@ -9965,7 +10259,7 @@
       "label": "comicルクス",
       "category": "話・連載（マンガ）",
       "series": "うぶこい！ ～災い転じて福結び！～（分冊版）（comicルクス）",
-      "price": "200",
+      "price": "0",
       "release_date": "2026-09-10",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -10175,7 +10469,7 @@
       "label": "バーズコミックス",
       "category": "話・連載（マンガ）",
       "series": "28歳OL、悪役王子を始めました 【分冊版】（バーズコミックス）",
-      "price": "90",
+      "price": "180",
       "release_date": "2026-09-10",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -15691,7 +15985,7 @@
       "label": "やんのかCOMIC/斬",
       "category": "話・連載（マンガ）",
       "series": "かみ続けて味のしないガム【単話版】（やんのかCOMIC/斬）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-09-27",
       "registered_at": "2026-09-26",
       "is_v1": true,
