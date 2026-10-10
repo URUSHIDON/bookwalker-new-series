@@ -921,7 +921,7 @@
       "release_date": "2026-11-13",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e2cb625e7903a3b9bb4c9be33748d43/t_700x780.jpg"
     },
     {
@@ -5389,7 +5389,7 @@
       "release_date": "2026-10-10",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a0060e7080aaaab04b4bd3f489cddb0/t_700x780.jpg"
     },
     {
@@ -5473,7 +5473,7 @@
       "release_date": "2026-10-10",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/3ce9fb8dc5ca92bab64d90cc3d182e4/t_700x780.jpg"
     },
     {
@@ -5501,7 +5501,7 @@
       "release_date": "2026-10-10",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5765a48002d01f9b1241802c7c0632b/t_700x780.jpg"
     },
     {
@@ -5553,7 +5553,7 @@
       "label": "GSComic",
       "category": "話・連載（マンガ）",
       "series": "業の炎に導かれて～時を越えて今、あなたのおそばに～（GSComic）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-10-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
@@ -5581,7 +5581,7 @@
       "label": "Be yourself",
       "category": "マンガ",
       "series": "3億円当たったら夫が敵になった【単行本版】（Be yourself）",
-      "price": "0",
+      "price": "650",
       "release_date": "2026-10-11",
       "registered_at": "2026-10-07",
       "is_v1": true,
@@ -6355,7 +6355,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/0ffd3a7d71ea568645405243cd4e6ac/t_700x780.jpg"
     },
     {
@@ -6411,7 +6411,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ea41b3445c7ea090e04ba743c52c536/t_700x780.jpg"
     },
     {
@@ -6453,7 +6453,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b4038a5283dd9b96be4479e6b42d810/t_700x780.jpg"
     },
     {
@@ -6495,7 +6495,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cac3a40b60a58fbf4c469dbb94de5ff/t_700x780.jpg"
     },
     {
@@ -6551,7 +6551,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2535eaeb736ea5a05d4c2ac37cf262b/t_700x780.jpg"
     },
     {
@@ -6593,7 +6593,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/6964fe4426427fbbcc47a3b55fbbd8a/t_700x780.jpg"
     },
     {
@@ -6663,7 +6663,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/1145d51c6a983e8cea43cf2de41a888/t_700x780.jpg"
     },
     {
@@ -6677,7 +6677,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/366c1787222538b1e942c5084f0583e/t_700x780.jpg"
     },
     {
@@ -6691,7 +6691,7 @@
       "release_date": "2026-10-16",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/17bb74f2ef68d6989b4b2db3870dc4c/t_700x780.jpg"
     },
     {
@@ -7013,7 +7013,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/00df59acd3a6198eaa4d587e7475b04/t_700x780.jpg"
     },
     {
@@ -7055,7 +7055,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cbe52d73da812992c844f002fc370e0/t_700x780.jpg"
     },
     {
@@ -7069,7 +7069,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/419c6620cd7850a59245805be6e7683/t_700x780.jpg"
     },
     {
@@ -7083,7 +7083,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2fdaa93f50215e8b6e4100e7886bd89/t_700x780.jpg"
     },
     {
@@ -7391,7 +7391,7 @@
       "release_date": "2026-10-22",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dc479aa290f7349a374876f10390b6f/t_700x780.jpg"
     },
     {
@@ -7447,7 +7447,7 @@
       "release_date": "2026-10-22",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cde0f6352fd6a5bb6f44f5f81353071/t_700x780.jpg"
     },
     {
@@ -7475,7 +7475,7 @@
       "release_date": "2026-10-22",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/9dc7f512f43f46a9944f0d466932d44/t_700x780.jpg"
     },
     {
@@ -7503,7 +7503,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a26735437a55018e324628cf5f0fe06/t_700x780.jpg"
     },
     {
@@ -7531,7 +7531,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ba12622d2d26439d7341e803af872d7/t_700x780.jpg"
     },
     {
@@ -7545,7 +7545,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/08f77c54ccf98da52d437b88eafde4b/t_700x780.jpg"
     },
     {
@@ -7587,7 +7587,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/fd51ac84c7272ea0f54add91693e797/t_700x780.jpg"
     },
     {
@@ -7685,7 +7685,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5e5c3fffe19d54a1c744231cf67f9b4/t_700x780.jpg"
     },
     {
@@ -7867,7 +7867,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d6f1b56833691398514799c683879cf/t_700x780.jpg"
     },
     {
@@ -8049,7 +8049,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ded331bad74328bc28491850402496e/t_700x780.jpg"
     },
     {
@@ -8147,7 +8147,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-09",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ce0f72fca2abacbd584f6c36c29f766/t_700x780.jpg"
     },
     {
