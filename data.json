@@ -1084,12 +1084,12 @@
       "publisher": "TOブックス",
       "label": "LEVINコミックス",
       "category": "マンガ",
-      "series": "小さなフェンリルとでっかいダンジョン～脱サラ従魔探索者は世界樹の秘宝を目指す～@COMIC（コロナ・コミックス）",
+      "series": "小さなフェンリルとでっかいダンジョン～脱サラ従魔探索者は世界樹の秘宝を目指す～@COMIC（LEVINコミックス）",
       "price": "0",
       "release_date": "2026-11-15",
       "registered_at": "2026-10-01",
       "is_v1": true,
-      "is_new_series": false,
+      "is_new_series": true,
       "image": "https://c.bookwalker.jp/3c85d7fc24e6f3b7f44600c2736d307/t_700x780.jpg"
     },
     {
@@ -5609,7 +5609,7 @@
       "label": "別冊フレンド",
       "category": "マンガ",
       "series": "青は短し恋せよ乙女（別冊フレンド）",
-      "price": "0",
+      "price": "540",
       "release_date": "2026-10-13",
       "registered_at": "2026-09-30",
       "is_v1": true,
@@ -5623,7 +5623,7 @@
       "label": "BE・LOVE",
       "category": "マンガ",
       "series": "アディクト（BE・LOVE）",
-      "price": "0",
+      "price": "770",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -5637,7 +5637,7 @@
       "label": "SPコミックス",
       "category": "マンガ",
       "series": "エドゼニ（SPコミックス）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-05",
       "is_v1": true,
@@ -5651,7 +5651,7 @@
       "label": "なかよし",
       "category": "マンガ",
       "series": "ギャルジカル・ニーナ（なかよし）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-13",
       "registered_at": "2026-09-29",
       "is_v1": true,
@@ -5665,7 +5665,7 @@
       "label": "なかよし",
       "category": "話・連載（マンガ）",
       "series": "ギャルジカル・ニーナ　分冊版（なかよし）",
-      "price": "0",
+      "price": "190",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-01",
       "is_v1": true,
@@ -5679,7 +5679,7 @@
       "label": "素敵なロマンス",
       "category": "話・連載（マンガ）",
       "series": "契約結婚でも貴方なら（素敵なロマンス）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
@@ -5693,7 +5693,7 @@
       "label": "ヤングキング",
       "category": "マンガ",
       "series": "＃ここすき チャンネル登録おねがいします！（ヤングキング）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-13",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -5721,7 +5721,7 @@
       "label": "パルシィ",
       "category": "マンガ",
       "series": "サブスクリプション・ラブ（パルシィ）",
-      "price": "0",
+      "price": "720",
       "release_date": "2026-10-13",
       "registered_at": "2026-09-30",
       "is_v1": true,
@@ -5735,7 +5735,7 @@
       "label": "パルシィ",
       "category": "話・連載（マンガ）",
       "series": "サブスクリプション・ラブ　分冊版（パルシィ）",
-      "price": "0",
+      "price": "260",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-07",
       "is_v1": true,
@@ -5749,7 +5749,7 @@
       "label": "Leo comic",
       "category": "マンガ",
       "series": "虐げられ令嬢ですが、なぜか女嫌いのエリート魔術師に溺愛されました（Leo comic）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-02",
       "is_v1": true,
@@ -5763,7 +5763,7 @@
       "label": "ホラー シルキー",
       "category": "話・連載（マンガ）",
       "series": "奈落の花嫁［1話売り］（ホラー シルキー）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-08",
       "is_v1": true,
@@ -5777,7 +5777,7 @@
       "label": "RYU COMICS",
       "category": "マンガ",
       "series": "ノンデリ久保は現実の恋が知りたい（RYU COMICS）",
-      "price": "0",
+      "price": "790",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-08",
       "is_v1": true,
@@ -5791,7 +5791,7 @@
       "label": "素敵なロマンス",
       "category": "マンガ",
       "series": "腹黒上司にハメられて罠婚【豪華版】（素敵なロマンス）",
-      "price": "0",
+      "price": "2699",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-08",
       "is_v1": true,
@@ -5805,12 +5805,26 @@
       "label": "ホラー シルキー",
       "category": "話・連載（マンガ）",
       "series": "ムーの心霊インタビューを受けました！［1話売り］（ホラー シルキー）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-10-13",
       "registered_at": "2026-10-08",
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/237f921752fb90834d4954553d05c50/t_700x780.jpg"
+    },
+    {
+      "title": "融合スキルで武器無双！（コミック）　第１話",
+      "url": "https://bookwalker.jp/deb7aec5a0-1fc2-4c9c-a877-68e9f732993b/",
+      "publisher": "SBクリエイティブ",
+      "label": "ツギクルコミックス",
+      "category": "マンガ",
+      "series": "融合スキルで武器無双！（コミック）（ツギクルコミックス）",
+      "price": "0",
+      "release_date": "2026-10-13",
+      "registered_at": "2026-10-13",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/f34ac508d2300b865242b3bf1af4b6c/t_700x780.jpg"
     },
     {
       "title": "アイテムダンジョン！～俺だけ創れる異能ダンジョンからはじまる、落ちこぼれたちの英雄譚～（コミック） ： 1",
@@ -6007,6 +6021,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/39a26515f538c5a12146e28b6cd106a/t_700x780.jpg"
+    },
+    {
+      "title": "断罪された悪役令嬢を助けたら、宰相閣下に求婚されました【合本版】1",
+      "url": "https://bookwalker.jp/dee57e8aa7-b1dd-4a1c-b028-8eede063d8d4/",
+      "publisher": "ぴあ",
+      "label": "COMIC　LuPIA",
+      "category": "話・連載（マンガ）",
+      "series": "断罪された悪役令嬢を助けたら、宰相閣下に求婚されました【合本版】（COMIC　LuPIA）",
+      "price": "0",
+      "release_date": "2026-10-15",
+      "registered_at": "2026-10-13",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e2749c6d128c61984c40dada5f280e1/t_700x780.jpg"
     },
     {
       "title": "男女比バグっているのに悪役転生だと思い込んでいる奴（コミック）１",
@@ -6859,7 +6887,7 @@
       "release_date": "2026-10-19",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/240c97c8c39a0b9c27449e0eb4dd650/t_700x780.jpg"
     },
     {
@@ -6971,7 +6999,7 @@
       "release_date": "2026-10-19",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/440c9b8895e5d7b1e74df333a1a5ffb/t_700x780.jpg"
     },
     {
@@ -7125,7 +7153,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/586a9731015b008fd845b0977478618/t_700x780.jpg"
     },
     {
@@ -7141,6 +7169,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/7a4fba51e8b153bb9945c877b8ee79b/t_700x780.jpg"
+    },
+    {
+      "title": "債務魔法少女クレカリボカ （1）",
+      "url": "https://bookwalker.jp/de9b1f2cb6-088a-49f6-8f43-43a53c0dbfb5/",
+      "publisher": "リイド社",
+      "label": "ボーダーコミックス",
+      "category": "マンガ",
+      "series": "債務魔法少女クレカリボカ（ボーダーコミックス）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-13",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/be0761c8b780a4aa424f96b54915501/t_700x780.jpg"
     },
     {
       "title": "ジエイナドライヴ（１）",
@@ -7269,6 +7311,20 @@
       "image": "https://c.bookwalker.jp/ae716cac7c29d9bb1b416335230798c/t_700x780.jpg"
     },
     {
+      "title": "マヨネーズ王は貧乏になりたい!【男女比1:100】世界で逝く勘違い出世街道 （1）",
+      "url": "https://bookwalker.jp/dea52c5a75-e381-49f5-9334-0f88bbb55e3a/",
+      "publisher": "リイド社",
+      "label": "ボーダーコミックス",
+      "category": "マンガ",
+      "series": "マヨネーズ王は貧乏になりたい!【男女比1:100】世界で逝く勘違い出世街道（ボーダーコミックス）",
+      "price": "0",
+      "release_date": "2026-10-20",
+      "registered_at": "2026-10-13",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/53a87d02ffcbf89bff4117b7d35321e/t_700x780.jpg"
+    },
+    {
       "title": "やおよろず取扱説明書【マイクロ】（１）",
       "url": "https://bookwalker.jp/de7684f9d5-0de9-46d1-8cd5-383399ccd4e6/",
       "publisher": "小学館",
@@ -7279,7 +7335,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ad78fb6db3063fa25345d1153ca2af3/t_700x780.jpg"
     },
     {
@@ -8189,7 +8245,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b5710fda8c4c8a84e3455c9f432147b/t_700x780.jpg"
     },
     {
@@ -8217,7 +8273,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b3259aea80643cabbd40fdfa92b57c1/t_700x780.jpg"
     },
     {
@@ -8231,7 +8287,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/045a36a6fa9082a6b34e5ec84ea3740/t_700x780.jpg"
     },
     {
@@ -8245,7 +8301,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4ca451eaa62cdeb2f848011f03b1e03/t_700x780.jpg"
     },
     {
