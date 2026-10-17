@@ -165,7 +165,7 @@
       "release_date": "2026-11-01",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/07f63bf3bff122b28e43b5b3b676a01/t_700x780.jpg"
     },
     {
@@ -263,7 +263,7 @@
       "release_date": "2026-11-01",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5b2405078337c78a6742d13475d638d/t_700x780.jpg"
     },
     {
@@ -543,7 +543,7 @@
       "release_date": "2026-11-05",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8a8ea94038b482afde4c5106330897b/t_700x780.jpg"
     },
     {
@@ -557,7 +557,7 @@
       "release_date": "2026-11-05",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/af5de3796775a7bb0f4384e983b4261/t_700x780.jpg"
     },
     {
@@ -571,7 +571,7 @@
       "release_date": "2026-11-05",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b29b300aaa65c5a6d7463f8444e6ab0/t_700x780.jpg"
     },
     {
@@ -1289,6 +1289,34 @@
       "image": "https://c.bookwalker.jp/701f67f29e89928a8d469ab689c8d51/t_700x780.jpg"
     },
     {
+      "title": "恋を諦めた妻が叶えたい100のこと(1)【描き下ろし漫画付き】",
+      "url": "https://bookwalker.jp/deda5a3ed1-26a4-4d32-a4d2-b8843be98d33/",
+      "publisher": "マンガボックス",
+      "label": "コミックMELO",
+      "category": "マンガ",
+      "series": "恋を諦めた妻が叶えたい100のこと（コミックMELO）",
+      "price": "0",
+      "release_date": "2026-11-15",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/2dff578cc9d6c5b22147931175161c4/t_700x780.jpg"
+    },
+    {
+      "title": "恋を諦めた妻が叶えたい100のこと【分冊版】1",
+      "url": "https://bookwalker.jp/ded3e1ea25-dd28-4aa6-8a34-8b4df9747a1a/",
+      "publisher": "マンガボックス",
+      "label": "コミックMELO",
+      "category": "話・連載（マンガ）",
+      "series": "恋を諦めた妻が叶えたい100のこと【分冊版】（コミックMELO）",
+      "price": "0",
+      "release_date": "2026-11-15",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/21a92e6efcc33fa7904778307520d29/t_700x780.jpg"
+    },
+    {
       "title": "たばこ屋のお姉さんに煙たがられている（分冊版）　【第1話】",
       "url": "https://bookwalker.jp/de9b9ab170-7375-4d7a-8b6a-3b2bb85e1cd7/",
       "publisher": "ぶんか社",
@@ -1329,6 +1357,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/3b5d02996f811a828644c55d872929a/t_700x780.jpg"
+    },
+    {
+      "title": "不妊の沼から復讐を(1)",
+      "url": "https://bookwalker.jp/dedf82c98e-a68a-4b74-bd35-c3b5901b4143/",
+      "publisher": "マンガボックス",
+      "label": "コミックMELO",
+      "category": "マンガ",
+      "series": "不妊の沼から復讐を（コミックMELO）",
+      "price": "0",
+      "release_date": "2026-11-15",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/fde8d4a9a4f3c3b56748ef61ae402e0/t_700x780.jpg"
+    },
+    {
+      "title": "不妊の沼から復讐を【分冊版】1",
+      "url": "https://bookwalker.jp/dea3348f14-d965-4439-80bc-82d13e7bdf31/",
+      "publisher": "マンガボックス",
+      "label": "コミックMELO",
+      "category": "話・連載（マンガ）",
+      "series": "不妊の沼から復讐を【分冊版】（コミックMELO）",
+      "price": "0",
+      "release_date": "2026-11-15",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/f7788879b21cf0b68c4de8e267d8998/t_700x780.jpg"
     },
     {
       "title": "ママってサバサバしてるから【単話】（１）",
@@ -1915,7 +1971,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5a9cff0fbcfb029afc4f465e10ecdab/t_700x780.jpg"
     },
     {
@@ -1929,7 +1985,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b19263718af617a91744a5ac568028e/t_700x780.jpg"
     },
     {
@@ -1943,7 +1999,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8077ef0fa05f5d9e984abacf0cc2b5d/t_700x780.jpg"
     },
     {
@@ -2431,7 +2487,7 @@
       "label": "GANMA！",
       "category": "話・連載（マンガ）",
       "series": "春雷とノイズ【単話版】（GANMA！）",
-      "price": "10",
+      "price": "85",
       "release_date": "2026-10-01",
       "registered_at": "2026-09-04",
       "is_v1": true,
@@ -3243,7 +3299,7 @@
       "label": "GANMA！",
       "category": "話・連載（マンガ）",
       "series": "柊二さんの至れり尽くせり ～目が覚めたら無愛想な先輩が溺愛彼氏に～【単話版】（GANMA！）",
-      "price": "10",
+      "price": "150",
       "release_date": "2026-10-04",
       "registered_at": "2026-09-17",
       "is_v1": true,
@@ -7587,7 +7643,7 @@
       "release_date": "2026-10-20",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/96a1952bbc9858aae74ab89b850291f/t_700x780.jpg"
     },
     {
@@ -7937,7 +7993,7 @@
       "release_date": "2026-10-21",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/16b063229fa8c28c8d4862964499497/t_700x780.jpg"
     },
     {
@@ -8021,7 +8077,7 @@
       "release_date": "2026-10-21",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/01c473484ac34bb1844e8c7f1154832/t_700x780.jpg"
     },
     {
@@ -8035,7 +8091,7 @@
       "release_date": "2026-10-21",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/28caf268487bdc85bb486f28f56eff7/t_700x780.jpg"
     },
     {
@@ -8049,7 +8105,7 @@
       "release_date": "2026-10-21",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/90d5707114ae2b980549ea020dd7383/t_700x780.jpg"
     },
     {
@@ -8277,6 +8333,20 @@
       "image": "https://c.bookwalker.jp/ae5ae0a9428b50ace94b05d2a900de4/t_700x780.jpg"
     },
     {
+      "title": "あやかしダンジョン配信記【分冊版】１",
+      "url": "https://bookwalker.jp/deb8db78ee-e5c6-4df2-939a-1c56ed7156ef/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "あやかしダンジョン配信記【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/5c9b6581109d9c865a431d60d1c7b71/t_700x780.jpg"
+    },
+    {
       "title": "イケメンお姉さんはそーゆー目で見られたい　１",
       "url": "https://bookwalker.jp/dee5645b08-5e6a-44f9-9623-77196adeab9c/",
       "publisher": "KADOKAWA",
@@ -8347,6 +8417,20 @@
       "image": "https://c.bookwalker.jp/0509fc7f1a737dbfdf43b66d3d37d7a/t_700x780.jpg"
     },
     {
+      "title": "妹ちゃんの言うとおりにしていたら覇王になっちゃったけど、どうしよう？【分冊版】１",
+      "url": "https://bookwalker.jp/de37983124-f122-47ef-ac44-e99087a9026c/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "妹ちゃんの言うとおりにしていたら覇王になっちゃったけど、どうしよう？【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/56ef7b3d824515a47e4f997369b1336/t_700x780.jpg"
+    },
+    {
       "title": "女嫌いの最低公爵をベタ惚れさせてみせます！【タテヨミ】1話",
       "url": "https://bookwalker.jp/dececc4041-9db8-4505-9aaa-59597bc58f44/",
       "publisher": "weavin",
@@ -8399,7 +8483,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/19863d426ffbe8a0544a0bfbcc6190d/t_700x780.jpg"
     },
     {
@@ -8525,7 +8609,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2723d2ed8e04bca97049e94420c7b91/t_700x780.jpg"
     },
     {
@@ -8735,7 +8819,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f0eb388c14e30a811b42866ba888a85/t_700x780.jpg"
     },
     {
@@ -8749,7 +8833,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/eadac7287b326f9b7044667321ccb9b/t_700x780.jpg"
     },
     {
@@ -8763,7 +8847,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/049318809e2d9d9af44d2b47925475c/t_700x780.jpg"
     },
     {
@@ -8851,6 +8935,20 @@
       "image": "https://c.bookwalker.jp/ba046c463da756b4064bc83b15a7732/t_700x780.jpg"
     },
     {
+      "title": "魔法少女は今日も穿けない【分冊版】１",
+      "url": "https://bookwalker.jp/de6291f77c-6499-40e9-b201-e5daed28fdb5/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "魔法少女は今日も穿けない【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/b7ee720e511259b57a47c7b992b4043/t_700x780.jpg"
+    },
+    {
       "title": "ミタメトウラハラ  1",
       "url": "https://bookwalker.jp/dea0e5b778-01f1-4743-8eb8-4fdfa1b677fc/",
       "publisher": "ナンバーナイン",
@@ -8875,7 +8973,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7d16da260f269685ac4f5324bcc4d3f/t_700x780.jpg"
     },
     {
@@ -8903,7 +9001,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/db6a586468570f93884a7bc27bc9f03/t_700x780.jpg"
     },
     {
@@ -8917,8 +9015,22 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/d9fe56f798105cb1aa4380eec461f2d/t_700x780.jpg"
+    },
+    {
+      "title": "八咫烏寮の神憑師【分冊版】１",
+      "url": "https://bookwalker.jp/dec1abd1bf-cf70-4492-896a-926c035b235b/",
+      "publisher": "一二三書房",
+      "label": "ノヴァコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "八咫烏寮の神憑師【分冊版】（ノヴァコミックス）",
+      "price": "0",
+      "release_date": "2026-10-23",
+      "registered_at": "2026-10-17",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/94d5a09d99b8fc9d4844673b8c43a02/t_700x780.jpg"
     },
     {
       "title": "ゆきもよい（１）",
@@ -9029,7 +9141,7 @@
       "release_date": "2026-10-24",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ad816799501f03abf3440592ac701dc/t_700x780.jpg"
     },
     {
@@ -9197,7 +9309,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/7f9ae8fd0506ff93824647577642d43/t_700x780.jpg"
     },
     {
@@ -9295,7 +9407,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2a2d9c7040cca284574a9100203824f/t_700x780.jpg"
     },
     {
@@ -9309,7 +9421,7 @@
       "release_date": "2026-10-26",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2a2d9c7040cca284574a9100203824f/t_700x780.jpg"
     },
     {
@@ -9435,7 +9547,7 @@
       "release_date": "2026-10-27",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8154d544b3ef739ec649747d3bbae47/t_700x780.jpg"
     },
     {
@@ -9477,7 +9589,7 @@
       "release_date": "2026-10-27",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c8b31146162cf39b444eb3eed41c165/t_700x780.jpg"
     },
     {
@@ -9491,7 +9603,7 @@
       "release_date": "2026-10-27",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a9dca53b41711286714357ca1d897f3/t_700x780.jpg"
     },
     {
@@ -9603,7 +9715,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2823eec0affb02aadf441f91182e523/t_700x780.jpg"
     },
     {
@@ -9645,7 +9757,7 @@
       "release_date": "2026-10-29",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/0803213630dbecb7fb44796ffc99e1a/t_700x780.jpg"
     },
     {
@@ -9659,7 +9771,7 @@
       "release_date": "2026-10-30",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/edd43060c4569f874c48d81d49936bd/t_700x780.jpg"
     },
     {
@@ -9673,7 +9785,7 @@
       "release_date": "2026-10-30",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8ea00111a51a2ca85e4a69c7b05c627/t_700x780.jpg"
     },
     {
@@ -9897,7 +10009,7 @@
       "release_date": "2026-10-30",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/bd6beac01df327a7394b458a2b61bfb/t_700x780.jpg"
     },
     {
@@ -9953,7 +10065,7 @@
       "release_date": "2026-10-30",
       "registered_at": "2026-10-16",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ca17e0d618a2438fec464f831d671ec/t_700x780.jpg"
     },
     {
