@@ -127,9 +127,39 @@
       margin-left: auto;
     }
 
+    /* ジャンプボタン */
+    .jump-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid #0d6efd;
+      background: #0d6efd;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .jump-btn:hover {
+      background: #0b5ed7;
+      border-color: #0a58ca;
+      box-shadow: 0 2px 6px rgba(13, 110, 253, 0.3);
+    }
+
+    .jump-btn:active {
+      transform: translateY(1px);
+    }
+
     /* 日付セクション */
     .date-section {
       margin-bottom: 32px;
+      scroll-margin-top: 20px;
+      transition: background-color 0.3s ease;
     }
 
     .date-header {
@@ -139,6 +169,68 @@
       padding-bottom: 6px;
       border-bottom: 2px solid #0d6efd;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .date-header.is-today {
+      color: #d63384;
+      border-bottom: 2px solid #d63384;
+    }
+
+    .today-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background-color: #d63384;
+      color: #ffffff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+
+    @keyframes highlightFlash {
+      0% {
+        background-color: rgba(214, 51, 132, 0.18);
+      }
+      70% {
+        background-color: rgba(214, 51, 132, 0.18);
+      }
+      100% {
+        background-color: transparent;
+      }
+    }
+
+    .highlight-today {
+      animation: highlightFlash 2s ease-out;
+      border-radius: 8px;
+    }
+
+    /* トースト通知 */
+    .toast-notice {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(33, 37, 41, 0.92);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 24px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      pointer-events: none;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 1000;
+      white-space: nowrap;
+    }
+
+    .toast-notice.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
     /* グリッドレイアウト */
@@ -286,6 +378,10 @@
         flex-direction: column;
         align-items: stretch;
       }
+      .jump-btn {
+        width: 100%;
+        justify-content: center;
+      }
       .item-count {
         margin-left: 0;
         text-align: right;
@@ -310,6 +406,22 @@
       <select id="month-select" class="select-box"></select>
     </div>
 
+    <!-- ソート -->
+    <div class="control-group">
+      <label for="sort-select">並び順：</label>
+      <select id="sort-select" class="select-box">
+        <option value="date-asc">発売日順 (昇順)</option>
+        <option value="date-desc">発売日順 (降順)</option>
+        <option value="registered-desc">登録日順 (新しい順)</option>
+        <option value="registered-asc">登録日順 (古い順)</option>
+      </select>
+    </div>
+
+    <!-- 今日へジャンプボタン -->
+    <button type="button" id="jump-today-btn" class="jump-btn" title="本日の発売日へジャンプ">
+      📅 今日へジャンプ
+    </button>
+
     <!-- 検索ボックス -->
     <div class="search-box">
       <input type="text" id="search-input" placeholder="タイトルや出版社で検索...">
@@ -327,17 +439,6 @@
       </select>
     </div>
 
-    <!-- ソート -->
-    <div class="control-group">
-      <label for="sort-select">並び順：</label>
-      <select id="sort-select" class="select-box">
-        <option value="date-asc">発売日順 (昇順)</option>
-        <option value="date-desc">発売日順 (降順)</option>
-        <option value="registered-desc">登録日順 (新しい順)</option>
-        <option value="registered-asc">登録日順 (古い順)</option>
-      </select>
-    </div>
-
     <div id="item-count" class="item-count">0 件表示</div>
 
     <!-- カテゴリ別動的チェックボックス群 -->
@@ -349,6 +450,9 @@
 
   <!-- メインコンテンツ -->
   <main id="main-content"></main>
+
+  <!-- トースト通知 -->
+  <div id="toast-notice" class="toast-notice"></div>
 
   <script>
     let allData = {};
@@ -541,13 +645,26 @@
         return;
       }
 
+      const todayYear = todayDate.getFullYear();
+      const todayMonth = String(todayDate.getMonth() + 1).padStart(2, '0');
+      const todayDay = String(todayDate.getDate()).padStart(2, '0');
+      const todayDateStr = `${todayYear}-${todayMonth}-${todayDay}`;
+
       keys.forEach(key => {
         const section = document.createElement('section');
         section.className = 'date-section';
+        section.dataset.dateKey = key;
 
         const header = document.createElement('h2');
         header.className = 'date-header';
-        header.textContent = key;
+
+        const isToday = (!isRegisteredSort && key === todayDateStr);
+        if (isToday) {
+          header.classList.add('is-today');
+          header.innerHTML = `<span>${key}</span><span class="today-badge">今日</span>`;
+        } else {
+          header.textContent = key;
+        }
         section.appendChild(header);
 
         const grid = document.createElement('div');
@@ -604,9 +721,89 @@
       });
     }
 
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast-notice');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function jumpToToday() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+      const currentDay = String(now.getDate()).padStart(2, '0');
+      const todayStr = `${currentYear}-${currentMonth}-${currentDay}`;
+      const currentMonthStr = `${currentYear}-${currentMonth}`;
+
+      const sortSelect = document.getElementById('sort-select');
+      const monthSelect = document.getElementById('month-select');
+      let needRerender = false;
+
+      // 1. 登録日順ソートになっている場合は、発売日順 (昇順) に切り替え
+      if (sortSelect.value.startsWith('registered-')) {
+        sortSelect.value = 'date-asc';
+        needRerender = true;
+      }
+
+      // 2. 現在の対象月が今月でない場合、今月に切り替え
+      if (monthSelect.value !== currentMonthStr) {
+        const hasCurrentMonth = Array.from(monthSelect.options).some(opt => opt.value === currentMonthStr);
+        if (hasCurrentMonth) {
+          monthSelect.value = currentMonthStr;
+          setupCategoryCheckboxes();
+          needRerender = true;
+        }
+      }
+
+      if (needRerender) {
+        applyFiltersAndRender();
+      }
+
+      // 3. 画面上の日付セクションを取得
+      const sections = Array.from(document.querySelectorAll('.date-section'));
+      if (sections.length === 0) {
+        showToast('表示中のデータがありません');
+        return;
+      }
+
+      const sortType = sortSelect.value;
+      let targetSection = sections.find(sec => sec.dataset.dateKey === todayStr);
+
+      if (!targetSection) {
+        if (sortType === 'date-desc') {
+          // 降順: 今日以前（今日または過去）で一番近い日付
+          targetSection = sections.find(sec => sec.dataset.dateKey <= todayStr) || sections[0];
+        } else {
+          // 昇順: 今日以降（今日または明日以降）で一番近い日付
+          targetSection = sections.find(sec => sec.dataset.dateKey >= todayStr) || sections[sections.length - 1];
+        }
+      }
+
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        targetSection.classList.remove('highlight-today');
+        void targetSection.offsetWidth; // リフローを発生させてアニメーションを再実行
+        targetSection.classList.add('highlight-today');
+
+        if (targetSection.dataset.dateKey === todayStr) {
+          showToast(`本日（${todayStr}）へ移動しました`);
+        } else {
+          showToast(`本日配信分がないため、直近の ${targetSection.dataset.dateKey} へ移動しました`);
+        }
+      }
+    }
+
     document.getElementById('search-input').addEventListener('input', applyFiltersAndRender);
     document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
     document.getElementById('recent-filter').addEventListener('change', applyFiltersAndRender);
+    document.getElementById('jump-today-btn').addEventListener('click', jumpToToday);
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
