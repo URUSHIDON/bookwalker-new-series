@@ -90,23 +90,50 @@ def fetch_single_og_image(item_url, delay=0.3, max_retries=2):
 
     return item_url, ""
 
-def fetch_all_og_images_parallel(url_list, cache, max_workers=3):
-    targets = [url for url in set(url_list) if url and url.startswith("http") and not cache.get(url)]
+def fetch_all_og_images_parallel(target_items, cache, max_workers=3):
+    today = datetime.date.today()
+    # 発売3日前〜発売後3日以内の作品を最新チェック対象とする
+    refresh_start = (today - datetime.timedelta(days=3)).strftime('%Y-%m-%d')
+    refresh_end = (today + datetime.timedelta(days=3)).strftime('%Y-%m-%d')
+
+    item_title_map = {}
+    target_urls = set()
+    for item in target_items:
+        url = item.get("url")
+        if not url or not isinstance(url, str) or not url.startswith("http"):
+            continue
+        rel_date = item.get("release_date", "")
+        title = item.get("title", "")
+        item_title_map[url] = title
+
+        # キャッシュ未登録、または「発売3日前〜発売後3日」の作品は再取得対象
+        if not cache.get(url):
+            target_urls.add(url)
+        elif refresh_start <= rel_date <= refresh_end:
+            target_urls.add(url)
+
+    targets = list(target_urls)
     
     if targets:
-        print(f">>> [画像取得] 未取得・再取得対象の {len(targets)} 件を並列通信で取得中 (並列数: {max_workers})...", flush=True)
+        print(f">>> [画像取得] 未取得・更新チェック対象の {len(targets)} 件を並列通信で取得中 (並列数: {max_workers})...", flush=True)
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_url = {executor.submit(fetch_single_og_image, url, 0.3): url for url in targets}
             completed = 0
             success_count = 0
+            updated_count = 0
             for future in as_completed(future_to_url):
                 url, img_url = future.result()
                 if img_url:
+                    old_img = cache.get(url)
+                    if old_img and old_img != img_url:
+                        updated_count += 1
+                        title = item_title_map.get(url, "")
+                        print(f"    🔄 [表紙更新検知] 「{title}」の表紙が最新に更新されました: {old_img} -> {img_url}", flush=True)
                     cache[url] = img_url
                     success_count += 1
                 completed += 1
                 if completed % 50 == 0 or completed == len(targets):
-                    print(f"    - {completed}/{len(targets)} 件完了 (成功: {success_count} 件)", flush=True)
+                    print(f"    - {completed}/{len(targets)} 件完了 (成功: {success_count} 件, 更新検知: {updated_count} 件)", flush=True)
     else:
         print(">>> [画像取得] すべてキャッシュから取得完了！", flush=True)
 
@@ -324,9 +351,8 @@ def main():
                 "is_new_series": is_new_series
             })
 
-    # 対象URLの画像を一括取得
-    urls_to_fetch = [item["url"] for item in target_items]
-    fetch_all_og_images_parallel(urls_to_fetch, cover_cache, max_workers=3)
+    # 対象URLの画像を一括取得（未取得分 ＋ 発売前・直近発売分の更新チェック）
+    fetch_all_og_images_parallel(target_items, cover_cache, max_workers=3)
 
     # 月ごとにグループ構築
     result = {}
