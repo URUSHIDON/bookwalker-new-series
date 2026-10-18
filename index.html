@@ -693,6 +693,19 @@
             ? `発売: ${item.release_date || '未定'}`
             : (item.registered_at ? `登録: ${item.registered_at}` : '');
 
+          let priceDisplay = '';
+          if (!item.price || item.price === '0') {
+            if (item.release_date && item.release_date > todayDateStr) {
+              priceDisplay = '-';
+            } else if (item.price === '0') {
+              priceDisplay = '無料';
+            } else {
+              priceDisplay = '-';
+            }
+          } else {
+            priceDisplay = `${item.price}円`;
+          }
+
           card.innerHTML = `
             <a href="${item.url}" target="_blank" rel="noopener" class="img-wrapper">
               <img src="${imgSrc}" class="item-img" alt="${item.title}" loading="lazy">
@@ -709,7 +722,7 @@
                   <span class="publisher" title="${item.publisher || ''}">${item.publisher || ''}</span>
                   ${subInfoText ? `<span class="item-sub-info">${subInfoText}</span>` : ''}
                 </div>
-                <span class="price">${item.price ? item.price + '円' : ''}</span>
+                <span class="price">${priceDisplay}</span>
               </div>
             </div>
           `;
