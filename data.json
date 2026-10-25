@@ -445,7 +445,7 @@
       "release_date": "2026-11-02",
       "registered_at": "2026-10-24",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/648443de96f0cfb11c403dd48cd323d/t_700x780.jpg"
     },
     {
@@ -9295,7 +9295,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-22",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/cde9f7e7a21d929944438e01784c667/t_700x780.jpg"
     },
     {
@@ -9337,7 +9337,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-22",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/99e22fd29c7e929d0c4e08519612165/t_700x780.jpg"
     },
     {
@@ -9379,7 +9379,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-22",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/91561ed1cee29784c24a4c5d3552227/t_700x780.jpg"
     },
     {
@@ -9505,7 +9505,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-22",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dc3e7d46e8a961b0e9498af7ac281de/t_700x780.jpg"
     },
     {
@@ -9561,7 +9561,7 @@
       "release_date": "2026-10-23",
       "registered_at": "2026-10-22",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/8c83e0256fa647a7454a224489c0816/t_700x780.jpg"
     },
     {
@@ -10317,7 +10317,7 @@
       "release_date": "2026-10-25",
       "registered_at": "2026-10-24",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/2d5d1a7f2fea8c8528486b3f1011b30/t_700x780.jpg"
     },
     {
@@ -10461,13 +10461,27 @@
       "image": "https://c.bookwalker.jp/33a64ee33f84df867b4f582ee0f7677/t_700x780.jpg"
     },
     {
+      "title": "異界渡りを手に入れた無職がスローライフをするために金稼ぎする物語【単話版】 / 1話",
+      "url": "https://bookwalker.jp/dea4295ec5-3e8d-43a8-ad21-d2a932658552/",
+      "publisher": "デジカタ編集部",
+      "label": "やんのかCOMIC/斬",
+      "category": "話・連載（マンガ）",
+      "series": "異界渡りを手に入れた無職がスローライフをするために金稼ぎする物語【単話版】（やんのかCOMIC/斬）",
+      "price": "0",
+      "release_date": "2026-10-26",
+      "registered_at": "2026-10-25",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/70f224863b7887940b41f1dc37dfbaf/t_700x780.jpg"
+    },
+    {
       "title": "エンジェル・ソウル －脱落アイドルのリスタート－（１）",
       "url": "https://bookwalker.jp/dec35a108e-9d58-4485-a46d-1921cc56d819/",
       "publisher": "小学館",
       "label": "フラワーコミックススペシャル",
       "category": "マンガ",
       "series": "エンジェル・ソウル －脱落アイドルのリスタート－（フラワーコミックススペシャル）",
-      "price": "0",
+      "price": "690",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
@@ -10481,7 +10495,7 @@
       "label": "ヤングキング",
       "category": "マンガ",
       "series": "ギャングキング（ヤングキング）",
-      "price": "0",
+      "price": "1500",
       "release_date": "2026-10-26",
       "registered_at": "2026-09-24",
       "is_v1": true,
@@ -10495,7 +10509,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "唇役主丞 乾いて候【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10509,7 +10523,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "けものみち【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1580",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10523,7 +10537,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "新 上ってなンボ！！ 太一よ泣くな【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10537,7 +10551,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "新々 上ってなンボ ！！ 太一よ泣くな【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10565,7 +10579,7 @@
       "label": "SORAJIMA",
       "category": "話・連載（マンガ）",
       "series": "死んだ悪女に執着しないで（SORAJIMA）",
-      "price": "0",
+      "price": "1145",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-16",
       "is_v1": true,
@@ -10579,7 +10593,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "ダボシャツの天【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1000",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10593,7 +10607,7 @@
       "label": "フラワーコミックス",
       "category": "マンガ",
       "series": "電撃デイジー（フラワーコミックス）",
-      "price": "0",
+      "price": "2260",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
@@ -10607,7 +10621,7 @@
       "label": "マンガの金字塔",
       "category": "マンガ",
       "series": "特攻服凶走曲【合本版】（マンガの金字塔）",
-      "price": "0",
+      "price": "1400",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-22",
       "is_v1": true,
@@ -10621,7 +10635,7 @@
       "label": "やわらかスピリッツ女子部",
       "category": "マンガ",
       "series": "みにくい小鳥の婚約【単話】（やわらかスピリッツ女子部）",
-      "price": "0",
+      "price": "293",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
@@ -10635,7 +10649,7 @@
       "label": "フラワーコミックス",
       "category": "マンガ",
       "series": "やおよろず取扱説明書（フラワーコミックス）",
-      "price": "0",
+      "price": "530",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-11",
       "is_v1": true,
@@ -10649,7 +10663,7 @@
       "label": "LScomic",
       "category": "マンガ",
       "series": "4年目の棘 あなたとしたいだけなのに（LScomic）",
-      "price": "0",
+      "price": "800",
       "release_date": "2026-10-26",
       "registered_at": "2026-10-09",
       "is_v1": true,
@@ -10850,7 +10864,7 @@
       "registered_at": "2026-10-14",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/91085b3253c8ec9628401a3e5b1b814/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/110f17020efa56b7a647643499d28ac/t_700x780.jpg"
     },
     {
       "title": "朱色の占い師～欲望の代償～ 1話",
@@ -10878,7 +10892,7 @@
       "registered_at": "2026-10-14",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/3d91466fb8a8bf95344e3b8f34b09b5/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/84e7002dc8e080b25e4dc113515adcc/t_700x780.jpg"
     },
     {
       "title": "定年後は異世界で種馬生活（コミック） 分冊版 ： 1",
@@ -11243,6 +11257,20 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/d6c78e367f5d2680bb41f9effddcdf1/t_700x780.jpg"
+    },
+    {
+      "title": "ある日起きたら、幼女主人公の悪母になっていました【単行本版】1巻",
+      "url": "https://bookwalker.jp/de0e0957d7-6216-4689-a281-471492ee9a17/",
+      "publisher": "リブリオン",
+      "label": "COMICリブラ",
+      "category": "マンガ",
+      "series": "ある日起きたら、幼女主人公の悪母になっていました（COMICリブラ）",
+      "price": "0",
+      "release_date": "2026-10-30",
+      "registered_at": "2026-10-25",
+      "is_v1": true,
+      "is_new_series": false,
+      "image": "https://c.bookwalker.jp/71cf5577e661abaa8a42ad3c5da9a7e/t_700x780.jpg"
     },
     {
       "title": "家出お嬢とチャイナ服  1",
@@ -15439,7 +15467,7 @@
       "label": "やんのかCOMIC/斬",
       "category": "話・連載（マンガ）",
       "series": "五つの塔の頂へ【単話版】（やんのかCOMIC/斬）",
-      "price": "180",
+      "price": "0",
       "release_date": "2026-09-11",
       "registered_at": "2026-09-10",
       "is_v1": true,
@@ -20787,7 +20815,7 @@
       "label": "やんのかCOMIC/斬",
       "category": "話・連載（マンガ）",
       "series": "かみ続けて味のしないガム【単話版】（やんのかCOMIC/斬）",
-      "price": "0",
+      "price": "180",
       "release_date": "2026-09-27",
       "registered_at": "2026-09-26",
       "is_v1": true,
