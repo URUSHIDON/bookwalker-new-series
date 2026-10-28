@@ -160,6 +160,11 @@ def is_title_v1(title):
     # 文頭の【最新刊】などの接頭辞を除去
     title_clean = re.sub(r'^【最新刊】\s*', '', title_str)
 
+    # 文末の特典・仕様・限定等の接尾辞を除去（複数付与されている場合も考慮して繰り返し除去）
+    suffix_pattern = r'\s*[【\[（\(][^】\]）\)]*(?:特典|描き下ろし|おまけ|ペーパー|限定|イラスト付|イラスト付き|SS付|SS付き|ショートストーリー|電子版|小冊子)[^】\]）\)]*[】\]）\)]\s*$'
+    while re.search(suffix_pattern, title_clean, flags=re.IGNORECASE):
+        title_clean = re.sub(suffix_pattern, '', title_clean, flags=re.IGNORECASE).strip()
+
     # -------------------------------------------------------------
     # ステップ1: 明確な【2巻以降・2話以降・他巻】の除外ルール
     # -------------------------------------------------------------
@@ -181,6 +186,10 @@ def is_title_v1(title):
 
     # 1-4. ハイフン前の2以上の数字 (例: "10 - (1)", "11 - (1)")
     if re.search(r'(?<!\d)(?:[2-9]|\d{2,})\s*[-‐―ー]\s*[（\(【\[]1[）\)】\]]', title_clean):
+        return False
+
+    # 1-4-2. コロン後の2以上の数字 (例: ": 2", ":2", "：2", ": 10")
+    if re.search(r'(?<!\d)[:：]\s*(?:[2-9]|\d{2,})\b', title_clean):
         return False
 
     # 1-5. 末尾が2以上の数字、ローマ数字(II〜)、丸数字(②〜) (例: " 61", " 11", " 21", " 2", " II", " ②")
@@ -219,6 +228,10 @@ def is_title_v1(title):
 
     # 3-4. vol.1, #1
     if re.search(r'(?i)(?:vol\.?|volume|#)\s*1(?!\d)', title_clean):
+        return True
+
+    # 3-5. コロン後の1 (例: ": 1", ":1", "：1")
+    if re.search(r'(?<!\d)[:：]\s*1(?!\d)', title_clean):
         return True
 
     # -------------------------------------------------------------

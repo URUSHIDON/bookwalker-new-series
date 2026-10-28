@@ -842,7 +842,20 @@ function testTitleRegex() {
     }
 
     // Pythonの unicodedata.normalize('NFKC', ...) に相当する処理
-    const titleStr = rawInput.normalize('NFKC').trim();
+    let titleStr = rawInput.normalize('NFKC').trim();
+    titleStr = titleStr.replace(/^【最新刊】\s*/, '');
+
+    // 文末の特典・仕様・限定等の接尾辞を除去
+    const suffixPattern = /\s*[【\[（\(][^】\]）\)]*(?:特典|描き下ろし|おまけ|ペーパー|限定|イラスト付|イラスト付き|SS付|SS付き|ショートストーリー|電子版|小冊子)[^】\]）\)]*[】\]）\)]\s*$/i;
+    while (suffixPattern.test(titleStr)) {
+        titleStr = titleStr.replace(suffixPattern, '').trim();
+    }
+
+    // コロン後の2以上の数字を除外 (例: ": 2", ": 10")
+    if (/(?<!\d)[:：]\s*(?:[2-9]|\d{2,})\b/.test(titleStr)) {
+        resultDiv.innerHTML = `<span style="color: #dc3545;">❌ 【判定：対象外（2巻以降）】 正規化後: "${titleStr}"</span>`;
+        return;
+    }
 
     // 除外チェック（SEASON 1など）
     let isExcluded = false;
@@ -854,7 +867,7 @@ function testTitleRegex() {
 
     // 1巻判定チェック
     let isV1 = false;
-    const explicitRegex = /([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻])/;
+    const explicitRegex = /([（\(【\s\-_第話]*1[）\)】\s\-_話巻]+|第1[話巻]|【合冊版】\s*1|^1[話巻]|(?<!\d)[:：]\s*1(?!\d))/;
     const tailRegex = /(?:[^\w\a-zA-Z0-9]|[^\d\a-zA-Z])[1Ⅰ①]\s*$/;
 
     if (!isExcluded && (explicitRegex.test(titleStr) || tailRegex.test(titleStr))) {
