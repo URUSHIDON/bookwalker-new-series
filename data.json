@@ -81,7 +81,7 @@
       "release_date": "2026-12-01",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a2a8c894228434a10741d7fba926aae/t_700x780.jpg"
     },
     {
@@ -291,7 +291,7 @@
       "release_date": "2026-12-01",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a7ebb4b845d7cb9f9d4380770ca7e5b/t_700x780.jpg"
     },
     {
@@ -347,7 +347,7 @@
       "release_date": "2026-12-01",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/c09fd61ddd57f2865c4e77bdc7cc880/t_700x780.jpg"
     },
     {
@@ -571,7 +571,7 @@
       "release_date": "2026-12-04",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/b86b394faf01cba86744ac57770bdd4/t_700x780.jpg"
     },
     {
@@ -655,7 +655,7 @@
       "release_date": "2026-12-04",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/bfa840ac68c39a983c4a0bbdd25cff8/t_700x780.jpg"
     },
     {
@@ -683,7 +683,7 @@
       "release_date": "2026-12-04",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a902569092e518b3da4e4bbe8938617/t_700x780.jpg"
     },
     {
@@ -1341,7 +1341,7 @@
       "release_date": "2026-12-11",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/05246367763b31a1dc424e36333b796/t_700x780.jpg"
     },
     {
@@ -1355,7 +1355,7 @@
       "release_date": "2026-12-11",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/78fdb17ec976c9bd4b4c6e4953d0ca4/t_700x780.jpg"
     },
     {
@@ -1999,7 +1999,7 @@
       "release_date": "2026-12-20",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/f1a8f4c8957425816440cfdf162f3c5/t_700x780.jpg"
     },
     {
@@ -2013,7 +2013,7 @@
       "release_date": "2026-12-20",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/56014e048166f886004d5614d21ee3d/t_700x780.jpg"
     },
     {
@@ -2125,8 +2125,22 @@
       "release_date": "2026-12-22",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/dc922a881e59c689f24b2fce7a4180a/t_700x780.jpg"
+    },
+    {
+      "title": "リサイクル人間-殺人鬼の条件- 1話",
+      "url": "https://bookwalker.jp/deab5df5ef-98d4-4ec4-9080-2a8b7c728929/",
+      "publisher": "Freedia(フリーディア)",
+      "label": "テラーコミックス",
+      "category": "話・連載（マンガ）",
+      "series": "リサイクル人間-殺人鬼の条件-（テラーコミックス）",
+      "price": "0",
+      "release_date": "2026-12-22",
+      "registered_at": "2026-11-21",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/4ba86af0e641d0912a48ff2b2d75858/t_700x780.jpg"
     },
     {
       "title": "OK！ナデシコ様が華麗にざまぁいたします１",
@@ -10145,7 +10159,7 @@
       "label": "マンガBANGコミックス",
       "category": "マンガ",
       "series": "ヒエン（マンガBANGコミックス）",
-      "price": "0",
+      "price": "800",
       "release_date": "2026-11-22",
       "registered_at": "2026-11-18",
       "is_v1": true,
@@ -10159,12 +10173,26 @@
       "label": "ブシロードコミックス",
       "category": "話・連載（マンガ）",
       "series": "不運な転生者 ～酒造りで領地改革しちゃいました！？～ 連載版（ブシロードコミックス）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-11-22",
       "registered_at": "2026-10-22",
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/661f16b8f857e2bdca488a8f8832a18/t_700x780.jpg"
+    },
+    {
+      "title": "僕のことだけ見てればいいのに【合冊版】（1）",
+      "url": "https://bookwalker.jp/de31fc60a6-6ba1-4345-9bcd-d01324d8a618/",
+      "publisher": "DPNブックス",
+      "label": "カフネ",
+      "category": "マンガ",
+      "series": "僕のことだけ見てればいいのに【合冊版】（カフネ）",
+      "price": "700",
+      "release_date": "2026-11-22",
+      "registered_at": "2026-11-21",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/ed60407fad9ce998b94f81d7a150b12/t_700x780.jpg"
     },
     {
       "title": "IT女社長、元彼に捨てられたら元部下に拾われました～どん底から見つけるハッピープラン～【単話】1",
@@ -10374,7 +10402,7 @@
       "registered_at": "2026-10-06",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/4ad128d43df25f823e447cd00fef29a/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/15cac787c3525394d840ae45cde3d7e/t_700x780.jpg"
     },
     {
       "title": "地獄の沙汰も恋次第。 ～恋愛不適合な私に、敏腕弁護士が甘すぎる～（分冊版）　【第1話】",
@@ -10527,7 +10555,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/212eb060602617806042d4db86d0bdd/t_700x780.jpg"
     },
     {
@@ -10569,7 +10597,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/efd5e5d006248b88f44d1fe523dc1d4/t_700x780.jpg"
     },
     {
@@ -10611,7 +10639,7 @@
       "release_date": "2026-11-25",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/66b12e515b8f71acb0425078e51ea0e/t_700x780.jpg"
     },
     {
@@ -11129,7 +11157,7 @@
       "release_date": "2026-11-27",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/412205f54a2757adf741fc537fd828c/t_700x780.jpg"
     },
     {
@@ -11157,7 +11185,7 @@
       "release_date": "2026-11-27",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4d8754a9d3d90e91794972312a73ebf/t_700x780.jpg"
     },
     {
@@ -11241,7 +11269,7 @@
       "release_date": "2026-11-27",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4f163fc4067ee09bca49d720bab7d38/t_700x780.jpg"
     },
     {
@@ -11647,7 +11675,7 @@
       "release_date": "2026-11-28",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/e1686ff208c387947f4078ca2058276/t_700x780.jpg"
     },
     {
@@ -11787,7 +11815,7 @@
       "release_date": "2026-11-30",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/be3043abaf8751be084045c8d5723d4/t_700x780.jpg"
     },
     {
@@ -11815,7 +11843,7 @@
       "release_date": "2026-11-30",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/5ac6c54a0c2748a06f401e5d734e0b4/t_700x780.jpg"
     },
     {
@@ -11843,7 +11871,7 @@
       "release_date": "2026-11-30",
       "registered_at": "2026-11-20",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/fd3f87501f891f983e4154c7d1c084e/t_700x780.jpg"
     },
     {
@@ -12386,12 +12414,12 @@
       "publisher": "TOブックス",
       "label": "LEVINコミックス",
       "category": "話・連載（マンガ）",
-      "series": "【単話版】小さなフェンリルとでっかいダンジョン～脱サラ従魔探索者は世界樹の秘宝を目指す～@COMIC（コロナ・コミックス）",
+      "series": "【単話版】小さなフェンリルとでっかいダンジョン～脱サラ従魔探索者は世界樹の秘宝を目指す～@COMIC（LEVINコミックス）",
       "price": "0",
       "release_date": "2026-10-01",
       "registered_at": "2026-09-30",
       "is_v1": true,
-      "is_new_series": false,
+      "is_new_series": true,
       "image": "https://c.bookwalker.jp/a8b85cf29acebc995f49c4aa7100ddf/t_700x780.jpg"
     },
     {
