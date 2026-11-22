@@ -2139,7 +2139,7 @@
       "release_date": "2026-12-22",
       "registered_at": "2026-11-21",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/4ba86af0e641d0912a48ff2b2d75858/t_700x780.jpg"
     },
     {
@@ -10191,7 +10191,7 @@
       "release_date": "2026-11-22",
       "registered_at": "2026-11-21",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/ed60407fad9ce998b94f81d7a150b12/t_700x780.jpg"
     },
     {
@@ -10201,7 +10201,7 @@
       "label": "spRash!",
       "category": "話・連載（マンガ）",
       "series": "IT女社長、元彼に捨てられたら元部下に拾われました～どん底から見つけるハッピープラン～（spRash!）",
-      "price": "0",
+      "price": "90",
       "release_date": "2026-11-23",
       "registered_at": "2026-11-18",
       "is_v1": true,
@@ -10215,7 +10215,7 @@
       "label": "モンスターコミックスｆ",
       "category": "マンガ",
       "series": "崖っぷち令嬢はラスボスと結託する　あなたを断罪するまで、あと７日（コミック）（モンスターコミックスｆ）",
-      "price": "0",
+      "price": "740",
       "release_date": "2026-11-23",
       "registered_at": "2026-11-17",
       "is_v1": true,
@@ -10229,7 +10229,7 @@
       "label": "モンスターコミックスｆ",
       "category": "話・連載（マンガ）",
       "series": "崖っぷち令嬢はラスボスと結託する　あなたを断罪するまで、あと７日（コミック） 分冊版（モンスターコミックスｆ）",
-      "price": "0",
+      "price": "200",
       "release_date": "2026-11-23",
       "registered_at": "2026-11-17",
       "is_v1": true,
@@ -10243,7 +10243,7 @@
       "label": "ヤングキング",
       "category": "マンガ",
       "series": "近畿霊務局（ヤングキング）",
-      "price": "0",
+      "price": "840",
       "release_date": "2026-11-23",
       "registered_at": "2026-10-06",
       "is_v1": true,
@@ -10277,6 +10277,34 @@
       "is_v1": true,
       "is_new_series": false,
       "image": "https://c.bookwalker.jp/8383822f9e79bb844a4eeca365bdbd6/t_700x780.jpg"
+    },
+    {
+      "title": "スリーコールアサシン 第1話",
+      "url": "https://bookwalker.jp/de656d2f3c-d872-47d3-9a23-b5612b15d555/",
+      "publisher": "STUDIO ZOON",
+      "label": "STUDIO ZOON",
+      "category": "話・連載（マンガ）",
+      "series": "スリーコールアサシン（STUDIO ZOON）",
+      "price": "0",
+      "release_date": "2026-11-23",
+      "registered_at": "2026-11-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/088165a16eb63daa3b45bc24d5ae4d9/t_700x780.jpg"
+    },
+    {
+      "title": "スリーコールアサシン【単行本】 第1巻",
+      "url": "https://bookwalker.jp/de28a1eec9-9010-4ad7-97f3-3715f1fc06f6/",
+      "publisher": "STUDIO ZOON",
+      "label": "STUDIO ZOON",
+      "category": "マンガ",
+      "series": "スリーコールアサシン【単行本】（STUDIO ZOON）",
+      "price": "720",
+      "release_date": "2026-11-23",
+      "registered_at": "2026-11-22",
+      "is_v1": true,
+      "is_new_series": true,
+      "image": "https://c.bookwalker.jp/e66a623ad0f3988cbf4c81c34ebc312/t_700x780.jpg"
     },
     {
       "title": "追放勇者と穏健魔王～形見のクワで世界を救います～【単話】1",
@@ -10313,7 +10341,7 @@
       "label": "モンスターコミックスｆ",
       "category": "話・連載（マンガ）",
       "series": "宝石の聖女 「欲深女め！」と追放されたけど、隣国の王子様と幸せに暮らすのであとはもうご勝手に！（コミック） 分冊版（モンスターコミックスｆ）",
-      "price": "0",
+      "price": "150",
       "release_date": "2026-11-23",
       "registered_at": "2026-11-17",
       "is_v1": true,
@@ -10341,7 +10369,7 @@
       "label": "spRash!",
       "category": "マンガ",
       "series": "もう我慢の限界ですわッ！～最悪の結末にブチ切れた公爵令嬢は今度こそ間違えない～（spRash!）",
-      "price": "0",
+      "price": "760",
       "release_date": "2026-11-23",
       "registered_at": "2026-11-18",
       "is_v1": true,
@@ -10528,7 +10556,7 @@
       "registered_at": "2026-11-11",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/5529d85beeb8f4887a40212eee80a28/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/f78dbff0b30a88b25e468403c7e5671/t_700x780.jpg"
     },
     {
       "title": "神の手違いで死んだらチートガン積みで異世界に放り込まれました１",
@@ -10542,7 +10570,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/01d732fae90b99822f4a6a898a8fa24/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/95037dbe782de9ba1241538987225ee/t_700x780.jpg"
     },
     {
       "title": "かるび、もまれる。: 1【イラスト特典付】",
@@ -10570,7 +10598,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/5f3c774e64e0979dbd4314ebe87e999/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/1ee79967ff4bebb9ca4d3c0ff144202/t_700x780.jpg"
     },
     {
       "title": "壊していいよ、すいかちゃん 1【電子限定特典付き】",
@@ -10584,7 +10612,7 @@
       "registered_at": "2026-10-28",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/0d8bc95936bedd921e499ff0d910b5f/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/f719a249a0fbbba7a24c075b1051bd2/t_700x780.jpg"
     },
     {
       "title": "婚約者が浮気をしていたので失踪したら、冷酷なはずの公爵様に溺愛されました。第１話",
@@ -10626,7 +10654,7 @@
       "registered_at": "2026-10-01",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/a515045fdb58eda0364052212b9f562/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/c14265d8360c3e911f4faa1ee01ca42/t_700x780.jpg"
     },
     {
       "title": "CRBR -Crazy Raccoon Battle Royale-: 1【イラスト特典付】",
@@ -10654,7 +10682,7 @@
       "registered_at": "2026-10-01",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/bdd21ea376ab1e920a4309f219a16b7/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/acb9c2ba1e0e17bc62485e11c20a36d/t_700x780.jpg"
     },
     {
       "title": "退魔師の望まれぬ花嫁 1",
@@ -10682,7 +10710,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/3f8133d18b4f30b92a44db2669d1312/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/d12924646b551cb2c94a10603b53e14/t_700x780.jpg"
     },
     {
       "title": "天才幼女とぐーたらエルフは幸せに暮らしたい！　～治癒魔法で二人の夢を叶えます～１",
@@ -10696,7 +10724,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/00603b8f2f124a881345f533b4d0f97/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/7596f9b78f189c875e46beac5b55129/t_700x780.jpg"
     },
     {
       "title": "何の取り柄もない平凡な俺が美人双子姉妹を命懸けで助けた結果、実はヤンデレだった二人をガチ惚れさせてしまった件（ノヴァコミックス）１",
@@ -10710,7 +10738,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/6796c24319e15bac754d68bc48a556f/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/bd62d33a4e2828a0414d164631e0bc7/t_700x780.jpg"
     },
     {
       "title": "ハズレスキル『錬金工房』で始める奪還生活１",
@@ -10724,7 +10752,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/dc2b9f1564104ea5c649714fa20fb3b/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/9c95d497c39e5c80b94c7491238f206/t_700x780.jpg"
     },
     {
       "title": "復讐令嬢の悪党狩り　１",
@@ -10738,7 +10766,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/e22180d017fe26aad144e3c8d49fdd4/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/03b5b408c4434c949f4fe99cd78f011/t_700x780.jpg"
     },
     {
       "title": "不敗の雑魚将軍１",
@@ -10752,7 +10780,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/5f50f1f06f9d4cb30d412e5d1b0bc1b/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/3e548c1cfb11638f6e46d28f3880186/t_700x780.jpg"
     },
     {
       "title": "プロメテウス大戦　1",
@@ -10766,7 +10794,7 @@
       "registered_at": "2026-11-11",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/625e18f8f88b6cb1124aaa6b50538ee/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/8f11139dd2a820841845422191ecc1a/t_700x780.jpg"
     },
     {
       "title": "冒険しない私の異世界マニュアル１【BOOK☆WALKER限定特典付き】",
@@ -10780,7 +10808,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/dc963742cf3960b7cb40fe588492965/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/ff06e0915f7cb8a44b4257588c071d2/t_700x780.jpg"
     },
     {
       "title": "マザー・トラップ～ママ友たちが堕ちるまで～ 1",
@@ -10864,7 +10892,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/fdb6944b58ac9e8cb449301537799af/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/6bd172ae3eeb51a6654f776417238e0/t_700x780.jpg"
     },
     {
       "title": "リセマラ∞デスゲーマー１",
@@ -10878,7 +10906,7 @@
       "registered_at": "2026-11-10",
       "is_v1": true,
       "is_new_series": false,
-      "image": "https://c.bookwalker.jp/1d4b72a1ca3350a47e48af8edaa888f/t_700x780.jpg"
+      "image": "https://c.bookwalker.jp/774df3623da4df8aec4664dc918833c/t_700x780.jpg"
     },
     {
       "title": "恋AIフラグ～AIが理想の恋人を選んでくれるマッチングアプリを使ったら異世界の勇者とマッチングした～【分冊版】１",
@@ -12419,7 +12447,7 @@
       "release_date": "2026-10-01",
       "registered_at": "2026-09-30",
       "is_v1": true,
-      "is_new_series": true,
+      "is_new_series": false,
       "image": "https://c.bookwalker.jp/a8b85cf29acebc995f49c4aa7100ddf/t_700x780.jpg"
     },
     {
